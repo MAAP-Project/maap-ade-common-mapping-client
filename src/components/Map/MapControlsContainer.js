@@ -21,17 +21,19 @@ import MiscUtil from "_core/utils/MiscUtil";
 import { MapButton, EnhancedTooltip } from "_core/components/Reusables";
 import { BasemapPicker } from "_core/components/Map";
 import { MapControlsContainer as MapControlsContainerCore } from "_core/components/Map/MapControlsContainer.js";
-import styles from "_core/components/Map/MapControlsContainer.scss";
+import stylesCore from "_core/components/Map/MapControlsContainer.scss";
+import styles from "components/Map/MapControlsContainer.scss";
 
 export class MapControlsContainer extends MapControlsContainerCore {
     render() {
         let containerClasses = MiscUtil.generateStringFromSet({
             [this.props.className]: typeof this.props.className !== "undefined",
+            [stylesCore.mapControlsContainer]: true,
             [styles.mapControlsContainer]: true
         });
         return (
             <div className={containerClasses}>
-                <Paper elevation={2} className={styles.buttonGroup}>
+                <Paper elevation={2} className={stylesCore.buttonGroup}>
                     <EnhancedTooltip
                         title={this.props.in3DMode ? "Switch to 2D map" : "Switch to 3D map"}
                         placement="right"
@@ -42,13 +44,13 @@ export class MapControlsContainer extends MapControlsContainerCore {
                             aria-label={
                                 this.props.in3DMode ? "Switch to 2D map" : "Switch to 3D map"
                             }
-                            className={styles.singleButton}
+                            className={stylesCore.singleButton}
                         >
                             <Earth />
                         </MapButton>
                     </EnhancedTooltip>
                 </Paper>
-                <Paper elevation={2} className={styles.buttonGroup}>
+                <Paper elevation={2} className={stylesCore.buttonGroup}>
                     <EnhancedTooltip title="Home" placement="right">
                         <MapButton
                             onClick={() => {
@@ -58,7 +60,7 @@ export class MapControlsContainer extends MapControlsContainerCore {
                                 );
                             }}
                             aria-label="Home"
-                            className={`${styles.firstButton} ${styles.lineButton}`}
+                            className={`${stylesCore.firstButton} ${stylesCore.lineButton}`}
                         >
                             <HomeIcon />
                         </MapButton>
@@ -67,7 +69,7 @@ export class MapControlsContainer extends MapControlsContainerCore {
                         <MapButton
                             onClick={this.props.mapActions.zoomIn}
                             aria-label="Zoom in"
-                            className={styles.lineButton}
+                            className={stylesCore.lineButton}
                         >
                             <PlusIcon />
                         </MapButton>
@@ -76,7 +78,7 @@ export class MapControlsContainer extends MapControlsContainerCore {
                         <MapButton
                             onClick={this.props.mapActions.zoomOut}
                             aria-label="Zoom out"
-                            className={styles.lastButton}
+                            className={stylesCore.lastButton}
                         >
                             <RemoveIcon />
                         </MapButton>
