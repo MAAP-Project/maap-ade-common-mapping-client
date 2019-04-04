@@ -79,6 +79,11 @@ export class MapContainer3D extends Component {
                 geometry => this.handleMeasureEnd(geometry, appStrings.MEASURE_AREA),
                 appStrings.INTERACTION_MEASURE
             );
+
+            // mark complete
+            this.listenersInitialized = true;
+
+            console.log("3D Map Listeners Initialized");
         } else {
             console.error("Cannot initialize event listeners: 3D MAP NOT AVAILABLE");
         }
@@ -133,7 +138,7 @@ export class MapContainer3D extends Component {
         // need to get some sort of stored state value
         if (this.props.initialLoadComplete && !this.listenersInitialized) {
             this.initializeMapListeners();
-            this.listenersInitialized = true;
+            // this.listenersInitialized = true;
         }
 
         let containerClass = MiscUtil.generateStringFromSet({
@@ -176,4 +181,7 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapContainer3D);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MapContainer3D);

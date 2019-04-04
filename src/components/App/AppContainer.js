@@ -11,11 +11,11 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import pink from "@material-ui/core/colors/pink";
-import * as appActions from "_core/actions/appActions";
+import * as appActionsCore from "_core/actions/appActions";
 import * as mapActions from "_core/actions/mapActions";
-import * as dispatchActions from "actions/dispatchActions";
-import * as appStrings from "_core/constants/appStrings";
-import appConfig from "constants/appConfig";
+import * as appActions from "actions/appActions";
+// import * as appStrings from "_core/constants/appStrings";
+// import appConfig from "constants/appConfig";
 import MiscUtil from "_core/utils/MiscUtil";
 import MapUtil from "_core/utils/MapUtil";
 
@@ -82,14 +82,14 @@ export class AppContainer extends Component {
         window.requestAnimationFrame(() => {
             setTimeout(() => {
                 // initialize the maps
-                this.props.initializeMap(appStrings.MAP_LIB_2D, "map2D");
-                this.props.initializeMap(appStrings.MAP_LIB_3D, "map3D");
+                // this.props.initializeMap(appStrings.MAP_LIB_2D, "map2D");
+                // this.props.initializeMap(appStrings.MAP_LIB_3D, "map3D");
 
                 // set initial view
-                this.props.setMapView({ extent: appConfig.DEFAULT_BBOX_EXTENT }, true);
+                // this.props.setMapView({ extent: appConfig.DEFAULT_BBOX_EXTENT }, true);
 
                 // activate default params
-                this.props.activateDefaultLayers();
+                // this.props.activateDefaultLayers();
 
                 // signal complete
                 this.props.completeInitialLoad();
@@ -97,6 +97,8 @@ export class AppContainer extends Component {
                 // Store CMC actions in window
                 window.CMC = {};
                 window.CMC.dispatchAction = this.props.dispatchAction;
+                window.CMC.setMapProjection = this.props.setMapProjection;
+                window.CMC.intializeMap = this.props.intializeMap;
             }, 0);
         });
     }
@@ -127,20 +129,24 @@ AppContainer.propTypes = {
     initializeMap: PropTypes.func.isRequired,
     setMapView: PropTypes.func.isRequired,
     dispatchAction: PropTypes.func.isRequired,
+    setMapProjection: PropTypes.func.isRequired,
+    intializeMap: PropTypes.func.isRequired,
     className: PropTypes.string
 };
 
 function mapDispatchToProps(dispatch) {
     return {
-        completeInitialLoad: bindActionCreators(appActions.completeInitialLoad, dispatch),
+        completeInitialLoad: bindActionCreators(appActionsCore.completeInitialLoad, dispatch),
         checkBrowserFunctionalities: bindActionCreators(
-            appActions.checkBrowserFunctionalities,
+            appActionsCore.checkBrowserFunctionalities,
             dispatch
         ),
         activateDefaultLayers: bindActionCreators(mapActions.activateDefaultLayers, dispatch),
         initializeMap: bindActionCreators(mapActions.initializeMap, dispatch),
         setMapView: bindActionCreators(mapActions.setMapView, dispatch),
-        dispatchAction: bindActionCreators(dispatchActions.dispatchAction, dispatch)
+        dispatchAction: bindActionCreators(appActions.dispatchAction, dispatch),
+        setMapProjection: bindActionCreators(appActions.setMapProjection, dispatch),
+        intializeMap: bindActionCreators(appActions.intializeMap, dispatch)
     };
 }
 

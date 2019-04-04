@@ -8,6 +8,9 @@
 import Immutable from "immutable";
 import * as coreConfig from "_core/constants/appConfig";
 
+// load in raw json configured layers
+import BUILT_IN_LAYERS from "default-data/layers.json";
+
 // the config as defined by CMC Core
 const CORE_CONFIG = Immutable.fromJS(coreConfig);
 
@@ -15,7 +18,9 @@ const CORE_CONFIG = Immutable.fromJS(coreConfig);
 const OPS_CONFIG = Immutable.fromJS(window.APPLICATION_CONFIG);
 
 // define your overrides for Core config here
-const APP_CONFIG = Immutable.fromJS({});
+const APP_CONFIG = Immutable.fromJS({
+    BUILT_IN_LAYER_PARTIALS: BUILT_IN_LAYERS.layers
+});
 
 // define and export the final config
 const appConfig = CORE_CONFIG.mergeDeep(APP_CONFIG)
