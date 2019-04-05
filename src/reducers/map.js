@@ -15,6 +15,9 @@ export default function map(state = mapState, action, opt_reducer = MapReducer) 
         case actionTypes.SET_MAP_PROJECTION:
             return opt_reducer.setMapProjection(state, action);
 
+        case actionTypes.RESET_MAP_VIEW:
+            return opt_reducer.resetMapView(state, action);
+
         default:
             return mapCore.call(this, state, action, opt_reducer);
     }

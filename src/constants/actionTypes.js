@@ -1,1 +1,2 @@
 export const SET_MAP_PROJECTION = "SET_MAP_PROJECTION";
+export const RESET_MAP_VIEW = "RESET_MAP_VIEW";

@@ -1,10 +1,3 @@
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import Ol_Map from "ol/Map";
 import Ol_View from "ol/View";
 import Ol_Layer_Vector from "ol/layer/Vector";
@@ -22,13 +15,6 @@ import MapWrapper from "_core/utils/MapWrapper";
 
 import MapWrapperOpenlayersCore from "_core/utils/MapWrapperOpenlayers";
 
-/**
- * Wrapper class for Openlayers
- *
- * @export
- * @class MapWrapperOpenlayers
- * @extends {MapWrapper}
- */
 export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
     ////////////////////// OVERRIDES //////////////////////
 
@@ -308,5 +294,11 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
         view.fit(mapProjection.getExtent());
 
         return true;
+    }
+
+    resetView() {
+        const currView = this.map.getView();
+        const mapProjection = currView.getProjection();
+        currView.fit(mapProjection.getExtent());
     }
 }

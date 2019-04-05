@@ -7,6 +7,10 @@ export function dispatchAction(action) {
     return action;
 }
 
+export function resetMapView(targetActiveMap = true) {
+    return { type: actionTypes.RESET_MAP_VIEW, targetActiveMap };
+}
+
 export function setMapProjection(projection) {
     return { type: actionTypes.SET_MAP_PROJECTION, projection };
 }

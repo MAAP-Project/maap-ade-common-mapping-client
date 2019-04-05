@@ -19,4 +19,15 @@ export default class MapReducer extends MapReducerCore {
 
         return state;
     }
+
+    static resetMapView(state, action) {
+        state.get("maps").forEach(map => {
+            // Apply view to active/inactive maps depending on targetActiveMap
+            if (map.isActive === action.targetActiveMap) {
+                map.resetView();
+            }
+        });
+
+        return state;
+    }
 }

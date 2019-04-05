@@ -6,6 +6,7 @@
  */
 
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Modernizr from "modernizr";
@@ -14,9 +15,9 @@ import PlusIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import HomeIcon from "@material-ui/icons/Home";
 import Paper from "@material-ui/core/Paper";
-import * as mapActions from "_core/actions/mapActions";
-import * as appActions from "_core/actions/appActions";
-import appConfig from "constants/appConfig";
+import * as mapActionsCore from "_core/actions/mapActions";
+import * as appActionsCore from "_core/actions/appActions";
+import * as appActions from "actions/appActions";
 import MiscUtil from "_core/utils/MiscUtil";
 import { MapButton, EnhancedTooltip } from "_core/components/Reusables";
 import { BasemapPicker } from "_core/components/Map";
@@ -54,10 +55,7 @@ export class MapControlsContainer extends MapControlsContainerCore {
                     <EnhancedTooltip title="Home" placement="right">
                         <MapButton
                             onClick={() => {
-                                this.props.mapActions.setMapView(
-                                    { extent: appConfig.DEFAULT_BBOX_EXTENT },
-                                    true
-                                );
+                                this.props.resetMapView(true);
                             }}
                             aria-label="Home"
                             className={`${stylesCore.firstButton} ${stylesCore.lineButton}`}
@@ -90,6 +88,10 @@ export class MapControlsContainer extends MapControlsContainerCore {
     }
 }
 
+MapControlsContainer.propTypes = Object.assign({}, MapControlsContainerCore.propTypes, {
+    resetMapView: PropTypes.func.isRequired
+});
+
 function mapStateToProps(state) {
     return {
         in3DMode: state.map.getIn(["view", "in3DMode"]),
@@ -101,8 +103,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        mapActions: bindActionCreators(mapActions, dispatch),
-        appActions: bindActionCreators(appActions, dispatch)
+        mapActions: bindActionCreators(mapActionsCore, dispatch),
+        appActions: bindActionCreators(appActionsCore, dispatch),
+        resetMapView: bindActionCreators(appActions.resetMapView, dispatch)
     };
 }
 
