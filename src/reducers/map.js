@@ -18,6 +18,12 @@ export default function map(state = mapState, action, opt_reducer = MapReducer) 
         case actionTypes.RESET_MAP_VIEW:
             return opt_reducer.resetMapView(state, action);
 
+        case actionTypes.ADD_LAYER:
+            return opt_reducer.addLayer(state, action);
+
+        case actionTypes.REMOVE_LAYER:
+            return opt_reducer.removeLayer(state, action);
+
         default:
             return mapCore.call(this, state, action, opt_reducer);
     }

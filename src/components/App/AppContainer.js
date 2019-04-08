@@ -15,6 +15,7 @@ import * as appActionsCore from "_core/actions/appActions";
 import * as appActions from "actions/appActions";
 import MiscUtil from "_core/utils/MiscUtil";
 import MapUtil from "_core/utils/MapUtil";
+import appConfig from "constants/appConfig";
 
 import { MapContainer, CoordinateTracker } from "_core/components/Map";
 import { MapControlsContainer } from "components/Map";
@@ -65,6 +66,7 @@ export class AppContainer extends Component {
                 // Store CMC actions in window
                 window.CMC = {};
                 window.CMC.dispatch = this.props.appActions;
+                window.CMC.config = appConfig;
             }, 0);
         });
     }

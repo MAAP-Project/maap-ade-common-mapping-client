@@ -7,6 +7,14 @@ export function dispatchAction(action) {
     return action;
 }
 
+export function addLayer(layerInfo) {
+    return { type: actionTypes.ADD_LAYER, layerInfo };
+}
+
+export function removeLayer(layerInfo) {
+    return { type: actionTypes.REMOVE_LAYER, layerInfo };
+}
+
 export function resetMapView(targetActiveMap = true) {
     return { type: actionTypes.RESET_MAP_VIEW, targetActiveMap };
 }
@@ -17,12 +25,12 @@ export function setMapProjection(projection) {
 
 export function intializeMap(options) {
     return dispatch => {
-        // set the projection
-        dispatch(setMapProjection(options.projection));
-
         // initialize the maps
         dispatch(mapActions.initializeMap(appStrings.MAP_LIB_2D, "map2D"));
         dispatch(mapActions.initializeMap(appStrings.MAP_LIB_3D, "map3D"));
+
+        // set the projection
+        dispatch(setMapProjection(options.projection));
 
         // set initial view
         dispatch(

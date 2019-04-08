@@ -1,2 +1,4 @@
 export const SET_MAP_PROJECTION = "SET_MAP_PROJECTION";
 export const RESET_MAP_VIEW = "RESET_MAP_VIEW";
+export const ADD_LAYER = "ADD_LAYER";
+export const REMOVE_LAYER = "REMOVE_LAYER";

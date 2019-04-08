@@ -2,8 +2,6 @@ import Ol_Map from "ol/Map";
 import Ol_View from "ol/View";
 import Ol_Layer_Vector from "ol/layer/Vector";
 import Ol_Source_Vector from "ol/source/Vector";
-import Ol_Layer_Tile from "ol/layer/Tile.js";
-import Ol_Source_OSM from "ol/source/OSM.js";
 import * as Ol_Proj from "ol/proj";
 import { defaults as Ol_Interaction_Defaults } from "ol/interaction";
 import Ol_Interaction_Draw, { createBox } from "ol/interaction/Draw";
@@ -11,12 +9,25 @@ import Ol_Geom_Linestring from "ol/geom/LineString";
 import Ol_Geom_Polygon from "ol/geom/Polygon";
 import * as appStrings from "_core/constants/appStrings";
 import appConfig from "constants/appConfig";
-import MapWrapper from "_core/utils/MapWrapper";
+import MapUtil from "utils/MapUtil";
 
 import MapWrapperOpenlayersCore from "_core/utils/MapWrapperOpenlayers";
 
 export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
     ////////////////////// OVERRIDES //////////////////////
+
+    /**
+     * Initialize static class references for this instance
+     *
+     * @param {string|domnode} container the container to render this map into
+     * @param {object} options view options for constructing this map wrapper (usually map state from redux)
+     * @memberof MapWrapperOpenlayers
+     */
+    initStaticClasses(container, options) {
+        MapWrapperOpenlayersCore.prototype.initStaticClasses.call(this, container, options);
+
+        this.mapUtil = MapUtil;
+    }
 
     /**
      * create an openlayers map object
@@ -41,21 +52,23 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
 
             // get the view options for the map
             let viewOptions = options.get("view").toJS();
-            let mapProjection = Ol_Proj.get(viewOptions.projection.code);
+            let projCode = viewOptions.projection.code;
+            let mapProjection = Ol_Proj.get(projCode);
+            let configProj = this.mapUtil.getPreconfiguredProjection(projCode);
+            let maxRes = configProj
+                ? appConfig.GIBS_IMAGERY_RESOLUTIONS[configProj.code][0]
+                : undefined;
+
+            console.log(mapProjection, viewOptions);
 
             return new Ol_Map({
                 target: container,
-                layers: [
-                    vectorLayer,
-                    new Ol_Layer_Tile({
-                        source: new Ol_Source_OSM()
-                    })
-                ],
+                layers: [vectorLayer],
                 view: new Ol_View({
                     maxZoom: viewOptions.maxZoom,
                     minZoom: viewOptions.minZoom,
                     projection: mapProjection,
-                    maxResolution: viewOptions.maxResolution
+                    maxResolution: viewOptions.maxResolution || maxRes
                 }),
                 controls: [],
                 interactions: Ol_Interaction_Defaults({
@@ -258,47 +271,43 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
         // get current map view
         const currView = this.map.getView();
 
-        // find preconfigured projection info (if available)
-        let configProj = undefined;
-        for (const key in appStrings.PROJECTIONS) {
-            let p = appStrings.PROJECTIONS[key];
-            if (p.aliases.indexOf(projCode) !== -1) {
-                configProj = p;
-            }
-        }
-
-        // update the known projection code
-        if (configProj) {
-            projCode = configProj.code;
-        }
-
-        // find the max resolution for display (if available)
-        let maxRes = undefined;
-        if (appConfig.GIBS_IMAGERY_RESOLUTIONS[projCode]) {
-            maxRes = appConfig.GIBS_IMAGERY_RESOLUTIONS[projCode][0];
-        }
-
         // get the proj4js projection
         const mapProjection = Ol_Proj.get(projCode);
 
-        // create a new map view
-        const view = new Ol_View({
-            maxZoom: currView.getMaxZoom(),
-            minZoom: currView.getMinZoom(),
-            projection: mapProjection,
-            maxResolution: maxRes
-        });
+        if (mapProjection) {
+            // find the max resolution for display (if available)
+            let configProj = this.mapUtil.getPreconfiguredProjection(projCode);
+            let maxRes = configProj
+                ? appConfig.GIBS_IMAGERY_RESOLUTIONS[configProj.code][0]
+                : undefined;
 
-        // set the new map view and fit to the projection extent
-        this.map.setView(view);
-        view.fit(mapProjection.getExtent());
+            // create a new map view
+            const view = new Ol_View({
+                maxZoom: currView.getMaxZoom(),
+                minZoom: currView.getMinZoom(),
+                projection: mapProjection,
+                maxResolution: maxRes
+            });
 
-        return true;
+            // set the new map view and fit to the projection extent
+            this.map.setView(view);
+            this.resetView();
+
+            return true;
+        }
+        console.warn(
+            `ERROR in MapWrapperOpenLayers: Failed to find matching projection for ${projCode}`
+        );
+        return false;
     }
 
     resetView() {
         const currView = this.map.getView();
         const mapProjection = currView.getProjection();
-        currView.fit(mapProjection.getExtent());
+        let mapSize = this.map.getSize() || [];
+        currView.fit(mapProjection.getExtent(), {
+            size: mapSize,
+            constrainResolution: false
+        });
     }
 }
