@@ -59,8 +59,6 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
                 ? appConfig.GIBS_IMAGERY_RESOLUTIONS[configProj.code][0]
                 : undefined;
 
-            console.log(mapProjection, viewOptions);
-
             return new Ol_Map({
                 target: container,
                 layers: [vectorLayer],

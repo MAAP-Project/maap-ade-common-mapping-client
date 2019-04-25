@@ -9,28 +9,29 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import JssProvider from "react-jss/lib/JssProvider";
+import { create } from "jss";
+import {
+    MuiThemeProvider,
+    createMuiTheme,
+    createGenerateClassName,
+    jssPreset
+} from "@material-ui/core/styles";
 import pink from "@material-ui/core/colors/pink";
 import * as appActionsCore from "_core/actions/appActions";
 import * as appActions from "actions/appActions";
 import MiscUtil from "_core/utils/MiscUtil";
 import MapUtil from "_core/utils/MapUtil";
-import appConfig from "constants/appConfig";
 
-import { MapContainer, CoordinateTracker } from "_core/components/Map";
-import { MapControlsContainer } from "components/Map";
-import { LoadingContainer } from "_core/components/Loading";
+import { MapContainer } from "_core/components/Map";
+import { MapControlsContainer, CoordinateTracker } from "components/Map";
 import { AlertsContainer } from "_core/components/Alerts";
 import stylesCore from "_core/components/App/AppContainer.scss";
-import styles from "components/App/AppContainer.scss";
 
 const theme = createMuiTheme({
     typography: {
         useNextVariants: true,
-        htmlFontSize: 10
-    },
-    palette: {
-        primary: pink
+        htmlFontSize: 14
     },
     overrides: {
         MuiPaper: {
@@ -39,6 +40,15 @@ const theme = createMuiTheme({
             }
         }
     }
+});
+
+const styleNode = document.createComment("jss-insertion-point");
+document.head.insertBefore(styleNode, document.head.firstChild);
+const generateClassName = createGenerateClassName();
+const jss = create({
+    ...jssPreset(),
+    // We define a custom insertion point that JSS will look for injecting the styles in the DOM.
+    insertionPoint: "jss-insertion-point"
 });
 
 export class AppContainer extends Component {
@@ -60,15 +70,17 @@ export class AppContainer extends Component {
         // see: http://stackoverflow.com/a/34999925
         window.requestAnimationFrame(() => {
             setTimeout(() => {
+                // link dispatch to external api
+                this.props.linkDispatch(this.props.appActions);
+
                 // signal complete
                 this.props.completeInitialLoad();
-
-                // Store CMC actions in window
-                window.CMC = {};
-                window.CMC.dispatch = this.props.appActions;
-                window.CMC.config = appConfig;
             }, 0);
         });
+    }
+
+    componentDidUpdate() {
+        this.props.linkDispatch(this.props.appActions);
     }
 
     render() {
@@ -77,15 +89,16 @@ export class AppContainer extends Component {
             [this.props.className]: typeof this.props.className !== "undefined"
         });
         return (
-            <MuiThemeProvider theme={theme}>
-                <div className={containerClasses}>
-                    <MapContainer />
-                    <LoadingContainer />
-                    <MapControlsContainer />
-                    <AlertsContainer />
-                    <CoordinateTracker className={styles.coordinateTracker} />
-                </div>
-            </MuiThemeProvider>
+            <JssProvider jss={jss} generateClassName={generateClassName}>
+                <MuiThemeProvider theme={theme}>
+                    <div className={containerClasses}>
+                        <MapContainer />
+                        <MapControlsContainer />
+                        <AlertsContainer />
+                        <CoordinateTracker />
+                    </div>
+                </MuiThemeProvider>
+            </JssProvider>
         );
     }
 }
@@ -93,6 +106,7 @@ export class AppContainer extends Component {
 AppContainer.propTypes = {
     completeInitialLoad: PropTypes.func.isRequired,
     appActions: PropTypes.object.isRequired,
+    linkDispatch: PropTypes.func.isRequired,
     className: PropTypes.string
 };
 

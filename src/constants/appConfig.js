@@ -19,7 +19,8 @@ const OPS_CONFIG = Immutable.fromJS(window.APPLICATION_CONFIG);
 
 // define your overrides for Core config here
 const APP_CONFIG = Immutable.fromJS({
-    BUILT_IN_LAYER_PARTIALS: BUILT_IN_LAYERS.layers
+    BUILT_IN_LAYER_PARTIALS: BUILT_IN_LAYERS.layers,
+    CESIUM_BASE_URL: "/lab/static/assets/cesium"
 });
 
 // define and export the final config

@@ -23,7 +23,7 @@ export function setMapProjection(projection) {
     return { type: actionTypes.SET_MAP_PROJECTION, projection };
 }
 
-export function intializeMap(options) {
+export function initializeMap(options) {
     return dispatch => {
         // initialize the maps
         dispatch(mapActions.initializeMap(appStrings.MAP_LIB_2D, "map2D"));

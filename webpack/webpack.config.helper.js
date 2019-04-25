@@ -112,17 +112,19 @@ module.exports = options => {
             minimize: options.isProduction
         },
         entry: {
-            index:
+            bundle:
                 typeof options.entry != "undefined"
                     ? options.entry
                     : [path.join(BASE_DIR, "src/index")], // Main index.js chunk
             inlineStyles: path.join(BASE_DIR, "src/styles/inlineStyles.js") // Inline style chunk
         },
-        target: "web", // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
+        // target: "web", // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
         output: {
             path: path.join(BASE_DIR, "dist"), // Note: Physical files are only output by the production build task `npm run build`.
             publicPath: "", // Location of static assets relative to server root. Basically your standard `static_path` config
-            sourcePrefix: "" // Required for Cesium loading since Cesium uses some multi-line strings in its code and webpack indents them improperly - https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
+            sourcePrefix: "", // Required for Cesium loading since Cesium uses some multi-line strings in its code and webpack indents them improperly - https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
+            library: "cmc-jupyter",
+            libraryTarget: "umd"
         },
         plugins: [
             new webpack.DefinePlugin(GLOBALS),
