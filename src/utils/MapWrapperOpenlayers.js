@@ -52,7 +52,7 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
 
             // get the view options for the map
             let viewOptions = options.get("view").toJS();
-            let projCode = viewOptions.projection.code;
+            let projCode = viewOptions.projection;
             let mapProjection = Ol_Proj.get(projCode);
             let configProj = this.mapUtil.getPreconfiguredProjection(projCode);
             let maxRes = configProj
@@ -262,10 +262,7 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
 
     ////////////////////// END OVERRIDES //////////////////////
 
-    setProjection(options) {
-        // get requested code
-        let projCode = options.code;
-
+    setProjection(projCode) {
         // get current map view
         const currView = this.map.getView();
 

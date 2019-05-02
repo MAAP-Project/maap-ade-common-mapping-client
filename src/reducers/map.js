@@ -6,7 +6,7 @@
  */
 
 import * as actionTypes from "constants/actionTypes";
-import { mapState } from "_core/reducers/models/map";
+import { mapState } from "reducers/models/map";
 import mapCore from "_core/reducers/map";
 import MapReducer from "reducers/reducerFunctions/MapReducer";
 

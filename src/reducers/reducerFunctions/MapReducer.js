@@ -4,20 +4,23 @@ import MapUtil from "utils/MapUtil";
 
 export default class MapReducer extends MapReducerCore {
     static setMapProjection(state, action) {
-        const confProj = MapUtil.getPreconfiguredProjection(action.projection.code);
-        const proj = confProj || action.projection;
-
-        let anySucceed = state.get("maps").reduce((acc, map) => {
-            if (!map.is3D) {
-                if (map.setProjection(proj)) {
-                    return true;
+        const aProj = action.projection;
+        const proj = MapUtil.getPreconfiguredProjection(
+            typeof aProj === "string" ? aProj : aProj.code
+        );
+        if (proj) {
+            let anySucceed = state.get("maps").reduce((acc, map) => {
+                if (!map.is3D) {
+                    if (map.setProjection(proj.code)) {
+                        return true;
+                    }
                 }
-            }
-            return acc;
-        }, false);
+                return acc;
+            }, false);
 
-        if (anySucceed) {
-            return state.setIn(["view", "projection"], proj);
+            if (anySucceed) {
+                return state.setIn(["view", "projection"], proj.code);
+            }
         }
 
         return state;

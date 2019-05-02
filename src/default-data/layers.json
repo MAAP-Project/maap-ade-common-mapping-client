@@ -12,7 +12,7 @@
                 "extents": [-180, -90, 180, 90],
                 "urlFunctions": {},
                 "tileFunctions": {},
-                "url": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/BlueMarble_ShadedRelief_Bathymetry/default/undefined/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg",
+                "url": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/BlueMarble_ShadedRelief_Bathymetry/default/2019-01-01/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg",
                 "projection": "EPSG:4326",
                 "layer": "BlueMarble_ShadedRelief_Bathymetry",
                 "tileGrid": {
@@ -47,7 +47,7 @@
                 "extents": [-20037508.34278925, -20037508.34278925, 20037508.34278925, 20037508.34278925],
                 "urlFunctions": {},
                 "tileFunctions": {},
-                "url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default/undefined/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg",
+                "url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default/2019-01-01/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg",
                 "projection": "EPSG:3857",
                 "layer": "BlueMarble_ShadedRelief_Bathymetry",
                 "tileGrid": {
@@ -83,7 +83,7 @@
                 "extents": [-180, -90, 180, 90],
                 "urlFunctions": {},
                 "tileFunctions": {},
-                "url": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/OSM_Land_Water_Map/default/undefined/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg",
+                "url": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/OSM_Land_Water_Map/default/2019-01-01/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png",
                 "projection": "EPSG:4326",
                 "layer": "OSM_Land_Water_Map",
                 "tileGrid": {
@@ -104,7 +104,7 @@
                     "minZoom": 0,
                     "maxZoom": 8
                 },
-                "format": "image/jpeg"
+                "format": "image/png"
             }
         },
         {
@@ -119,7 +119,7 @@
                 "extents": [-20037508.34278925, -20037508.34278925, 20037508.34278925, 20037508.34278925],
                 "urlFunctions": {},
                 "tileFunctions": {},
-                "url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/OSM_Land_Water_Map/default/undefined/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg",
+                "url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/OSM_Land_Water_Map/default/2019-01-01/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png",
                 "projection": "EPSG:3857",
                 "layer": "OSM_Land_Water_Map",
                 "tileGrid": {
@@ -141,7 +141,7 @@
                     "minZoom": 0,
                     "maxZoom": 9
                 },
-                "format": "image/jpeg"
+                "format": "image/png"
             }
         }
     ]

@@ -1,4 +1,5 @@
 import * as actionTypes from "constants/actionTypes";
+import * as actionTypesCore from "_core/constants/actionTypes";
 import * as appStrings from "_core/constants/appStrings";
 import * as mapActions from "_core/actions/mapActions";
 import appConfig from "constants/appConfig";
@@ -20,21 +21,45 @@ export function resetMapView(targetActiveMap = true) {
 }
 
 export function setMapProjection(projection) {
-    return { type: actionTypes.SET_MAP_PROJECTION, projection };
+    return dispatch => {
+        dispatch(mapActions.hideBasemap());
+        dispatch({ type: actionTypes.SET_MAP_PROJECTION, projection });
+    };
 }
 
 export function initializeMap(options) {
     return dispatch => {
+        // load in built-in layers
+        dispatch(loadBuiltInLayers());
+        dispatch(mergeLayers());
+
         // initialize the maps
         dispatch(mapActions.initializeMap(appStrings.MAP_LIB_2D, "map2D"));
         dispatch(mapActions.initializeMap(appStrings.MAP_LIB_3D, "map3D"));
+        dispatch(resetMapView());
 
-        // set the projection
-        dispatch(setMapProjection(options.projection));
+        if (options) {
+            // set the projection
+            if (options.projection) {
+                dispatch(setMapProjection(options.projection));
+            }
 
-        // set initial view
-        dispatch(
-            mapActions.setMapView({ extent: options.extent || appConfig.DEFAULT_BBOX_EXTENT }, true)
-        );
+            // set initial view
+            if (options.extent) {
+                dispatch(mapActions.setMapView({ extent: options.extent }, true));
+            }
+        }
     };
+}
+
+function loadBuiltInLayers() {
+    return {
+        type: actionTypesCore.INGEST_LAYER_CONFIG,
+        config: { layers: appConfig.BUILT_IN_LAYER_PARTIALS },
+        options: { type: "json" }
+    };
+}
+
+function mergeLayers() {
+    return { type: actionTypesCore.MERGE_LAYERS };
 }
