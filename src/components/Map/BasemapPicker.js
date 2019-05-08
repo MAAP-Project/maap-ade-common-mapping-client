@@ -12,7 +12,6 @@ import MapIcon from "@material-ui/icons/Map";
 import * as mapActions from "_core/actions/mapActions";
 import * as appActions from "_core/actions/appActions";
 import * as appStrings from "_core/constants/appStrings";
-import { BaseMapList } from "_core/components/Settings";
 import { ClickAwayListener, MapButton, EnhancedTooltip } from "_core/components/Reusables";
 import MiscUtil from "_core/utils/MiscUtil";
 import displayStylesCore from "_core/styles/display.scss";

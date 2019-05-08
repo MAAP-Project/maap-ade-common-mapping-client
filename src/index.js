@@ -43,6 +43,7 @@ export class CMC {
     constructor(idOrElement = "app") {
         this.dispatch = {};
         this.config = appConfig;
+        this._store = configureStore();
 
         let el;
         if (typeof idOrElement === "string") {
@@ -57,10 +58,8 @@ export class CMC {
 
     render() {
         return new Promise((resolve, reject) => {
-            const store = configureStore();
-
             render(
-                <Provider store={store}>
+                <Provider store={this._store}>
                     <AppContainer
                         linkDispatch={dispatch => this._linkDispatch(dispatch, resolve)}
                     />

@@ -7,7 +7,7 @@ import { defaults as Ol_Interaction_Defaults } from "ol/interaction";
 import Ol_Interaction_Draw, { createBox } from "ol/interaction/Draw";
 import Ol_Geom_Linestring from "ol/geom/LineString";
 import Ol_Geom_Polygon from "ol/geom/Polygon";
-import * as appStrings from "_core/constants/appStrings";
+import * as appStringsCore from "_core/constants/appStrings";
 import appConfig from "constants/appConfig";
 import MapUtil from "utils/MapUtil";
 
@@ -48,7 +48,7 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
                 extent: appConfig.DEFAULT_MAP_EXTENT
             });
             vectorLayer.set("_layerId", "_vector_drawings");
-            vectorLayer.set("_layerType", appStrings.LAYER_GROUP_TYPE_REFERENCE);
+            vectorLayer.set("_layerType", appStringsCore.LAYER_GROUP_TYPE_REFERENCE);
 
             // get the view options for the map
             let viewOptions = options.get("view").toJS();
@@ -94,7 +94,7 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
      */
     addDrawHandler(geometryType, onDrawEnd, interactionType, userDrawOptions = {}) {
         try {
-            const olGeometryType = appStrings.OL_GEOMETRY_TYPES[geometryType];
+            const olGeometryType = appStringsCore.OL_GEOMETRY_TYPES[geometryType];
             let mapLayers = this.map.getLayers().getArray();
             let mapLayer = this.miscUtil.findObjectInArray(
                 mapLayers,
@@ -115,7 +115,7 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
                         coord = Ol_Proj.transform(
                             coord,
                             mapProjection,
-                            appStrings.PROJECTIONS.latlon.code
+                            appStringsCore.PROJECTIONS.latlon.code
                         );
                         coord = this.mapUtil.constrainCoordinates(coord);
                         if (!prev || (prev[0] !== coord[0] || prev[1] !== coord[1])) {
@@ -126,10 +126,18 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
 
                     let lineCoords = this.mapUtil.generateGeodesicArcsForLineString(newCoords);
                     let transformedLineCoords = lineCoords.map(coords =>
-                        Ol_Proj.transform(coords, appStrings.PROJECTIONS.latlon.code, mapProjection)
+                        Ol_Proj.transform(
+                            coords,
+                            appStringsCore.PROJECTIONS.latlon.code,
+                            mapProjection
+                        )
                     );
                     let transformedOriginalCoords = newCoords.map(coords =>
-                        Ol_Proj.transform(coords, appStrings.PROJECTIONS.latlon.code, mapProjection)
+                        Ol_Proj.transform(
+                            coords,
+                            appStringsCore.PROJECTIONS.latlon.code,
+                            mapProjection
+                        )
                     );
 
                     let geom = opt_geom ? opt_geom : new Ol_Geom_Linestring(transformedLineCoords);
@@ -146,7 +154,7 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
                         coord = Ol_Proj.transform(
                             coord,
                             mapProjection,
-                            appStrings.PROJECTIONS.latlon.code
+                            appStringsCore.PROJECTIONS.latlon.code
                         );
                         coord = this.mapUtil.constrainCoordinates(coord);
                         if (!prev || (prev[0] !== coord[0] || prev[1] !== coord[1])) {
@@ -162,10 +170,18 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
 
                     let lineCoords = this.mapUtil.generateGeodesicArcsForLineString(newCoords);
                     let transformedLineCoords = lineCoords.map(coords =>
-                        Ol_Proj.transform(coords, appStrings.PROJECTIONS.latlon.code, mapProjection)
+                        Ol_Proj.transform(
+                            coords,
+                            appStringsCore.PROJECTIONS.latlon.code,
+                            mapProjection
+                        )
                     );
                     let transformedOriginalCoords = newCoords.map(coords =>
-                        Ol_Proj.transform(coords, appStrings.PROJECTIONS.latlon.code, mapProjection)
+                        Ol_Proj.transform(
+                            coords,
+                            appStringsCore.PROJECTIONS.latlon.code,
+                            mapProjection
+                        )
                     );
                     let geom = opt_geom ? opt_geom : new Ol_Geom_Polygon([transformedLineCoords]);
                     geom.setCoordinates([transformedLineCoords]);
@@ -174,33 +190,33 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
                 };
 
                 let geometryFunction = undefined;
-                let shapeType = appStrings.SHAPE_AREA;
+                let shapeType = appStringsCore.SHAPE_AREA;
                 let additionalDrawOptions = {};
-                if (interactionType === appStrings.INTERACTION_MEASURE) {
-                    if (geometryType === appStrings.GEOMETRY_LINE_STRING) {
+                if (interactionType === appStringsCore.INTERACTION_MEASURE) {
+                    if (geometryType === appStringsCore.GEOMETRY_LINE_STRING) {
                         geometryFunction = measureDistGeom;
-                        shapeType = appStrings.SHAPE_DISTANCE;
-                    } else if (geometryType === appStrings.GEOMETRY_POLYGON) {
+                        shapeType = appStringsCore.SHAPE_DISTANCE;
+                    } else if (geometryType === appStringsCore.GEOMETRY_POLYGON) {
                         geometryFunction = measureAreaGeom;
-                        shapeType = appStrings.SHAPE_AREA;
-                    } else if (geometryType === appStrings.GEOMETRY_CIRCLE) {
+                        shapeType = appStringsCore.SHAPE_AREA;
+                    } else if (geometryType === appStringsCore.GEOMETRY_CIRCLE) {
                         geometryFunction = measureAreaGeom;
-                        shapeType = appStrings.SHAPE_DISTANCE;
+                        shapeType = appStringsCore.SHAPE_DISTANCE;
                     }
                 } else {
-                    if (geometryType === appStrings.GEOMETRY_LINE_STRING) {
-                        shapeType = appStrings.SHAPE_DISTANCE;
-                    } else if (geometryType === appStrings.GEOMETRY_POLYGON) {
-                        shapeType = appStrings.SHAPE_AREA;
-                    } else if (geometryType === appStrings.GEOMETRY_CIRCLE) {
-                        shapeType = appStrings.SHAPE_DISTANCE;
-                    } else if (geometryType === appStrings.GEOMETRY_POINT) {
-                        shapeType = appStrings.SHAPE_DISTANCE;
-                    } else if (geometryType === appStrings.GEOMETRY_LINE) {
-                        shapeType = appStrings.SHAPE_DISTANCE;
+                    if (geometryType === appStringsCore.GEOMETRY_LINE_STRING) {
+                        shapeType = appStringsCore.SHAPE_DISTANCE;
+                    } else if (geometryType === appStringsCore.GEOMETRY_POLYGON) {
+                        shapeType = appStringsCore.SHAPE_AREA;
+                    } else if (geometryType === appStringsCore.GEOMETRY_CIRCLE) {
+                        shapeType = appStringsCore.SHAPE_DISTANCE;
+                    } else if (geometryType === appStringsCore.GEOMETRY_POINT) {
+                        shapeType = appStringsCore.SHAPE_DISTANCE;
+                    } else if (geometryType === appStringsCore.GEOMETRY_LINE) {
+                        shapeType = appStringsCore.SHAPE_DISTANCE;
                         additionalDrawOptions.maxPoints = 2;
-                    } else if (geometryType === appStrings.GEOMETRY_BOX) {
-                        shapeType = appStrings.SHAPE_AREA;
+                    } else if (geometryType === appStringsCore.GEOMETRY_BOX) {
+                        shapeType = appStringsCore.SHAPE_AREA;
                         geometryFunction = createBox();
                     }
                 }
@@ -256,6 +272,74 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
             return false;
         } catch (err) {
             console.warn("Error in MapWrapperOpenlayers.addDrawHandler:", err);
+            return false;
+        }
+    }
+
+    moveLayerToBottom(layer) {
+        try {
+            const mapLayers = this.map.getLayers();
+            const mapLayersArr = mapLayers.getArray();
+            const mapLayerWithIndex = this.miscUtil.findObjectWithIndexInArray(
+                mapLayers.getArray(),
+                "_layerId",
+                layer.get("id")
+            );
+            if (mapLayerWithIndex) {
+                let mapLayer = mapLayerWithIndex.value;
+                let currIndex = mapLayerWithIndex.index;
+
+                let bIndex = 0;
+                let bottomLayer = mapLayersArr[0];
+                if (
+                    bottomLayer &&
+                    bottomLayer.get("_layerType") === appStringsCore.LAYER_GROUP_TYPE_BASEMAP
+                ) {
+                    bIndex = 1;
+                }
+
+                mapLayers.removeAt(currIndex);
+                mapLayers.insertAt(bIndex, mapLayer);
+                return true;
+            }
+            return false;
+        } catch (err) {
+            console.warn("Error in MapWrapperOpenlayers.moveLayerToBottom:", err);
+            return false;
+        }
+    }
+
+    moveLayerDown(layer) {
+        try {
+            const mapLayers = this.map.getLayers();
+            const mapLayersArr = mapLayers.getArray();
+            const mapLayerWithIndex = this.miscUtil.findObjectWithIndexInArray(
+                mapLayers.getArray(),
+                "_layerId",
+                layer.get("id")
+            );
+            if (mapLayerWithIndex) {
+                let mapLayer = mapLayerWithIndex.value;
+                let currIndex = mapLayerWithIndex.index;
+
+                let bIndex = 0;
+                let bottomLayer = mapLayersArr[0];
+                if (
+                    bottomLayer &&
+                    bottomLayer.get("_layerType") === appStringsCore.LAYER_GROUP_TYPE_BASEMAP
+                ) {
+                    bIndex = 1;
+                }
+
+                if (currIndex > bIndex) {
+                    mapLayers.removeAt(currIndex);
+                    mapLayers.insertAt(currIndex - 1, mapLayer);
+                }
+                return true;
+            }
+            return false;
+        } catch (err) {
+            console.warn("Error in MapWrapperOpenlayers.moveLayerDown:", err);
             return false;
         }
     }

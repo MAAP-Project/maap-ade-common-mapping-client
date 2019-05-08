@@ -22,7 +22,7 @@ import * as appActionsCore from "_core/actions/appActions";
 import * as appActions from "actions/appActions";
 import MiscUtil from "_core/utils/MiscUtil";
 import MapUtil from "_core/utils/MapUtil";
-
+import { LayerMenuContainer } from "components/LayerMenu";
 import { MapContainer } from "_core/components/Map";
 import { MapControlsContainer, CoordinateTracker } from "components/Map";
 import { AlertsContainer } from "_core/components/Alerts";
@@ -32,6 +32,9 @@ const theme = createMuiTheme({
     typography: {
         useNextVariants: true,
         htmlFontSize: 14
+    },
+    palette: {
+        primary: pink
     },
     overrides: {
         MuiPaper: {
@@ -71,10 +74,16 @@ export class AppContainer extends Component {
         window.requestAnimationFrame(() => {
             setTimeout(() => {
                 // link dispatch to external api
-                this.props.linkDispatch(this.props.appActions);
+                if (this.props.linkDispatch) {
+                    this.props.linkDispatch(this.props.appActions);
+                }
 
                 // signal complete
                 this.props.completeInitialLoad();
+
+                // this.props.appActions.initializeMap();
+
+                // console.log(this);
             }, 0);
         });
     }
@@ -93,6 +102,7 @@ export class AppContainer extends Component {
                 <MuiThemeProvider theme={theme}>
                     <div className={containerClasses}>
                         <MapContainer />
+                        <LayerMenuContainer />
                         <MapControlsContainer />
                         <AlertsContainer />
                         <CoordinateTracker />
@@ -106,7 +116,7 @@ export class AppContainer extends Component {
 AppContainer.propTypes = {
     completeInitialLoad: PropTypes.func.isRequired,
     appActions: PropTypes.object.isRequired,
-    linkDispatch: PropTypes.func.isRequired,
+    linkDispatch: PropTypes.func,
     className: PropTypes.string
 };
 
