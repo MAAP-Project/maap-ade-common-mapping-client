@@ -30,14 +30,16 @@ import appConfig from "constants/appConfig";
 // require("_core/styles/resources/img/favicon.ico");
 // require("_core/styles/resources/img/7994970.png");
 
-// const store = configureStore();
+if (process.env.NODE_ENV !== "production") {
+    const store = configureStore();
 
-// render(
-//     <Provider store={store}>
-//         <AppContainer />
-//     </Provider>,
-//     document.getElementById("app")
-// );
+    render(
+        <Provider store={store}>
+            <AppContainer />
+        </Provider>,
+        document.getElementById("app")
+    );
+}
 
 export class CMC {
     constructor(idOrElement = "app") {

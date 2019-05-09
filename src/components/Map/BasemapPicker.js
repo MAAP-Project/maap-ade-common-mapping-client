@@ -17,6 +17,17 @@ import MiscUtil from "_core/utils/MiscUtil";
 import displayStylesCore from "_core/styles/display.scss";
 
 export class BasemapPicker extends Component {
+    constructor(props) {
+        super(props);
+
+        this.isOpen = false;
+    }
+
+    setOpen(open) {
+        this.isOpen = open;
+        this.forceUpdate();
+    }
+
     setBasemap(layerId) {
         if (layerId && layerId !== "") {
             this.props.mapActions.setBasemap(layerId);
@@ -47,7 +58,7 @@ export class BasemapPicker extends Component {
         });
 
         let popperClasses = MiscUtil.generateStringFromSet({
-            [displayStylesCore.noPointer]: !this.props.mapControlsBasemapPickerOpen
+            [displayStylesCore.noPointer]: !this.isOpen
         });
         let btnClasses = MiscUtil.generateStringFromSet({
             [this.props.className]: typeof this.props.className !== "undefined"
@@ -55,20 +66,15 @@ export class BasemapPicker extends Component {
         return (
             <ClickAwayListener
                 onClickAway={() => {
-                    if (this.props.mapControlsBasemapPickerOpen) {
-                        this.props.appActions.setMapControlsBasemapPickerOpen(false);
-                    }
+                    this.setOpen(false);
                 }}
             >
                 <Manager>
                     <Target>
                         <EnhancedTooltip title={"Select Basemap"} placement="left">
                             <MapButton
-                                onClick={() =>
-                                    this.props.appActions.setMapControlsBasemapPickerOpen(
-                                        !this.props.mapControlsBasemapPickerOpen
-                                    )
-                                }
+                                color={this.isOpen ? "primary" : "default"}
+                                onClick={() => this.setOpen(!this.isOpen)}
                                 aria-label="Select Basemap"
                                 className={btnClasses}
                             >
@@ -84,33 +90,28 @@ export class BasemapPicker extends Component {
                                 gpuAcceleration: false
                             }
                         }}
-                        eventsEnabled={this.props.mapControlsBasemapPickerOpen}
+                        eventsEnabled={this.isOpen}
                         className={popperClasses}
                     >
-                        <Grow
-                            style={{ transformOrigin: "right bottom" }}
-                            in={this.props.mapControlsBasemapPickerOpen}
-                        >
-                            <div>
-                                <Paper>
-                                    <MenuList dense>
-                                        {basemapOptions.map(x => (
-                                            <MenuItem
-                                                onClick={() => this.setBasemap(x.value)}
-                                                value={x.value}
-                                                key={x.value}
-                                                selected={activeBasemapId === x.value}
-                                            >
-                                                <ListItemText
-                                                    inset
-                                                    style={{ padding: "0px" }}
-                                                    primary={x.label}
-                                                />
-                                            </MenuItem>
-                                        ))}
-                                    </MenuList>
-                                </Paper>
-                            </div>
+                        <Grow style={{ transformOrigin: "right bottom" }} in={this.isOpen}>
+                            <Paper>
+                                <MenuList dense>
+                                    {basemapOptions.map(x => (
+                                        <MenuItem
+                                            onClick={() => this.setBasemap(x.value)}
+                                            value={x.value}
+                                            key={x.value}
+                                            selected={activeBasemapId === x.value}
+                                        >
+                                            <ListItemText
+                                                inset
+                                                style={{ padding: "0px" }}
+                                                primary={x.label}
+                                            />
+                                        </MenuItem>
+                                    ))}
+                                </MenuList>
+                            </Paper>
                         </Grow>
                     </Popper>
                 </Manager>

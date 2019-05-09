@@ -20,7 +20,7 @@ import * as appActionsCore from "_core/actions/appActions";
 import * as appActions from "actions/appActions";
 import MiscUtil from "_core/utils/MiscUtil";
 import { MapButton, EnhancedTooltip } from "_core/components/Reusables";
-import { BasemapPicker } from "components/Map";
+import { BasemapPicker, MapToolsButton } from "components/Map";
 import { MapControlsContainer as MapControlsContainerCore } from "_core/components/Map/MapControlsContainer.js";
 import stylesCore from "_core/components/Map/MapControlsContainer.scss";
 import styles from "components/Map/MapControlsContainer.scss";
@@ -83,7 +83,10 @@ export class MapControlsContainer extends MapControlsContainerCore {
                     </EnhancedTooltip>
                 </Paper>
                 <Paper elevation={2} className={stylesCore.buttonGroup}>
-                    <BasemapPicker className={styles.singleButton} />
+                    <MapToolsButton
+                        className={`${stylesCore.firstButton} ${stylesCore.lineButton}`}
+                    />
+                    <BasemapPicker className={stylesCore.lastButton} />
                 </Paper>
             </div>
         );

@@ -1,10 +1,3 @@
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -22,9 +15,9 @@ import * as appActionsCore from "_core/actions/appActions";
 import * as appActions from "actions/appActions";
 import MiscUtil from "_core/utils/MiscUtil";
 import MapUtil from "_core/utils/MapUtil";
+import { KeyboardControlsContainer } from "components/KeyboardControls";
 import { LayerMenuContainer } from "components/LayerMenu";
-import { MapContainer } from "_core/components/Map";
-import { MapControlsContainer, CoordinateTracker } from "components/Map";
+import { MapContainer, MapControlsContainer, CoordinateTracker } from "components/Map";
 import { AlertsContainer } from "_core/components/Alerts";
 import stylesCore from "_core/components/App/AppContainer.scss";
 
@@ -81,9 +74,10 @@ export class AppContainer extends Component {
                 // signal complete
                 this.props.completeInitialLoad();
 
-                // this.props.appActions.initializeMap();
-
-                // console.log(this);
+                if (process.env.NODE_ENV !== "production") {
+                    this.props.appActions.initializeMap();
+                    console.log(this);
+                }
             }, 0);
         });
     }
@@ -102,6 +96,7 @@ export class AppContainer extends Component {
                 <MuiThemeProvider theme={theme}>
                     <div className={containerClasses}>
                         <MapContainer />
+                        <KeyboardControlsContainer />
                         <LayerMenuContainer />
                         <MapControlsContainer />
                         <AlertsContainer />

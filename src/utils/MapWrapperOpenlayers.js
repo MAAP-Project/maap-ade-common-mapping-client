@@ -276,6 +276,41 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
         }
     }
 
+    retrieveGeometryFromEvent(event, geometryType) {
+        // Base attributes common to all geometry types
+        const baseGeometry = {
+            type: geometryType,
+            id: Math.random(),
+            proj: this.map
+                .getView()
+                .getProjection()
+                .getCode(),
+            coordinateType: appStringsCore.COORDINATE_TYPE_CARTOGRAPHIC
+        };
+
+        if (geometryType === appStringsCore.GEOMETRY_CIRCLE) {
+            let center = event.feature.getGeometry().getCenter();
+            return {
+                ...baseGeometry,
+                center: { lon: center[0], lat: center[1] },
+                radius:
+                    event.feature.getGeometry().getRadius() *
+                    Ol_Proj.METERS_PER_UNIT[
+                        this.map
+                            .getView()
+                            .getProjection()
+                            .getUnits()
+                    ]
+            };
+        } else {
+            return MapWrapperOpenlayersCore.prototype.retrieveGeometryFromEvent.call(
+                this,
+                event,
+                geometryType
+            );
+        }
+    }
+
     moveLayerToBottom(layer) {
         try {
             const mapLayers = this.map.getLayers();

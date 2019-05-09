@@ -5,6 +5,42 @@ import { layerModel } from "_core/reducers/models/map";
 import MapUtil from "utils/MapUtil";
 
 export default class MapReducer extends MapReducerCore {
+    static addGeometryToMap(state, action) {
+        let alerts = state.get("alerts");
+        // Add geometry to each inactive map
+        state.get("maps").forEach(map => {
+            // Only add geometry to inactive maps
+            if (!map.isActive) {
+                if (!map.addGeometry(action.geometry, action.interactionType, action.geodesic)) {
+                    let contextStr = map.is3D ? "3D" : "2D";
+                    alerts = alerts.push(
+                        alert.merge({
+                            title: appStringsCore.ALERTS.GEOMETRY_SYNC_FAILED.title,
+                            body: appStringsCore.ALERTS.GEOMETRY_SYNC_FAILED.formatString.replace(
+                                "{MAP}",
+                                contextStr
+                            ),
+                            severity: appStringsCore.ALERTS.GEOMETRY_SYNC_FAILED.severity,
+                            time: new Date()
+                        })
+                    );
+                } else {
+                    state = state.setIn(
+                        ["areaSelections", action.geometry.id],
+                        MapUtil.standardizeGeom(action.geometry)
+                    );
+                }
+            }
+        });
+
+        return state.set("alerts", alerts);
+    }
+
+    static removeAllDrawings(state, action) {
+        state = MapReducerCore.removeAllDrawings(state, action);
+        return state.setIn("areaSelections", Immutable.Map());
+    }
+
     static setMapProjection(state, action) {
         const aProj = action.projection;
         const proj = MapUtil.getPreconfiguredProjection(
