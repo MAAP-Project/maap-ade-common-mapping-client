@@ -38,7 +38,7 @@ export default class MapReducer extends MapReducerCore {
 
     static removeAllDrawings(state, action) {
         state = MapReducerCore.removeAllDrawings(state, action);
-        return state.setIn("areaSelections", Immutable.Map());
+        return state.set("areaSelections", Immutable.Map());
     }
 
     static setMapProjection(state, action) {
@@ -152,5 +152,21 @@ export default class MapReducer extends MapReducerCore {
             return newLayers;
         }
         return [];
+    }
+
+    static activateDefaultBasemap(state, action) {
+        const proj = state.getIn(["view", "projection"]);
+        const basemap = state
+            .getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_BASEMAP])
+            .find(layer => {
+                return (
+                    layer.get("isDefault") && layer.getIn(["wmtsOptions", "projection"]) === proj
+                );
+            });
+
+        if (basemap) {
+            return this.setBasemap(state, { layer: basemap });
+        }
+        return state;
     }
 }

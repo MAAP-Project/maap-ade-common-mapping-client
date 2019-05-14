@@ -22,6 +22,10 @@ const APP_CONFIG = Immutable.fromJS({
     BUILT_IN_LAYER_PARTIALS: BUILT_IN_LAYERS.layers,
     CESIUM_BASE_URL:
         process.env.NODE_ENV === "production" ? "/lab/static/assets/cesium" : "assets/cesium",
+    CESIUM_DRAW_HELPER_BASE_URL:
+        process.env.NODE_ENV === "production"
+            ? "/lab/static/assets/CesiumDrawHelper"
+            : "assets/CesiumDrawHelper",
     DELETE_LAYER_PARTIALS: false
 });
 

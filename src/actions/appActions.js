@@ -40,6 +40,7 @@ export function setMapProjection(projection) {
     return dispatch => {
         dispatch(mapActionsCore.hideBasemap());
         dispatch({ type: actionTypes.SET_MAP_PROJECTION, projection });
+        dispatch(activateDefaultBasemap());
     };
 }
 
@@ -60,6 +61,9 @@ export function initializeMap(options) {
         // initialize the maps
         dispatch(mapActionsCore.initializeMap(appStringsCore.MAP_LIB_2D, "map2D"));
         dispatch(mapActionsCore.initializeMap(appStringsCore.MAP_LIB_3D, "map3D"));
+
+        dispatch(activateDefaultBasemap());
+
         dispatch(resetMapView());
 
         if (options) {
@@ -107,4 +111,8 @@ function ingestLayerConfig(config, options) {
 
 function mergeLayers() {
     return { type: actionTypesCore.MERGE_LAYERS };
+}
+
+function activateDefaultBasemap() {
+    return { type: actionTypes.ACTIVATE_DEFAULT_BASEMAP };
 }

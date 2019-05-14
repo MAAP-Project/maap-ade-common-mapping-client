@@ -17,6 +17,9 @@ export default function map(state = mapState, action, opt_reducer = MapReducer) 
         case actionTypes.REMOVE_LAYER:
             return opt_reducer.removeLayer(state, action);
 
+        case actionTypes.ACTIVATE_DEFAULT_BASEMAP:
+            return opt_reducer.activateDefaultBasemap(state, action);
+
         default:
             return mapCore.call(this, state, action, opt_reducer);
     }
