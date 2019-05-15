@@ -60,7 +60,7 @@ export class LayerMenuContainer extends Component {
                             <EnhancedSwitch
                                 checked={this.onlyActive}
                                 onChange={() => this.setOnlyActive(!this.onlyActive)}
-                                disabled={numActive === 0}
+                                disabled={numActive === 0 && !this.onlyActive}
                             />
                         }
                         label="Only Active Layers"
@@ -68,7 +68,10 @@ export class LayerMenuContainer extends Component {
                 </div>
                 <div className={styles.pageCtrlRight}>
                     <Typography variant="caption">
-                        <span className={styles.activePageNum}>{this.page + 1}</span> / {numPages}
+                        <span className={styles.activePageNum}>
+                            {Math.min(this.page + 1, numPages)}
+                        </span>{" "}
+                        / {numPages}
                     </Typography>
                     <IconButtonSmall
                         className={styles.pageLeftBtn}
