@@ -56,6 +56,9 @@ export class LayerMenuContainer extends Component {
                 <div className={styles.pageCtrlLeft}>
                     <FormControlLabel
                         className={styles.activeToggle}
+                        classes={{
+                            label: styles.activeToggleLabel
+                        }}
                         control={
                             <EnhancedSwitch
                                 checked={this.onlyActive}
@@ -67,7 +70,7 @@ export class LayerMenuContainer extends Component {
                     />
                 </div>
                 <div className={styles.pageCtrlRight}>
-                    <Typography variant="caption">
+                    <Typography variant="caption" className={styles.pageNum}>
                         <span className={styles.activePageNum}>
                             {Math.min(this.page + 1, numPages)}
                         </span>{" "}

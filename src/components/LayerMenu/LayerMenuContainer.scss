@@ -67,11 +67,17 @@
     align-items: center;
     background: #f3f3f3;
     border-top: 1px solid #dedede;
+    .pageNum {
+        font-size: 12px;
+    }
     .activePageNum {
         color: $color-primary;
     }
     .activeToggle {
         margin: 0px;
+    }
+    .activeToggleLabel {
+        font-size: 12px;
     }
     .pageCtrlLeft {
         flex-basis: 190px;
