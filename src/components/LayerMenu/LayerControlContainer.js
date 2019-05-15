@@ -34,7 +34,7 @@ export class LayerControlContainer extends LayerControlContainerCore {
                 />
                 <Typography
                     variant="body2"
-                    className={`${styles.layerTitle} ${active ? textStyles.textEllipsis : ""}`}
+                    className={`${styles.layerTitle} ${textStyles.textEllipsis}`}
                 >
                     {this.props.layer.get("title")}
                 </Typography>
@@ -46,7 +46,6 @@ export class LayerControlContainer extends LayerControlContainerCore {
     renderIconRow() {
         const active = this.props.layer.get("isActive");
         let classes = MiscUtil.generateStringFromSet({
-            [styles.layerControlIconRow]: true,
             [styles.layerControlIconRow]: true,
             [displayStyles.invisible]: !active,
             [displayStyles.hiddenFadeIn]: active
@@ -150,14 +149,11 @@ export class LayerControlContainer extends LayerControlContainerCore {
 
     render() {
         let containerClasses = MiscUtil.generateStringFromSet({
+            [styles.layerControl]: true,
+            [styles.layerControlActive]: this.props.layer.get("isActive"),
             [this.props.className]: typeof this.props.className !== "undefined"
         });
-        return (
-            <div className={containerClasses}>
-                {this.renderTopContent()}
-                <Divider />
-            </div>
-        );
+        return <div className={containerClasses}>{this.renderTopContent()}</div>;
     }
 }
 

@@ -1,3 +1,16 @@
+.layerControl {
+    height: 38px;
+    padding-top: 2px;
+    padding-right: 4px;
+    &.layerControlActive {
+        padding-top: 0px;
+        padding-right: 0px;
+        .layerControlIconRow {
+            display: inline-block;
+        }
+    }
+}
+
 .popover {
     z-index: 1;
 }
@@ -21,7 +34,7 @@
 .layerControlIconRow {
     padding: 5px 8px;
     position: relative;
-    display: inline-block;
+    display: none;
     vertical-align: top;
 }
 

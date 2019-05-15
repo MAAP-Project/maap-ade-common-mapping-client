@@ -1,3 +1,5 @@
+@import "~styles/colors";
+
 .layerMenu {
     composes: light from "../../_core/styles/shadow.scss";
     position: absolute;
@@ -13,14 +15,14 @@
 
     &.open {
         width: 370px;
-        .layerMenuContent {
-            max-height: 480px;
-            opacity: 1;
-        }
         .layerHeaderRow {
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
             border-bottom: 1px solid #dedede;
+        }
+        .layerMenuContent {
+            max-height: 450px;
+            opacity: 1;
         }
     }
 }
@@ -30,6 +32,7 @@
     position: relative;
     padding: 2px 9px;
     display: flex;
+    flex-flow: row nowrap;
     border-radius: inherit;
     border-bottom: none;
     background: #f3f3f3;
@@ -42,11 +45,47 @@
 .layerHeader {
     text-align: left;
     display: flex;
-    flex: 1;
+    flex: 1 1;
     align-items: center;
 
     h3 {
         line-height: 2rem;
+    }
+}
+
+.headerRight {
+    display: flex;
+    flex-basis: 30px;
+    width: 30px;
+    overflow: hidden;
+    justify-content: flex-end;
+}
+
+.pageCtrls {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background: #f3f3f3;
+    border-top: 1px solid #dedede;
+    .activePageNum {
+        color: $color-primary;
+    }
+    .activeToggle {
+        margin: 0px;
+    }
+    .pageCtrlLeft {
+        flex-basis: 190px;
+        width: 190px;
+        display: inline-block;
+        text-align: left;
+        justify-content: flex-start;
+    }
+    .pageCtrlRight {
+        flex: 1 1;
+        justify-content: flex-end;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
     }
 }
 
@@ -59,7 +98,7 @@
     width: 100%;
     max-height: 30rem;
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: visible;
     opacity: 0;
     transition: max-height 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, opacity 75ms linear 0s;
     .toggle {
@@ -71,8 +110,17 @@
     }
 }
 
-.collapseBtn {
+.collapseBtn,
+.pageLeftBtn,
+.pageRightBtn {
     font-size: 22px !important;
+}
+
+.pageRightBtn {
+    transform: rotate(-90deg);
+}
+.pageLeftBtn {
+    transform: rotate(90deg);
 }
 
 /* MUI component classes */
