@@ -51,48 +51,50 @@ export class LayerMenuContainer extends Component {
     }
 
     renderPaginationControls(shouldPage, numPages, numActive) {
-        return (
-            <div className={styles.pageCtrls}>
-                <div className={styles.pageCtrlLeft}>
-                    <FormControlLabel
-                        className={styles.activeToggle}
-                        classes={{
-                            label: styles.activeToggleLabel
-                        }}
-                        control={
-                            <EnhancedSwitch
-                                checked={this.onlyActive}
-                                onChange={() => this.setOnlyActive(!this.onlyActive)}
-                                disabled={numActive === 0 && !this.onlyActive}
-                            />
-                        }
-                        label="Only Active Layers"
-                    />
+        if (shouldPage) {
+            return (
+                <div className={styles.pageCtrls}>
+                    <div className={styles.pageCtrlLeft}>
+                        <FormControlLabel
+                            className={styles.activeToggle}
+                            classes={{
+                                label: styles.activeToggleLabel
+                            }}
+                            control={
+                                <EnhancedSwitch
+                                    checked={this.onlyActive}
+                                    onChange={() => this.setOnlyActive(!this.onlyActive)}
+                                    disabled={numActive === 0 && !this.onlyActive}
+                                />
+                            }
+                            label="Only Active Layers"
+                        />
+                    </div>
+                    <div className={styles.pageCtrlRight}>
+                        <Typography variant="caption" className={styles.pageNum}>
+                            <span className={styles.activePageNum}>
+                                {Math.min(this.page + 1, numPages)}
+                            </span>{" "}
+                            / {numPages}
+                        </Typography>
+                        <IconButtonSmall
+                            className={styles.pageLeftBtn}
+                            disabled={!shouldPage || this.page === 0}
+                            onClick={() => this.incPage(false, numPages - 1)}
+                        >
+                            <ArrowDropDownIcon />
+                        </IconButtonSmall>
+                        <IconButtonSmall
+                            className={styles.pageRightBtn}
+                            disabled={!shouldPage || this.page === numPages - 1}
+                            onClick={() => this.incPage(true, numPages - 1)}
+                        >
+                            <ArrowDropDownIcon />
+                        </IconButtonSmall>
+                    </div>
                 </div>
-                <div className={styles.pageCtrlRight}>
-                    <Typography variant="caption" className={styles.pageNum}>
-                        <span className={styles.activePageNum}>
-                            {Math.min(this.page + 1, numPages)}
-                        </span>{" "}
-                        / {numPages}
-                    </Typography>
-                    <IconButtonSmall
-                        className={styles.pageLeftBtn}
-                        disabled={!shouldPage || this.page === 0}
-                        onClick={() => this.incPage(false, numPages - 1)}
-                    >
-                        <ArrowDropDownIcon />
-                    </IconButtonSmall>
-                    <IconButtonSmall
-                        className={styles.pageRightBtn}
-                        disabled={!shouldPage || this.page === numPages - 1}
-                        onClick={() => this.incPage(true, numPages - 1)}
-                    >
-                        <ArrowDropDownIcon />
-                    </IconButtonSmall>
-                </div>
-            </div>
-        );
+            );
+        }
     }
 
     render() {
@@ -112,9 +114,9 @@ export class LayerMenuContainer extends Component {
         });
 
         // calculate som pagination
-        const shouldPage = displayNum > this.pageMax;
+        // const shouldPage = displayNum > this.pageMax;
         const numPages = Math.ceil(displayNum / this.pageMax);
-        if (shouldPage) {
+        if (displayNum > this.pageMax) {
             layerList = layerList.slice(this.page * this.pageMax, (this.page + 1) * this.pageMax);
         }
 
@@ -165,7 +167,7 @@ export class LayerMenuContainer extends Component {
                 </div>
                 <Collapse in={this.props.layerMenuOpen} timeout="auto">
                     <div className={styles.layerMenuContent}>{content}</div>
-                    {this.renderPaginationControls(shouldPage, numPages, activeNum)}
+                    {this.renderPaginationControls(totalNum > this.pageMax, numPages, activeNum)}
                 </Collapse>
             </Paper>
         );
