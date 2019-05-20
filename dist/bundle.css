@@ -13,41 +13,34 @@
 /* colors */
 /* neutrals */
 .BasemapPicker__basemapPicker___10CS1 {
-    margin-top: 10px;
-}
+  margin-top: 10px; }
 
 .BasemapPicker__image___l0xRz {
-    width: 100%;
-    height: 44px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
+  width: 100%;
+  height: 44px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; }
 
 .BasemapPicker__caption___bCCHR {
-    font-weight: 500;
-    padding: 2px 8px 2px 3px;
-}
+  font-weight: 500;
+  padding: 2px 8px 2px 3px; }
 
 .BasemapPicker__buttonBase___r-mpP {
-    padding: 2px;
-    padding-bottom: 0px;
-}
+  padding: 2px;
+  padding-bottom: 0px; }
 .common__cursorCrosshair___z3Gwf {
-    cursor: crosshair;
-}
+  cursor: crosshair; }
 .LayerPositionControl__positionControl___WtMPX {
-    display: inline-block;
-}
+  display: inline-block; }
 
 .LayerPositionControl__positionButton___1MyTd {
-    min-height: 0;
-    display: inline-block;
-    height: 26px;
-    font-size: 13px;
-    line-height: 13px;
-    width: 50%;
-}
+  min-height: 0;
+  display: inline-block;
+  height: 26px;
+  font-size: 13px;
+  line-height: 13px;
+  width: 50%; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -57,15 +50,14 @@
 /* colors */
 /* neutrals */
 .LayerControlLabel__controlLabel___VJpNi {
-    background: #e91e63;
-    padding: 5px;
-    font-size: 12px;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-}
+  background: #e91e63;
+  padding: 5px;
+  font-size: 12px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -73,119 +65,95 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .text__fontRoboto___4V53U {
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
-}
+  font-family: "Roboto", Helvetica, Arial, sans-serif; }
 
 .text__fontRobotoMono___1pc0T {
-    font-family: "Roboto Mono", monospace;
-}
+  font-family: "Roboto Mono", monospace; }
 
 .text__textWrap___2H_Ql {
-    white-space: normal;
-    word-wrap: break-word;
-}
+  white-space: normal;
+  word-wrap: break-word; }
 
 .text__textEllipsis___3W_7t {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 .LayerControlContainer__layerControl___S89br {
-    height: 38px;
-    padding-right: 4px;
-}
-.LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR {
-    padding-right: 0px;
-}
-.LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR
-    .LayerControlContainer__layerControlIconRow___13Wcs {
-    display: inline-block;
-}
-.LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR
-    .LayerControlContainer__topContent___1nyRI {
-    padding-top: 0px;
-}
+  height: 38px;
+  padding-right: 4px; }
+  .LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR {
+    padding-right: 0px; }
+    .LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR .LayerControlContainer__layerControlIconRow___13Wcs {
+      display: inline-block; }
+    .LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR .LayerControlContainer__topContent___1nyRI {
+      padding-top: 0px; }
 
 .LayerControlContainer__popover___1eZB5 {
-    z-index: 1;
-}
+  z-index: 1; }
 
 .LayerControlContainer__positionPopover___1XjVR {
-    -webkit-transform: translate(-4px, 0px);
-    transform: translate(-4px, 0px);
-}
+  -webkit-transform: translate(-4px, 0px);
+          transform: translate(-4px, 0px); }
 
 .LayerControlContainer__topContent___1nyRI {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    padding-top: 2px;
-}
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding-top: 2px; }
 
 .LayerControlContainer__layerTitle___3lKIc {
-    padding: 0px;
-    flex: 1 1;
-    font-size: 13px;
-}
+  padding: 0px;
+  flex: 1 1;
+  font-size: 13px; }
 
 .LayerControlContainer__layerControlIconRow___13Wcs {
-    padding: 5px 8px;
-    position: relative;
-    display: none;
-    vertical-align: top;
-}
+  padding: 5px 8px;
+  position: relative;
+  display: none;
+  vertical-align: top; }
 
 .LayerControlContainer__iconButtonSmall___3kdRN {
-    width: 28px !important;
-    height: 28px !important;
-    font-size: 22px !important;
-}
-.LayerControlContainer__iconButtonSmall___3kdRN span span {
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 22px !important; }
+  .LayerControlContainer__iconButtonSmall___3kdRN span span {
     left: -23px;
     top: -11px;
-    font-size: 12px;
-}
+    font-size: 12px; }
 .MapToolsMenu__mapToolsMenu___3MbS9 {
-    display: block;
-}
+  display: block; }
 
 .MapToolsMenu__contextMenuItem___RkVOp {
-    min-width: 50px;
-    text-align: left;
-    justify-content: left;
-}
+  min-width: 50px;
+  text-align: left;
+  justify-content: left; }
 
 .MapToolsMenu__listItemIcon___3cQdv {
-    margin-right: 0px;
-}
-.MapToolsMenu__listItemIcon___3cQdv svg,
-.MapToolsMenu__listItemIcon___3cQdv i {
+  margin-right: 0px; }
+  .MapToolsMenu__listItemIcon___3cQdv svg,
+  .MapToolsMenu__listItemIcon___3cQdv i {
     font-size: 22px;
     padding-left: 1px;
-    padding-top: 0px;
-}
+    padding-top: 0px; }
 .MapControlsContainer__mapControlsContainer___1K5e4 {
-    bottom: 47px !important;
-}
+  bottom: 47px !important; }
 .CoordinateTracker__coordinateTracker___1dScm {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    z-index: 0;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding: 0.1rem 0.5rem;
-    border-radius: 2px;
-    background: rgba(0, 0, 0, 0.26);
-    color: white;
-    box-shadow: none;
-}
-.CoordinateTracker__coordinateTracker___1dScm p {
-    font-size: 0.8rem;
-}
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding: 0.1rem 0.5rem;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.26);
+  color: white;
+  box-shadow: none; }
+  .CoordinateTracker__coordinateTracker___1dScm p {
+    font-size: 0.8rem; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -193,31 +161,26 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .EnhancedSwitch__root___qYukF {
-    width: 50px;
-    height: 34px;
-}
+  width: 50px;
+  height: 34px; }
 
 .EnhancedSwitch__default___1PJDT {
-    width: 34px;
-    height: 34px;
-}
+  width: 34px;
+  height: 34px; }
 
 .EnhancedSwitch__bar___3SOL3 {
-    width: 27px;
-    height: 11px;
-    margin-top: -5px;
-    margin-left: -16px;
-}
+  width: 27px;
+  height: 11px;
+  margin-top: -5px;
+  margin-left: -16px; }
 
 .EnhancedSwitch__checked___2eE0C {
-    -webkit-transform: translateX(12px);
-    transform: translateX(12px);
-}
+  -webkit-transform: translateX(12px);
+          transform: translateX(12px); }
 
 .EnhancedSwitch__icon___15V7q {
-    width: 16px;
-    height: 16px;
-}
+  width: 16px;
+  height: 16px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -225,21 +188,18 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .IconButtonSmall__root___1wizf {
-    width: 30px;
-    height: 30px;
-    padding: 0px;
-    font-size: 2rem;
-}
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  font-size: 2rem; }
 
 .IconButtonSmall__label___2zaWE {
-    font-size: inherit;
-}
+  font-size: inherit; }
 
 .IconButtonSmall__root___1wizf svg {
-    width: 1em;
-    height: 1em;
-    font-size: inherit;
-}
+  width: 1em;
+  height: 1em;
+  font-size: inherit; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -247,26 +207,21 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .MapToolsMenu__mapToolsMenu___10kAQ {
-    display: block;
-}
+  display: block; }
 
 .MapToolsMenu__contextMenuItem___3F6aH {
-    min-width: 50px;
-    text-align: left;
-    justify-content: left;
-}
+  min-width: 50px;
+  text-align: left;
+  justify-content: left; }
 
 .MapToolsMenu__listItemIcon___NvWXt {
-    margin-right: 0px;
-}
-.MapToolsMenu__listItemIcon___NvWXt i {
+  margin-right: 0px; }
+  .MapToolsMenu__listItemIcon___NvWXt i {
     font-size: 2rem;
     padding-left: 1px;
-    padding-top: 0px;
-}
+    padding-top: 0px; }
 .ClickAwayListener__wrap___135mH {
-    display: inline-block;
-}
+  display: inline-block; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -282,27 +237,23 @@
 /* colors */
 /* neutrals */
 .MapButton__mapButton___33WOs {
-    width: 29px;
-    height: 29px;
-    min-width: 0;
-    min-height: 0;
-    display: flex;
-    padding: 0;
-    border-radius: 0;
-    color: rgba(0, 0, 0, 0.54);
-}
-.MapButton__mapButton___33WOs svg {
+  width: 29px;
+  height: 29px;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  padding: 0;
+  border-radius: 0;
+  color: rgba(0, 0, 0, 0.54); }
+  .MapButton__mapButton___33WOs svg {
     width: 19px;
-    height: 19px;
-}
+    height: 19px; }
 
 .MapButton__label___3REfu {
-    pointer-events: none;
-}
+  pointer-events: none; }
 
 .MapButton__flatPrimary___2MKqT {
-    color: #e91e63;
-}
+  color: #e91e63; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -318,127 +269,84 @@
 /* colors */
 /* neutrals */
 .MarkdownPage__root___1jfbN {
-    color: #212121;
-    padding: 1.6rem 2.1rem 2.6rem 2.1rem;
-    height: auto;
-    max-height: 100%;
-    letter-spacing: normal;
-    font-size: 1.5rem;
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    user-select: text;
-}
-.MarkdownPage__root___1jfbN h1 {
+  color: #212121;
+  padding: 1.6rem 2.1rem 2.6rem 2.1rem;
+  height: auto;
+  max-height: 100%;
+  letter-spacing: normal;
+  font-size: 1.5rem;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text; }
+  .MarkdownPage__root___1jfbN h1 {
     font-size: 2.7rem;
-    margin: 2rem 0px 0.5rem 0px;
-}
-.MarkdownPage__root___1jfbN h2 {
+    margin: 2rem 0px 0.5rem 0px; }
+  .MarkdownPage__root___1jfbN h2 {
     font-size: 2.4rem;
-    margin: 2rem 0px 0.5rem 0px;
-}
-.MarkdownPage__root___1jfbN h3 {
+    margin: 2rem 0px 0.5rem 0px; }
+  .MarkdownPage__root___1jfbN h3 {
     font-size: 2.2rem;
     margin: 2.2rem 0px 1rem 0px;
-    line-height: 32px;
-}
-.MarkdownPage__root___1jfbN h3:first-child {
-    margin-top: 1rem;
-}
-.MarkdownPage__root___1jfbN h4 {
+    line-height: 32px; }
+  .MarkdownPage__root___1jfbN h3:first-child {
+    margin-top: 1rem; }
+  .MarkdownPage__root___1jfbN h4 {
     font-size: 1.6rem;
     font-weight: 500;
-    margin: 5px 0px;
-}
-.MarkdownPage__root___1jfbN h5 {
+    margin: 5px 0px; }
+  .MarkdownPage__root___1jfbN h5 {
     font-size: 1.4rem;
     font-weight: 400;
     color: #545454;
     padding: 0px 1.5rem;
     padding-left: 0;
     margin: 0px;
-    font-style: italic;
-}
-.MarkdownPage__root___1jfbN p {
+    font-style: italic; }
+  .MarkdownPage__root___1jfbN p {
     font-weight: 400;
     padding: 0px 1.5rem;
     padding-left: 0px;
     margin: 0px;
     color: #212121;
-    margin-bottom: 1.4rem;
-}
-.MarkdownPage__root___1jfbN hr {
+    margin-bottom: 1.4rem; }
+  .MarkdownPage__root___1jfbN hr {
     height: 0.1rem;
     background-color: #545454;
     border: 0;
-    width: 90%;
-}
-.MarkdownPage__root___1jfbN strong {
-    font-weight: 500;
-}
-.MarkdownPage__root___1jfbN ul,
-.MarkdownPage__root___1jfbN ol {
+    width: 90%; }
+  .MarkdownPage__root___1jfbN strong {
+    font-weight: 500; }
+  .MarkdownPage__root___1jfbN ul,
+  .MarkdownPage__root___1jfbN ol {
     margin-top: 0.5rem;
-    padding-left: 2.1rem;
-}
-.MarkdownPage__root___1jfbN ul ul,
-.MarkdownPage__root___1jfbN ol ul {
-    padding-left: 2rem;
-}
-.MarkdownPage__root___1jfbN ul li {
-    line-height: 1.8rem;
-}
-.MarkdownPage__root___1jfbN li {
+    padding-left: 2.1rem; }
+    .MarkdownPage__root___1jfbN ul ul,
+    .MarkdownPage__root___1jfbN ol ul {
+      padding-left: 2rem; }
+  .MarkdownPage__root___1jfbN ul li {
+    line-height: 1.8rem; }
+  .MarkdownPage__root___1jfbN li {
     font-weight: 400;
     margin-bottom: 0.5rem;
     line-height: 1.6rem;
-    color: #3b3b3b;
-}
-.MarkdownPage__root___1jfbN table {
+    color: #3b3b3b; }
+  .MarkdownPage__root___1jfbN table {
     width: 100%;
-    border-collapse: collapse;
-}
-.MarkdownPage__root___1jfbN table th {
-    font-weight: 500;
-}
-.MarkdownPage__root___1jfbN table th,
-.MarkdownPage__root___1jfbN table td {
-    padding: 8px 0px;
-    height: 26px;
-    width: 50%;
-}
-.MarkdownPage__root___1jfbN table tr {
-    line-height: 2.7rem;
-    border-bottom: 1px solid #efefef;
-}
-.MarkdownPage__root___1jfbN table > thead > tr > th:nth-child(2),
-.MarkdownPage__root___1jfbN table > tbody > tr > td:nth-child(2) {
-    text-align: left !important;
-}
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.LayerControlLabel__controlLabel___Je-Ud {
-    background: #e91e63;
-    padding: 5px;
-    font-size: 1.2rem;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-}
+    border-collapse: collapse; }
+    .MarkdownPage__root___1jfbN table th {
+      font-weight: 500; }
+    .MarkdownPage__root___1jfbN table th,
+    .MarkdownPage__root___1jfbN table td {
+      padding: 8px 0px;
+      height: 26px;
+      width: 50%; }
+    .MarkdownPage__root___1jfbN table tr {
+      line-height: 2.7rem;
+      border-bottom: 1px solid #efefef; }
+    .MarkdownPage__root___1jfbN table > thead > tr > th:nth-child(2),
+    .MarkdownPage__root___1jfbN table > tbody > tr > td:nth-child(2) {
+      text-align: left !important; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -454,28 +362,49 @@
 /* colors */
 /* neutrals */
 .LayerPositionIcon__orderLabel___1hp-N {
-    -webkit-font-smoothing: antialiased;
-    position: relative;
-    text-shadow: 1px 1px 0px white, -1px -1px 0px white;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    left: -22px;
-    top: -7px;
-    color: rgba(0, 0, 0, 0.8);
-    font-size: 1.3rem;
-    font-weight: 600;
-    width: 2px;
-    height: 8px;
-    display: inline-block;
-    -webkit-font-smoothing: subpixel-antialiased;
-    background: white;
-    pointer-events: none;
-}
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  text-shadow: 1px 1px 0px white, -1px -1px 0px white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  left: -22px;
+  top: -7px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1.3rem;
+  font-weight: 600;
+  width: 2px;
+  height: 8px;
+  display: inline-block;
+  -webkit-font-smoothing: subpixel-antialiased;
+  background: white;
+  pointer-events: none; }
 
 .LayerPositionIcon__primary___g2563 {
-    color: #e91e63;
-}
+  color: #e91e63; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.LayerControlLabel__controlLabel___Je-Ud {
+  background: #e91e63;
+  padding: 5px;
+  font-size: 1.2rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -483,17 +412,15 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .LayerPositionControl__positionControl___2dPPC {
-    display: inline-block;
-}
+  display: inline-block; }
 
 .LayerPositionControl__positionButton___3UD7S {
-    min-height: 0;
-    height: 20px;
-    display: inline-block;
-    height: 26px;
-    line-height: 0px;
-    width: 50%;
-}
+  min-height: 0;
+  height: 20px;
+  display: inline-block;
+  height: 26px;
+  line-height: 0px;
+  width: 50%; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -501,51 +428,42 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .LayerControlContainer__layerControl___1acOl {
-    position: relative;
-    width: 100%;
-    margin: 0px;
-}
+  position: relative;
+  width: 100%;
+  margin: 0px; }
 
 .LayerControlContainer__layerControlContent___1QBQL {
-    padding: 0px 13px;
-    height: 38px;
-}
+  padding: 0px 13px;
+  height: 38px; }
 
 .LayerControlContainer__iconButtonSmall___veXhr {
-    width: 25px;
-    height: 25px;
-}
+  width: 25px;
+  height: 25px; }
 
 .LayerControlContainer__collapseEntered___B0Fjx {
-    overflow: visible;
-}
+  overflow: visible; }
 
 .LayerControlContainer__layerControlIconRow___2xMJC {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-}
+  position: relative;
+  display: inline-block;
+  vertical-align: top; }
 
 .LayerControlContainer__colorbar___3Op29 {
-    vertical-align: top;
-    margin-right: 5px;
-}
+  vertical-align: top;
+  margin-right: 5px; }
 
 .LayerControlContainer__popover___1PxGF {
-    z-index: 1;
-}
+  z-index: 1; }
 
 .LayerControlContainer__positionPopover___2pJOg {
-    -webkit-transform: translate(-4px, 0px);
-    transform: translate(-4px, 0px);
-}
+  -webkit-transform: translate(-4px, 0px);
+          transform: translate(-4px, 0px); }
 
 /* MUI Overrides */
 .LayerControlContainer__dense___TPliE {
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 5px;
-}
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 5px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -553,35 +471,28 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .ModalMenu__modalMenu___bxnC9 {
-    max-width: 550px;
-}
+  max-width: 550px; }
 
 .ModalMenu__close___X4Hu4 {
-    margin-right: -12px;
-    margin-left: 20px;
-}
+  margin-right: -12px;
+  margin-left: 20px; }
 
 .ModalMenu__back___3XFa1 {
-    margin-left: -12px;
-    margin-right: 20px;
-}
+  margin-left: -12px;
+  margin-right: 20px; }
 
 /* MUI overrides */
 .ModalMenu__appbar___19M56 {
-    position: relative;
-}
+  position: relative; }
 
 .ModalMenu__flex___2XGaV {
-    flex: 1;
-}
+  flex: 1; }
 
 .ModalMenu__root___2TGYK {
-    padding: 0px;
-}
+  padding: 0px; }
 
 .ModalMenu__paper___VEB1x {
-    overflow-y: inherit;
-}
+  overflow-y: inherit; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -589,104 +500,78 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .display__hidden___bMUAe {
-    display: none;
-}
+  display: none; }
 
 .display__mouseHidden___1-dIG {
-    cursor: none;
-}
+  cursor: none; }
 
 .display__mouseVisible___3dQh8 {
-    cursor: initial;
-}
+  cursor: initial; }
 
 .display__noPointer___1UaA_ {
-    pointer-events: none;
-}
+  pointer-events: none; }
 
 .display__visible___qUEfF {
-    opacity: 1;
-    pointer-events: initial;
-}
+  opacity: 1;
+  pointer-events: initial; }
 
 .display__invisible___234AB {
-    opacity: 0;
-    pointer-events: none;
-}
+  opacity: 0;
+  pointer-events: none; }
 
 .display__hiddenFadeIn___1Uv7N {
-    transition: opacity 0.2s linear 0s;
-}
+  transition: opacity 0.2s linear 0s; }
 
 .display__hiddenFadeOut___Qf3yl {
-    transition: opacity 0.2s linear 0s;
-}
+  transition: opacity 0.2s linear 0s; }
 
 .display__animationFadeOut___2uSfz {
-    -webkit-animation: display__animationOpacityWithDisplayHide___1NEi6 0.5s both;
-    animation: display__animationOpacityWithDisplayHide___1NEi6 0.5s both;
-}
+  -webkit-animation: display__animationOpacityWithDisplayHide___1NEi6 0.5s both;
+          animation: display__animationOpacityWithDisplayHide___1NEi6 0.5s both; }
 
 .display__animationFadeIn___JKS-r {
-    -webkit-animation: display__animationOpacityWithDisplayShow___2XQpT 0.5s both;
-    animation: display__animationOpacityWithDisplayShow___2XQpT 0.5s both;
-}
+  -webkit-animation: display__animationOpacityWithDisplayShow___2XQpT 0.5s both;
+          animation: display__animationOpacityWithDisplayShow___2XQpT 0.5s both; }
 
 @-webkit-keyframes display__animationOpacityWithDisplayHide___1NEi6 {
-    0% {
-        opacity: 1;
-        display: block;
-    }
-    99% {
-        display: none;
-    }
-    100% {
-        opacity: 0;
-        display: none;
-    }
-}
+  0% {
+    opacity: 1;
+    display: block; }
+  99% {
+    display: none; }
+  100% {
+    opacity: 0;
+    display: none; } }
 
 @keyframes display__animationOpacityWithDisplayHide___1NEi6 {
-    0% {
-        opacity: 1;
-        display: block;
-    }
-    99% {
-        display: none;
-    }
-    100% {
-        opacity: 0;
-        display: none;
-    }
-}
+  0% {
+    opacity: 1;
+    display: block; }
+  99% {
+    display: none; }
+  100% {
+    opacity: 0;
+    display: none; } }
 
 @-webkit-keyframes display__animationOpacityWithDisplayShow___2XQpT {
-    0% {
-        opacity: 0;
-        display: none;
-    }
-    1% {
-        display: block;
-    }
-    100% {
-        opacity: 1;
-        display: block;
-    }
-}
+  0% {
+    opacity: 0;
+    display: none; }
+  1% {
+    display: block; }
+  100% {
+    opacity: 1;
+    display: block; } }
 
 @keyframes display__animationOpacityWithDisplayShow___2XQpT {
-    0% {
-        opacity: 0;
-        display: none;
-    }
-    1% {
-        display: block;
-    }
-    100% {
-        opacity: 1;
-        display: block;
-    }
-}
+  0% {
+    opacity: 0;
+    display: none; }
+  1% {
+    display: block; }
+  100% {
+    opacity: 1;
+    display: block; } }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -702,29 +587,25 @@
 /* colors */
 /* neutrals */
 .BaseMapList__preview___1IJ7y {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    float: left;
-    background: #fafafa;
-    white-space: normal;
-    font-size: 1.2rem;
-    line-height: 1.2rem;
-}
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  float: left;
+  background: #fafafa;
+  white-space: normal;
+  font-size: 1.2rem;
+  line-height: 1.2rem; }
 
 /* MUI overrides */
 .BaseMapList__menuItemRoot___1J2tO {
-    padding: 20px 10px;
-}
+  padding: 20px 10px; }
 
 .BaseMapList__selectMenu___EWU1A {
-    height: 60px;
-    padding-top: 10px;
-}
+  height: 60px;
+  padding-top: 10px; }
 
 .BaseMapList__selectMenuIcon___3CxBe {
-    top: 24px;
-}
+  top: 24px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -740,44 +621,38 @@
 /* colors */
 /* neutrals */
 .MapContainer__mapContainer___22fhH {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-    background-color: #212121;
-}
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  background-color: #212121; }
 
 .MapContainer__mapRenderWrapper___ZMex1 {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: #545454;
-}
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #545454; }
 
 .MapContainer__mapRender___1Zvrz {
-    width: 100%;
-    height: 100%;
-}
+  width: 100%;
+  height: 100%; }
 
 .cesium-viewer,
 .cesium-viewer-cesiumWidgetContainer,
 .cesium-widget,
 .cesium-widget canvas {
-    height: 100%;
-    width: 100%;
-}
+  height: 100%;
+  width: 100%; }
 
 .cesium-viewer-bottom {
-    display: none;
-}
+  display: none; }
 
 .react-contextmenu-wrapper {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
+  width: 100%;
+  height: 100%;
+  position: relative; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -785,53 +660,17 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .DrawingTooltip__drawingTooltip___16zfD {
-    padding: 0.5rem 1rem;
-    font-size: 1.2rem;
-    word-wrap: normal;
-    letter-spacing: 0.04rem;
-    max-width: 250px;
-}
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  word-wrap: normal;
+  letter-spacing: 0.04rem;
+  max-width: 250px; }
 
 .DrawingTooltip__beginHint___1NyyL {
-    font-weight: 400;
-}
+  font-weight: 400; }
 
 .DrawingTooltip__endHint___3M-m_ {
-    font-weight: 300;
-}
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.CoordinateTracker__coordinateTracker___1FBZB {
-    position: absolute;
-    bottom: 75px;
-    right: 15px;
-    z-index: 0;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding: 0.1rem 0.5rem;
-    border-radius: 2px;
-    background: rgba(0, 0, 0, 0.26);
-    color: white;
-    box-shadow: none;
-}
-.CoordinateTracker__coordinateTracker___1FBZB p {
-    font-size: 1.1rem;
-}
+  font-weight: 300; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -847,51 +686,43 @@
 /* colors */
 /* neutrals */
 .MapControlsContainer__mapControlsContainer___3pI3k {
-    position: absolute;
-    bottom: 125px;
-    right: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-flow: column wrap;
-    align-content: flex-start;
-    align-items: flex-end;
-}
+  position: absolute;
+  bottom: 125px;
+  right: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  align-items: flex-end; }
 
 .MapControlsContainer__mapToolsMenu___3Oz3O {
-    overflow: visible;
-    margin-left: -32px;
-}
+  overflow: visible;
+  margin-left: -32px; }
 
 .MapControlsContainer__buttonGroup___2muez {
-    width: 29px;
-    margin-top: 10px;
-}
+  width: 29px;
+  margin-top: 10px; }
 
 .MapControlsContainer__firstButton___1ziil {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-}
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
 
 .MapControlsContainer__lineButton___4iVuD {
-    margin-bottom: 1px;
-}
-.MapControlsContainer__lineButton___4iVuD:after {
+  margin-bottom: 1px; }
+  .MapControlsContainer__lineButton___4iVuD:after {
     content: " ";
     border-bottom: 1px solid #e5e5df;
     width: 21px;
     position: absolute;
     height: 0px;
-    bottom: -1px;
-}
+    bottom: -1px; }
 
 .MapControlsContainer__lastButton___3dArK {
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-}
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px; }
 
 .MapControlsContainer__singleButton___3RIy8 {
-    border-radius: 2px;
-}
+  border-radius: 2px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -899,8 +730,38 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .AlertsContainer__root___1oxKQ {
-    min-width: 450px;
-}
+  min-width: 450px; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.CoordinateTracker__coordinateTracker___1FBZB {
+  position: absolute;
+  bottom: 75px;
+  right: 15px;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding: 0.1rem 0.5rem;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.26);
+  color: white;
+  box-shadow: none; }
+  .CoordinateTracker__coordinateTracker___1FBZB p {
+    font-size: 1.1rem; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -908,19 +769,16 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .AlertGroup__root___xBv9z {
-    margin: 0px 1.5rem 2.5rem 1.5rem;
-    padding-top: 1.5rem;
-}
+  margin: 0px 1.5rem 2.5rem 1.5rem;
+  padding-top: 1.5rem; }
 
 .AlertGroup__title___vMoh8 {
-    font-size: 1.8rem;
-    font-weight: 500;
-    color: #333333;
-}
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #333333; }
 
 .AlertGroup__body___3Nj4G {
-    margin: 0.3rem 0px 0px 1.5rem;
-}
+  margin: 0.3rem 0px 0px 1.5rem; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -928,23 +786,19 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 .text__fontRoboto___4V53U {
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
-}
+  font-family: "Roboto", Helvetica, Arial, sans-serif; }
 
 .text__fontRobotoMono___1pc0T {
-    font-family: "Roboto Mono", monospace;
-}
+  font-family: "Roboto Mono", monospace; }
 
 .text__textWrap___2H_Ql {
-    white-space: normal;
-    word-wrap: break-word;
-}
+  white-space: normal;
+  word-wrap: break-word; }
 
 .text__textEllipsis___3W_7t {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -954,25 +808,21 @@
 /* colors */
 /* neutrals */
 .LayerOpacityControl__opacityControl___2AUJN {
-    display: inline-block;
-}
+  display: inline-block; }
 
 .LayerOpacityControl__opacityContent___2P6AY {
-    padding: 12px 15px;
-}
+  padding: 12px 15px; }
 
 .LayerOpacityControl__opacityLabel___2SIZV {
-    margin-left: 10px;
-    width: 35px;
-    text-align: right;
-    display: inline-block;
-}
+  margin-left: 10px;
+  width: 35px;
+  text-align: right;
+  display: inline-block; }
 
 .LayerOpacityControl__sliderRoot___7gx0o {
-    width: 100px;
-    padding: 6px 0;
-    display: inline-block;
-}
+  width: 100px;
+  padding: 6px 0;
+  display: inline-block; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -988,27 +838,210 @@
 /* colors */
 /* neutrals */
 .AlertLevel__root___3pEpU {
-    display: block;
-}
+  display: block; }
 
 .AlertLevel__severity___3jWbF {
-    border-bottom: 1px solid #fafafa;
-}
-.AlertLevel__severity___3jWbF:last-child {
-    border-bottom: none;
-}
+  border-bottom: 1px solid #fafafa; }
+  .AlertLevel__severity___3jWbF:last-child {
+    border-bottom: none; }
 
 .AlertLevel__severity1___19Pju {
-    border-left: 3rem solid #fdd835;
-}
+  border-left: 3rem solid #fdd835; }
 
 .AlertLevel__severity2___ox7nn {
-    border-left: 3rem solid #fb8c00;
-}
+  border-left: 3rem solid #fb8c00; }
 
 .AlertLevel__severity3___POQuS {
-    border-left: 3rem solid #e53935;
-}
+  border-left: 3rem solid #e53935; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+.shadow__light___3axmh {
+  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24); }
+
+.shadow__medium___24pJU {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.258824), 0 2px 10px 0 rgba(0, 0, 0, 0.156863); }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.LayerMenuContainer__layerMenu___3w-El {
+  position: absolute;
+  width: 220px;
+  top: 15px;
+  left: 15px;
+  z-index: 0;
+  overflow: visible;
+  padding: 0px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  transition: width 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
+  .LayerMenuContainer__layerMenu___3w-El.LayerMenuContainer__open___3oZuW {
+    width: 370px; }
+    .LayerMenuContainer__layerMenu___3w-El.LayerMenuContainer__open___3oZuW .LayerMenuContainer__layerHeaderRow___1UDmR {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-bottom: 1px solid #dedede; }
+    .LayerMenuContainer__layerMenu___3w-El.LayerMenuContainer__open___3oZuW .LayerMenuContainer__layerMenuContent___3K6xR {
+      max-height: 450px;
+      opacity: 1; }
+
+.LayerMenuContainer__layerHeaderRow___1UDmR {
+  z-index: 1;
+  position: relative;
+  padding: 2px 9px;
+  display: flex;
+  flex-flow: row nowrap;
+  border-radius: inherit;
+  border-bottom: none;
+  background: #f3f3f3; }
+  .LayerMenuContainer__layerHeaderRow___1UDmR button {
+    position: relative; }
+
+.LayerMenuContainer__layerHeader___1-n5X {
+  text-align: left;
+  display: flex;
+  flex: 1 1;
+  align-items: center; }
+  .LayerMenuContainer__layerHeader___1-n5X h3 {
+    line-height: 2rem; }
+
+.LayerMenuContainer__headerRight___3BVna {
+  display: flex;
+  flex-basis: 30px;
+  width: 30px;
+  overflow: hidden;
+  justify-content: flex-end; }
+
+.LayerMenuContainer__pageCtrls___VRAxL {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  background: #f3f3f3;
+  border-top: 1px solid #dedede; }
+  .LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__pageNum___1B3Pe {
+    font-size: 12px; }
+  .LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__activePageNum___2mQZ9 {
+    color: #e91e63; }
+  .LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__activeToggle___3YfUD {
+    margin: 0px; }
+  .LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__activeToggleLabel___1xacd {
+    font-size: 12px; }
+  .LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__pageCtrlLeft___2euYX {
+    flex-basis: 190px;
+    width: 190px;
+    display: inline-block;
+    text-align: left;
+    justify-content: flex-start; }
+  .LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__pageCtrlRight___2HcBO {
+    flex: 1 1;
+    justify-content: flex-end;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center; }
+
+.LayerMenuContainer__layerMenuContent___3K6xR {
+  z-index: 0;
+  display: block;
+  height: initial;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  width: 100%;
+  max-height: 30rem;
+  overflow: visible;
+  opacity: 0;
+  transition: max-height 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, opacity 75ms linear 0s; }
+  .LayerMenuContainer__layerMenuContent___3K6xR .LayerMenuContainer__toggle___3jjxe {
+    padding-left: 1.3rem;
+    padding-right: 0px; }
+  .LayerMenuContainer__layerMenuContent___3K6xR .LayerMenuContainer__border___2kB_b {
+    padding-bottom: 0.7rem; }
+
+.LayerMenuContainer__collapseBtn___1A4f9,
+.LayerMenuContainer__pageLeftBtn___QJ2F8,
+.LayerMenuContainer__pageRightBtn___3jH8i {
+  font-size: 22px !important; }
+
+.LayerMenuContainer__pageRightBtn___3jH8i {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg); }
+
+.LayerMenuContainer__pageLeftBtn___QJ2F8 {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg); }
+
+/* MUI component classes */
+.LayerMenuContainer__transform___DJV9f {
+  transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
+
+.LayerMenuContainer__expand___2o-7s {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg); }
+
+.LayerMenuContainer__collapse___2hJ67 {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.LayerMenuContainer__emptyLabel___2gYLD {
+  padding: 7px 9px; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+.MapToolsMenu__mapToolsMenu___10kAQ {
+  display: block; }
+
+.MapToolsMenu__contextMenuItem___3F6aH {
+  min-width: 50px;
+  text-align: left;
+  justify-content: left; }
+
+.MapToolsMenu__listItemIcon___NvWXt {
+  margin-right: 0px; }
+  .MapToolsMenu__listItemIcon___NvWXt i {
+    font-size: 2rem;
+    padding-left: 1px;
+    padding-top: 0px; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+.ContextMenuSubMenu__root___3dH4N {
+  position: relative; }
+
+.ContextMenuSubMenu__subMenu___1QnDh {
+  position: absolute;
+  visibility: hidden; }
+
+.ContextMenuSubMenu__active___rmmne {
+  visibility: visible; }
+
+.ContextMenuSubMenu__top___2NLAc {
+  top: 0px; }
+
+.ContextMenuSubMenu__bottom___1qHsm {
+  bottom: 0px; }
+
+.ContextMenuSubMenu__left___2VuCm {
+  right: 100%; }
+
+.ContextMenuSubMenu__right___TRDDo {
+  left: 100%; }
+
+.ContextMenuSubMenu__itemIcon___imOdi { }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1024,270 +1057,33 @@
 /* colors */
 /* neutrals */
 .AppContainer__react-contextmenu___jSAOt {
-    padding: 0px;
-}
+  padding: 0px; }
 
 .AppContainer__react-contextmenu___jSAOt:focus {
-    outline: none;
-}
+  outline: none; }
 
 .AppContainer__popover-label___2HN24 {
-    background: #e91e63;
-    color: #fafafa;
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 4px 9px;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 1.3rem;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-}
+  background: #e91e63;
+  color: #fafafa;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 4px 9px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.3rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
 
 button.AppContainer__context-menu-item___1M1Z0 {
-    padding: 0px 1.2rem;
-}
+  padding: 0px 1.2rem; }
 
 .AppContainer__appContainer___1Qi1m {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-}
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-.shadow__light___3axmh {
-    box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
-}
-
-.shadow__medium___24pJU {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.258824), 0 2px 10px 0 rgba(0, 0, 0, 0.156863);
-}
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.LayerMenuContainer__layerMenu___3w-El {
-    position: absolute;
-    width: 220px;
-    top: 15px;
-    left: 15px;
-    z-index: 0;
-    overflow: visible;
-    padding: 0px;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    transition: width 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
-.LayerMenuContainer__layerMenu___3w-El.LayerMenuContainer__open___3oZuW {
-    width: 370px;
-}
-.LayerMenuContainer__layerMenu___3w-El.LayerMenuContainer__open___3oZuW
-    .LayerMenuContainer__layerHeaderRow___1UDmR {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-bottom: 1px solid #dedede;
-}
-.LayerMenuContainer__layerMenu___3w-El.LayerMenuContainer__open___3oZuW
-    .LayerMenuContainer__layerMenuContent___3K6xR {
-    max-height: 450px;
-    opacity: 1;
-}
-
-.LayerMenuContainer__layerHeaderRow___1UDmR {
-    z-index: 1;
-    position: relative;
-    padding: 2px 9px;
-    display: flex;
-    flex-flow: row nowrap;
-    border-radius: inherit;
-    border-bottom: none;
-    background: #f3f3f3;
-}
-.LayerMenuContainer__layerHeaderRow___1UDmR button {
-    position: relative;
-}
-
-.LayerMenuContainer__layerHeader___1-n5X {
-    text-align: left;
-    display: flex;
-    flex: 1 1;
-    align-items: center;
-}
-.LayerMenuContainer__layerHeader___1-n5X h3 {
-    line-height: 2rem;
-}
-
-.LayerMenuContainer__headerRight___3BVna {
-    display: flex;
-    flex-basis: 30px;
-    width: 30px;
-    overflow: hidden;
-    justify-content: flex-end;
-}
-
-.LayerMenuContainer__pageCtrls___VRAxL {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    background: #f3f3f3;
-    border-top: 1px solid #dedede;
-}
-.LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__pageNum___1B3Pe {
-    font-size: 12px;
-}
-.LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__activePageNum___2mQZ9 {
-    color: #e91e63;
-}
-.LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__activeToggle___3YfUD {
-    margin: 0px;
-}
-.LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__activeToggleLabel___1xacd {
-    font-size: 12px;
-}
-.LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__pageCtrlLeft___2euYX {
-    flex-basis: 190px;
-    width: 190px;
-    display: inline-block;
-    text-align: left;
-    justify-content: flex-start;
-}
-.LayerMenuContainer__pageCtrls___VRAxL .LayerMenuContainer__pageCtrlRight___2HcBO {
-    flex: 1 1;
-    justify-content: flex-end;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-}
-
-.LayerMenuContainer__layerMenuContent___3K6xR {
-    z-index: 0;
-    display: block;
-    height: initial;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    width: 100%;
-    max-height: 30rem;
-    overflow: visible;
-    opacity: 0;
-    transition: max-height 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, opacity 75ms linear 0s;
-}
-.LayerMenuContainer__layerMenuContent___3K6xR .LayerMenuContainer__toggle___3jjxe {
-    padding-left: 1.3rem;
-    padding-right: 0px;
-}
-.LayerMenuContainer__layerMenuContent___3K6xR .LayerMenuContainer__border___2kB_b {
-    padding-bottom: 0.7rem;
-}
-
-.LayerMenuContainer__collapseBtn___1A4f9,
-.LayerMenuContainer__pageLeftBtn___QJ2F8,
-.LayerMenuContainer__pageRightBtn___3jH8i {
-    font-size: 22px !important;
-}
-
-.LayerMenuContainer__pageRightBtn___3jH8i {
-    -webkit-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-}
-
-.LayerMenuContainer__pageLeftBtn___QJ2F8 {
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-/* MUI component classes */
-.LayerMenuContainer__transform___DJV9f {
-    transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-        -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
-
-.LayerMenuContainer__expand___2o-7s {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-}
-
-.LayerMenuContainer__collapse___2hJ67 {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-
-.LayerMenuContainer__emptyLabel___2gYLD {
-    padding: 7px 9px;
-}
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-.MapToolsMenu__mapToolsMenu___10kAQ {
-    display: block;
-}
-
-.MapToolsMenu__contextMenuItem___3F6aH {
-    min-width: 50px;
-    text-align: left;
-    justify-content: left;
-}
-
-.MapToolsMenu__listItemIcon___NvWXt {
-    margin-right: 0px;
-}
-.MapToolsMenu__listItemIcon___NvWXt i {
-    font-size: 2rem;
-    padding-left: 1px;
-    padding-top: 0px;
-}
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-.ContextMenuSubMenu__root___3dH4N {
-    position: relative;
-}
-
-.ContextMenuSubMenu__subMenu___1QnDh {
-    position: absolute;
-    visibility: hidden;
-}
-
-.ContextMenuSubMenu__active___rmmne {
-    visibility: visible;
-}
-
-.ContextMenuSubMenu__top___2NLAc {
-    top: 0px;
-}
-
-.ContextMenuSubMenu__bottom___1qHsm {
-    bottom: 0px;
-}
-
-.ContextMenuSubMenu__left___2VuCm {
-    right: 100%;
-}
-
-.ContextMenuSubMenu__right___TRDDo {
-    left: 100%;
-}
-
-.ContextMenuSubMenu__itemIcon___imOdi {
-}
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1303,24 +1099,89 @@ button.AppContainer__context-menu-item___1M1Z0 {
 /* colors */
 /* neutrals */
 .MapTooltip__tooltip___16voF {
-    position: relative;
-    background: white;
-    border-radius: 2px;
-    padding: 4px 8px;
-    white-space: nowrap;
-    color: #212121;
-}
+  position: relative;
+  background: white;
+  border-radius: 2px;
+  padding: 4px 8px;
+  white-space: nowrap;
+  color: #212121; }
 
 .MapTooltip__tooltip___16voF:after {
-    border-top: 8px solid #e1e1e1;
-    border-right: 8px solid transparent;
-    border-left: 8px solid transparent;
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    margin-left: -8px;
-    left: 50%;
-}
+  border-top: 8px solid #e1e1e1;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  margin-left: -8px;
+  left: 50%; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+.Colorbar__colorbar___FOiOP {
+  width: 255px;
+  line-height: 1.2rem;
+  height: 25px;
+  display: inline-block;
+  background-repeat: repeat;
+  background-size: 50%;
+  position: relative; }
+
+.Colorbar__warning___3xjKl {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.075rem;
+  font-weight: 600; }
+
+.Colorbar__typeNone___1P-KY {
+  height: 16px;
+  text-align: center;
+  color: #9e9e9e;
+  background: #eee; }
+
+.Colorbar__labelContainer___2eUhX {
+  height: 1.1rem;
+  text-align: center;
+  line-height: 1.1rem;
+  width: 255px;
+  margin-top: 2px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between; }
+
+.Colorbar__label___3MyEF {
+  font-size: 1.1rem;
+  vertical-align: top; }
+
+.Colorbar__units___jOZ9Q { }
+
+.Colorbar__min___1YAfH { }
+
+.Colorbar__max___3BXbe { }
+
+.Colorbar__colorPreview___1Nm1u {
+  height: 1.1rem;
+  text-align: center;
+  line-height: 1.1rem;
+  width: 255px;
+  margin-top: 2px;
+  display: block; }
+
+.Colorbar__color___2VFmI {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%; }
+
+.Colorbar__value___7_A0P {
+  margin-left: 0.3rem; }
+
+.Colorbar__hoverCross___3WQok:hover {
+  cursor: crosshair; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1336,46 +1197,38 @@ button.AppContainer__context-menu-item___1M1Z0 {
 /* colors */
 /* neutrals */
 .LayerOpacityControl__opacityControl___3KDwo {
-    display: inline-block;
-}
+  display: inline-block; }
 
 .LayerOpacityControl__opacityContent___1qVUV {
-    padding: 1.2rem 1.5rem;
-    width: 170px;
-    height: 40px;
-}
+  padding: 1.2rem 1.5rem;
+  width: 170px;
+  height: 40px; }
 
 .LayerOpacityControl__opacityLabel___2CyIV {
-    float: right;
-    margin-right: -5px;
-}
+  float: right;
+  margin-right: -5px; }
 
 .LayerOpacityControl__sliderRoot___26kKF {
-    width: 100px;
-    padding: 6px 0;
-    display: inline-block;
-}
+  width: 100px;
+  padding: 6px 0;
+  display: inline-block; }
 
 /* RC-SLIDER OVERRIDES */
 .rc-slider-step {
-    height: 2px;
-}
+  height: 2px; }
 
 .rc-slider-track {
-    height: 2px;
-    background-color: #e91e63;
-}
+  height: 2px;
+  background-color: #e91e63; }
 
 .rc-slider-rail {
-    height: 2px;
-}
+  height: 2px; }
 
 .rc-slider-handle {
-    margin-top: -6px;
-    background-color: #e91e63;
-    border: none;
-}
-.rc-slider-handle:after {
+  margin-top: -6px;
+  background-color: #e91e63;
+  border: none; }
+  .rc-slider-handle:after {
     content: " ";
     width: 14px;
     height: 14px;
@@ -1386,105 +1239,20 @@ button.AppContainer__context-menu-item___1M1Z0 {
     transition-property: -webkit-transform;
     transition-property: transform;
     transition-property: transform, -webkit-transform;
+    background-color: #e91e63; }
+  .rc-slider-handle:hover, .rc-slider-handle:active {
     background-color: #e91e63;
-}
-.rc-slider-handle:hover,
-.rc-slider-handle:active {
-    background-color: #e91e63;
-    box-shadow: none;
-}
-.rc-slider-handle:focus {
-    box-shadow: none;
-}
-.rc-slider-handle:focus:after {
-    background-color: rgba(233, 30, 99, 0.3);
-    -webkit-transform: scale(2);
-    transform: scale(2);
-}
-.rc-slider-handle:active:after {
+    box-shadow: none; }
+  .rc-slider-handle:focus {
+    box-shadow: none; }
+    .rc-slider-handle:focus:after {
+      background-color: rgba(233, 30, 99, 0.3);
+      -webkit-transform: scale(2);
+              transform: scale(2); }
+  .rc-slider-handle:active:after {
     background-color: #e91e63;
     -webkit-transform: scale(2);
-    transform: scale(2);
-}
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-.Colorbar__colorbar___FOiOP {
-    width: 255px;
-    line-height: 1.2rem;
-    height: 25px;
-    display: inline-block;
-    background-repeat: repeat;
-    background-size: 50%;
-    position: relative;
-}
-
-.Colorbar__warning___3xjKl {
-    position: relative;
-    text-transform: uppercase;
-    font-size: 1rem;
-    letter-spacing: 0.075rem;
-    font-weight: 600;
-}
-
-.Colorbar__typeNone___1P-KY {
-    height: 16px;
-    text-align: center;
-    color: #9e9e9e;
-    background: #eee;
-}
-
-.Colorbar__labelContainer___2eUhX {
-    height: 1.1rem;
-    text-align: center;
-    line-height: 1.1rem;
-    width: 255px;
-    margin-top: 2px;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-}
-
-.Colorbar__label___3MyEF {
-    font-size: 1.1rem;
-    vertical-align: top;
-}
-
-.Colorbar__units___jOZ9Q {
-}
-
-.Colorbar__min___1YAfH {
-}
-
-.Colorbar__max___3BXbe {
-}
-
-.Colorbar__colorPreview___1Nm1u {
-    height: 1.1rem;
-    text-align: center;
-    line-height: 1.1rem;
-    width: 255px;
-    margin-top: 2px;
-    display: block;
-}
-
-.Colorbar__color___2VFmI {
-    display: inline-block;
-    width: 1.1rem;
-    height: 1.1rem;
-    border-radius: 50%;
-}
-
-.Colorbar__value___7_A0P {
-    margin-left: 0.3rem;
-}
-
-.Colorbar__hoverCross___3WQok:hover {
-    cursor: crosshair;
-}
+            transform: scale(2); }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1492,88 +1260,72 @@ button.AppContainer__context-menu-item___1M1Z0 {
  * LICENSE.txt file in the root directory of this source tree.
  */
 .LayerMenuContainer__layerMenu___1RlhP {
-    position: absolute;
-    width: 370px;
-    top: 15px;
-    left: 15px;
-    z-index: 0;
-    overflow: visible;
-    padding: 0px;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-}
-.LayerMenuContainer__layerMenu___1RlhP.LayerMenuContainer__open___zlP1w
-    .LayerMenuContainer__layerMenuContent___1FL6h {
+  position: absolute;
+  width: 370px;
+  top: 15px;
+  left: 15px;
+  z-index: 0;
+  overflow: visible;
+  padding: 0px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px; }
+  .LayerMenuContainer__layerMenu___1RlhP.LayerMenuContainer__open___zlP1w .LayerMenuContainer__layerMenuContent___1FL6h {
     max-height: calc(80vh - 130px);
     opacity: 1;
-    transition: max-height 0.5s ease-out 0s, opacity 0.2s linear 0s;
-}
-.LayerMenuContainer__layerMenu___1RlhP.LayerMenuContainer__open___zlP1w
-    .LayerMenuContainer__layerHeaderRow___a0z9w {
+    transition: max-height 0.5s ease-out 0s, opacity 0.2s linear 0s; }
+  .LayerMenuContainer__layerMenu___1RlhP.LayerMenuContainer__open___zlP1w .LayerMenuContainer__layerHeaderRow___a0z9w {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    border-bottom: 1px solid #dedede;
-}
+    border-bottom: 1px solid #dedede; }
 
 .LayerMenuContainer__layerHeaderRow___a0z9w {
-    z-index: 1;
-    position: relative;
-    padding: 0.4rem 0.9rem;
-    display: flex;
-    border-radius: inherit;
-    border-bottom: none;
-    background: #f3f3f3;
-}
-.LayerMenuContainer__layerHeaderRow___a0z9w button {
-    position: relative;
-}
+  z-index: 1;
+  position: relative;
+  padding: 0.4rem 0.9rem;
+  display: flex;
+  border-radius: inherit;
+  border-bottom: none;
+  background: #f3f3f3; }
+  .LayerMenuContainer__layerHeaderRow___a0z9w button {
+    position: relative; }
 
 .LayerMenuContainer__layerHeader___3tx1V {
-    text-align: left;
-    display: flex;
-    flex: 1;
-}
-.LayerMenuContainer__layerHeader___3tx1V h3 {
-    line-height: 2rem;
-}
+  text-align: left;
+  display: flex;
+  flex: 1; }
+  .LayerMenuContainer__layerHeader___3tx1V h3 {
+    line-height: 2rem; }
 
 .LayerMenuContainer__layerMenuContent___1FL6h {
-    z-index: 0;
-    display: block;
-    height: initial;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    width: 100%;
-    max-height: 30rem;
-    overflow: hidden;
-    overflow-y: scroll;
-    transition: max-height 0.3s ease-out 0s, opacity 0.2s linear 0s;
-}
-.LayerMenuContainer__layerMenuContent___1FL6h .LayerMenuContainer__toggle___SyOhi {
+  z-index: 0;
+  display: block;
+  height: initial;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  width: 100%;
+  max-height: 30rem;
+  overflow: hidden;
+  overflow-y: scroll;
+  transition: max-height 0.3s ease-out 0s, opacity 0.2s linear 0s; }
+  .LayerMenuContainer__layerMenuContent___1FL6h .LayerMenuContainer__toggle___SyOhi {
     padding-left: 1.3rem;
-    padding-right: 0px;
-}
-.LayerMenuContainer__layerMenuContent___1FL6h .LayerMenuContainer__border___Zk-R6 {
-    padding-bottom: 0.7rem;
-}
+    padding-right: 0px; }
+  .LayerMenuContainer__layerMenuContent___1FL6h .LayerMenuContainer__border___Zk-R6 {
+    padding-bottom: 0.7rem; }
 
 /* MUI component classes */
 .LayerMenuContainer__transform___2aVVT {
-    transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-        -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
+  transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
 
 .LayerMenuContainer__expand___26ri4 {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-}
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg); }
 
 .LayerMenuContainer__collapse___21ngR {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1589,30 +1341,25 @@ button.AppContainer__context-menu-item___1M1Z0 {
 /* colors */
 /* neutrals */
 .MouseFollowerContainer__mouseFollowerContainer___1x2Rr {
-    position: fixed;
-    z-index: 1;
-    background: #fafafa;
-    margin: 0px;
-    -webkit-transform: translate(25px, -51%);
-    transform: translate(25px, -51%);
-    pointer-events: none;
-    border-radius: 2px;
-    display: none;
-}
+  position: fixed;
+  z-index: 1;
+  background: #fafafa;
+  margin: 0px;
+  -webkit-transform: translate(25px, -51%);
+          transform: translate(25px, -51%);
+  pointer-events: none;
+  border-radius: 2px;
+  display: none; }
 
 .MouseFollowerContainer__content___2rNP2 {
-    position: relative;
-}
+  position: relative; }
 
 .MouseFollowerContainer__footer___1TdNQ {
-    padding: 0px 1rem;
-}
+  padding: 0px 1rem; }
 
 .MouseFollowerContainer__active___3hRQq {
-    display: block;
-}
+  display: block; }
 
 .MouseFollowerContainer__right___Pd1XU {
-    -webkit-transform: translate(calc(-100% - 25px), -51%);
-    transform: translate(calc(-100% - 25px), -51%);
-}
+  -webkit-transform: translate(calc(-100% - 25px), -51%);
+          transform: translate(calc(-100% - 25px), -51%); }

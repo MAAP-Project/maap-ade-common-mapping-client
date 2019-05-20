@@ -1,1 +1,1 @@
-module.exports = require("./arc");
+module.exports = require('./arc');
