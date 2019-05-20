@@ -17,6 +17,7 @@
 /*eslint-disable import/default*/
 import "@babel/polyfill";
 import React from "react";
+import path from "path";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "store/configureStore";
@@ -42,18 +43,24 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 export class CMC {
-    constructor(idOrElement = "app") {
+    constructor(options = {}) {
+        const { base_url, target } = options;
+
+        if (base_url) {
+            appConfig.CESIUM_BASE_URL = path.join(base_url, appConfig.CESIUM_BASE_URL);
+        }
+
         this.dispatch = {};
         this.config = appConfig;
         this._store = configureStore();
 
         let el;
-        if (typeof idOrElement === "string") {
+        if (typeof target === "string") {
             // assume its a domnode id
-            el = document.getElementById(idOrElement);
+            el = document.getElementById(target);
         } else {
             // assume its a domnode
-            el = idOrElement;
+            el = target;
         }
         this.domNode = el;
     }
