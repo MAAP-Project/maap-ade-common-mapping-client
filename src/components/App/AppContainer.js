@@ -83,7 +83,6 @@ export class AppContainer extends Component {
     }
 
     componentDidUpdate() {
-        console.log("MMEE");
         this.props.linkDispatch(this.props.appActions);
     }
 

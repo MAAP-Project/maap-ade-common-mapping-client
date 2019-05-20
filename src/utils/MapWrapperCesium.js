@@ -1,7 +1,4 @@
 import appConfig from "constants/appConfig";
-
-window.CESIUM_DRAW_HELPER_BASE_URL = appConfig.CESIUM_DRAW_HELPER_BASE_URL;
-
 import MapWrapperCesiumCore from "_core/utils/MapWrapperCesium";
 
 export default class MapWrapperCesium extends MapWrapperCesiumCore {
