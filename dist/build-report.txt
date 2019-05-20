@@ -1,8 +1,8 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: 57a7a880e189851ef6cd
+Webpack stats: Hash: 4686ddb0fb3ab1da4ada
 Version: webpack 4.28.3
-Time: 19895ms
-Built at: 2019-05-20 13:55:29
+Time: 44271ms
+Built at: 2019-05-20 14:30:03
                          Asset      Size  Chunks                    Chunk Names
 07f07f39b8e2305e39ff.worker.js  4.12 KiB          [emitted]         
                     bundle.css  36.4 KiB       0  [emitted]         bundle
@@ -13,30 +13,30 @@ Built at: 2019-05-20 13:55:29
 Entrypoint bundle [big] = bundle.js bundle.css
 Entrypoint inlineStyles = inlineStyles.js
   [0] ./node_modules/react/index.js 190 bytes {0} [built]
-  [7] ./src/constants/appConfig.js + 1 modules 7.2 KiB {0} [built]
-      | ./src/constants/appConfig.js 1.13 KiB [built]
+  [7] ./src/constants/appConfig.js + 1 modules 7.06 KiB {0} [built]
+      | ./src/constants/appConfig.js 1020 bytes [built]
       | ./src/_core/constants/appConfig.js 6.05 KiB [built]
   [8] ./node_modules/@babel/runtime/helpers/classCallCheck.js 196 bytes {0} [built]
   [9] ./node_modules/@babel/runtime/helpers/createClass.js 596 bytes {0} [built]
  [30] ./node_modules/immutable/dist/immutable.js 139 KiB {0} [built]
  [37] ./node_modules/react-dom/index.js 1.33 KiB {0} [built]
 [110] (webpack)/buildin/global.js 472 bytes {0} [built]
-[492] ./src/store/configureStore.js 362 bytes {0} [built]
-[493] ./src/default-data/layers.json 6.11 KiB {0} [built]
-[535] multi ./src/index 28 bytes {0} [built]
-[536] ./node_modules/@babel/polyfill/lib/index.js 893 bytes {0} [built]
-[537] ./node_modules/@babel/polyfill/node_modules/core-js/es6/index.js 5.78 KiB {0} [built]
-[717] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
-[921] ./src/styles/inlineStyles.js 238 bytes {1} [built]
-[923] ./src/index.js + 155 modules 536 KiB {0} [built]
-      | ./src/index.js 2.79 KiB [built]
+[491] ./node_modules/path-browserify/index.js 6.04 KiB {0} [built]
+[493] ./src/store/configureStore.js 362 bytes {0} [built]
+[494] ./src/default-data/layers.json 6.11 KiB {0} [built]
+[536] multi ./src/index 28 bytes {0} [built]
+[537] ./node_modules/@babel/polyfill/lib/index.js 893 bytes {0} [built]
+[719] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
+[923] ./src/styles/inlineStyles.js 238 bytes {1} [built]
+[925] ./src/index.js + 155 modules 536 KiB {0} [built]
+      | ./src/index.js 2.97 KiB [built]
       | ./node_modules/react-redux/es/index.js 270 bytes [built]
       | ./src/components/App/index.js 73 bytes [built]
       | ./node_modules/react-redux/es/components/Context.js 118 bytes [built]
       | ./node_modules/react-redux/es/components/Provider.js 2.29 KiB [built]
       | ./node_modules/react-redux/es/components/connectAdvanced.js 8.26 KiB [built]
       | ./node_modules/react-redux/es/connect/connect.js 4.83 KiB [built]
-      | ./src/components/App/AppContainer.js 5.05 KiB [built]
+      | ./src/components/App/AppContainer.js 5.02 KiB [built]
       | ./node_modules/react-redux/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js 204 bytes [built]
       | ./node_modules/react-redux/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js 192 bytes [built]
       | ./node_modules/react-redux/node_modules/@babel/runtime/helpers/esm/extends.js 397 bytes [built]
@@ -45,7 +45,7 @@ Entrypoint inlineStyles = inlineStyles.js
       | ./node_modules/react-redux/es/connect/mapDispatchToProps.js 915 bytes [built]
       | ./node_modules/react-redux/es/connect/mapStateToProps.js 504 bytes [built]
       |     + 141 hidden modules
-    + 952 hidden modules
+    + 954 hidden modules
 
 WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
 This can impact web performance.
@@ -54,7 +54,7 @@ Assets:
 
 WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
 Entrypoints:
-  bundle (4.53 MiB)
+  bundle (4.54 MiB)
       bundle.js
       bundle.css
 
