@@ -12,23 +12,26 @@
  */
 /* colors */
 /* neutrals */
-.BasemapPicker__basemapPicker___10CS1 {
-  margin-top: 10px; }
+.BaseMapList__preview___1IJ7y {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  float: left;
+  background: #fafafa;
+  white-space: normal;
+  font-size: 1.2rem;
+  line-height: 1.2rem; }
 
-.BasemapPicker__image___l0xRz {
-  width: 100%;
-  height: 44px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover; }
+/* MUI overrides */
+.BaseMapList__menuItemRoot___1J2tO {
+  padding: 20px 10px; }
 
-.BasemapPicker__caption___bCCHR {
-  font-weight: 500;
-  padding: 2px 8px 2px 3px; }
+.BaseMapList__selectMenu___EWU1A {
+  height: 60px;
+  padding-top: 10px; }
 
-.BasemapPicker__buttonBase___r-mpP {
-  padding: 2px;
-  padding-bottom: 0px; }
+.BaseMapList__selectMenuIcon___3CxBe {
+  top: 24px; }
 .common__cursorCrosshair___z3Gwf {
   cursor: crosshair; }
 .LayerPositionControl__positionControl___WtMPX {
@@ -615,26 +618,23 @@
  */
 /* colors */
 /* neutrals */
-.BaseMapList__preview___1IJ7y {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-  float: left;
-  background: #fafafa;
-  white-space: normal;
-  font-size: 1.2rem;
-  line-height: 1.2rem; }
+.BasemapPicker__basemapPicker___10CS1 {
+  margin-top: 10px; }
 
-/* MUI overrides */
-.BaseMapList__menuItemRoot___1J2tO {
-  padding: 20px 10px; }
+.BasemapPicker__image___l0xRz {
+  width: 100%;
+  height: 44px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; }
 
-.BaseMapList__selectMenu___EWU1A {
-  height: 60px;
-  padding-top: 10px; }
+.BasemapPicker__caption___bCCHR {
+  font-weight: 500;
+  padding: 2px 8px 2px 3px; }
 
-.BaseMapList__selectMenuIcon___3CxBe {
-  top: 24px; }
+.BasemapPicker__buttonBase___r-mpP {
+  padding: 2px;
+  padding-bottom: 0px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1031,10 +1031,10 @@
   padding: 5px 0px; }
 
 .DatePicker__inputWrapper___2qEaC {
-  font-weight: 500;
   padding: 3px 5px;
   font-size: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.2); }
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; }
   .DatePicker__inputWrapper___2qEaC:before {
     display: none; }
 
