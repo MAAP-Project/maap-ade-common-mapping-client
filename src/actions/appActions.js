@@ -1,3 +1,4 @@
+import moment from "moment";
 import * as actionTypes from "constants/actionTypes";
 import * as actionTypesCore from "_core/constants/actionTypes";
 import * as appStringsCore from "_core/constants/appStrings";
@@ -82,6 +83,20 @@ export function initializeMap(options) {
 
 export function resizeMap() {
     return { type: actionTypes.RESIZE_MAP };
+}
+
+export function stepDate(forward) {
+    return (dispatch, getState) => {
+        const size = 1;
+        const scale = "d";
+
+        const state = getState();
+        const date = moment.utc(state.map.get("date"));
+
+        const nextDate = (forward ? date.add(size, scale) : date.subtract(size, scale)).toDate();
+
+        dispatch(setDate(nextDate));
+    };
 }
 
 function loadSingleLayerSource(options, mergeOnLoad = false) {
