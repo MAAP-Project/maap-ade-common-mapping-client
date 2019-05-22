@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as appStrings from "_core/constants/appStrings";
-import * as mapActions from "_core/actions/mapActions";
+import * as mapActionsCore from "_core/actions/mapActions";
+import * as appActions from "actions/appActions";
 import { MapContainer2D, MapContainer3D } from "components/Map";
 import MiscUtil from "_core/utils/MiscUtil";
 import styles from "_core/components/Map/MapContainer.scss";
@@ -12,8 +12,19 @@ import commonStyles from "styles/common.scss";
 export class MapContainer extends Component {
     componentDidMount() {
         this.refs.container.addEventListener("mouseout", evt => {
-            this.props.mapActions.invalidatePixelHover();
+            this.props.mapActionsCore.invalidatePixelHover();
         });
+
+        let prevSize = this.refs.container.getBoundingClientRect();
+        const resizeListener = setInterval(() => {
+            let currSize = this.refs.container.getBoundingClientRect();
+            if (prevSize.width !== currSize.width || prevSize.height !== currSize.height) {
+                prevSize = currSize;
+                window.requestAnimationFrame(() => {
+                    this.props.resizeMap();
+                });
+            }
+        }, 1500);
     }
 
     render() {
@@ -33,7 +44,8 @@ export class MapContainer extends Component {
 
 MapContainer.propTypes = {
     isDrawingEnabled: PropTypes.bool.isRequired,
-    mapActions: PropTypes.object.isRequired,
+    mapActionsCore: PropTypes.object.isRequired,
+    resizeMap: PropTypes.func.isRequired,
     className: PropTypes.string
 };
 
@@ -45,7 +57,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        mapActions: bindActionCreators(mapActions, dispatch)
+        mapActionsCore: bindActionCreators(mapActionsCore, dispatch),
+        resizeMap: bindActionCreators(appActions.resizeMap, dispatch)
     };
 }
 
