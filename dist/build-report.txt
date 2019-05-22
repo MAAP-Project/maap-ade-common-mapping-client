@@ -1,8 +1,8 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: 95dac19573cc0207ebe9
+Webpack stats: Hash: 249aff2792ac4c4bad7c
 Version: webpack 4.28.3
-Time: 49047ms
-Built at: 2019-05-20 16:02:31
+Time: 43985ms
+Built at: 2019-05-22 10:43:33
                          Asset      Size  Chunks                    Chunk Names
 07f07f39b8e2305e39ff.worker.js  4.12 KiB          [emitted]         
                     bundle.css  36.4 KiB       0  [emitted]         bundle
@@ -28,7 +28,7 @@ Entrypoint inlineStyles = inlineStyles.js
 [537] ./node_modules/@babel/polyfill/lib/index.js 893 bytes {0} [built]
 [719] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 [923] ./src/styles/inlineStyles.js 238 bytes {1} [built]
-[925] ./src/index.js + 155 modules 536 KiB {0} [built]
+[925] ./src/index.js + 155 modules 537 KiB {0} [built]
       | ./src/index.js 2.97 KiB [built]
       | ./node_modules/react-redux/es/index.js 270 bytes [built]
       | ./src/components/App/index.js 73 bytes [built]
