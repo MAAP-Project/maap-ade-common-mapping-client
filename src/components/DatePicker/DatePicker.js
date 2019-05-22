@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import Input from "@material-ui/core/Input";
 import MiscUtil from "_core/utils/MiscUtil";
-import stylesCore from "_core/components/DatePicker/DatePicker.scss";
 import styles from "components/DatePicker/DatePicker.scss";
 
 export class DatePicker extends Component {
@@ -69,7 +68,6 @@ export class DatePicker extends Component {
         this.dateStr = dateStr;
 
         let containerClasses = MiscUtil.generateStringFromSet({
-            [stylesCore.datePicker]: true,
             [this.props.className]: typeof this.props.className !== "undefined"
         });
 
