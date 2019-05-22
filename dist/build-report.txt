@@ -1,8 +1,8 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: 4b323dcd9f9f9080eea8
+Webpack stats: Hash: 6c6cc22ab9a8e3eac4f5
 Version: webpack 4.28.3
-Time: 18799ms
-Built at: 2019-05-22 14:35:33
+Time: 17777ms
+Built at: 2019-05-22 14:39:44
                          Asset      Size  Chunks                    Chunk Names
 07f07f39b8e2305e39ff.worker.js  4.12 KiB          [emitted]         
                     bundle.css  37.5 KiB       0  [emitted]         bundle
@@ -195,7 +195,7 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/DatePicker/CurrentDatePicker.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
-    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/DatePicker/CurrentDatePicker.scss 965 bytes {0} [built]
+    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/DatePicker/CurrentDatePicker.scss 969 bytes {0} [built]
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/DatePicker/DatePicker.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
