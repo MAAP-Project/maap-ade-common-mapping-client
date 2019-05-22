@@ -80,6 +80,10 @@ export function initializeMap(options) {
     };
 }
 
+export function resizeMap() {
+    return { type: actionTypes.RESIZE_MAP };
+}
+
 function loadSingleLayerSource(options, mergeOnLoad = false) {
     return dispatch => {
         return MiscUtil.asyncFetch({

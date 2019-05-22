@@ -3,3 +3,4 @@ export const RESET_MAP_VIEW = "RESET_MAP_VIEW";
 export const ADD_LAYER = "ADD_LAYER";
 export const REMOVE_LAYER = "REMOVE_LAYER";
 export const ACTIVATE_DEFAULT_BASEMAP = "ACTIVATE_DEFAULT_BASEMAP";
+export const RESIZE_MAP = "RESIZE_MAP";

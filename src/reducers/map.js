@@ -20,6 +20,9 @@ export default function map(state = mapState, action, opt_reducer = MapReducer) 
         case actionTypes.ACTIVATE_DEFAULT_BASEMAP:
             return opt_reducer.activateDefaultBasemap(state, action);
 
+        case actionTypes.RESIZE_MAP:
+            return opt_reducer.resizeMap(state, action);
+
         default:
             return mapCore.call(this, state, action, opt_reducer);
     }
