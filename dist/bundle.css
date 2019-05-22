@@ -181,6 +181,7 @@
   .CurrentDatePicker__btns___RMzhO .CurrentDatePicker__thinBtn___1-6CR {
     width: 16px;
     border-radius: 2px;
+    font-size: 22px;
     overflow: hidden; }
 /**
  * Copyright 2017 California Institute of Technology.
@@ -713,37 +714,6 @@
  */
 /* colors */
 /* neutrals */
-.CoordinateTracker__coordinateTracker___1FBZB {
-  position: absolute;
-  bottom: 75px;
-  right: 15px;
-  z-index: 0;
-  pointer-events: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  padding: 0.1rem 0.5rem;
-  border-radius: 2px;
-  background: rgba(0, 0, 0, 0.26);
-  color: white;
-  box-shadow: none; }
-  .CoordinateTracker__coordinateTracker___1FBZB p {
-    font-size: 1.1rem; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
 .MapControlsContainer__mapControlsContainer___3pI3k {
   position: absolute;
   bottom: 125px;
@@ -788,40 +758,39 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-.DatePicker__datePickerSelection___3TAdz {
-  position: relative;
-  text-align: center;
-  padding: 0.25rem 1rem; }
-
-.DatePicker__selectionInput___17y5E {
-  text-align: center;
-  font-weight: 400;
-  padding: 0px; }
-
-.DatePicker__datePicker___3HOKj {
-  width: 100%;
-  height: 100%;
-  padding: 0px;
-  margin: 0px;
-  line-height: 1rem; }
-
-.DatePicker__incrementButtonWrapper___2mh9W {
-  text-align: center; }
-
-.DatePicker__incrementButton___2lWOl {
-  opacity: 0.2;
-  transition: opacity 0.1s linear 0s; }
-
-.DatePicker__datePicker___3HOKj:hover .DatePicker__incrementButton___2lWOl {
-  opacity: 1; }
+.AlertsContainer__root___1oxKQ {
+  min-width: 450px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-.AlertsContainer__root___1oxKQ {
-  min-width: 450px; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.CoordinateTracker__coordinateTracker___1FBZB {
+  position: absolute;
+  bottom: 75px;
+  right: 15px;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding: 0.1rem 0.5rem;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.26);
+  color: white;
+  box-shadow: none; }
+  .CoordinateTracker__coordinateTracker___1FBZB p {
+    font-size: 1.1rem; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
