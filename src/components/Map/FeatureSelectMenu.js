@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Icon from "@material-ui/core/Icon";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -28,8 +27,6 @@ export class CoordinateTracker extends Component {
             left: clickData.get("x"),
             top: clickData.get("y")
         };
-
-        console.log(data.toJS());
 
         return (
             <Paper elevation={2} className={containerClasses} style={domStyles}>
