@@ -6,3 +6,4 @@ export { default as MapToolsButton } from "components/Map/MapToolsButton.js";
 export { default as BasemapPicker } from "components/Map/BasemapPicker.js";
 export { default as MapControlsContainer } from "components/Map/MapControlsContainer.js";
 export { default as CoordinateTracker } from "components/Map/CoordinateTracker.js";
+export { default as FeatureSelectMenu } from "components/Map/FeatureSelectMenu.js";

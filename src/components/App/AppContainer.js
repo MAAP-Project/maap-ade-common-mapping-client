@@ -17,7 +17,12 @@ import MiscUtil from "_core/utils/MiscUtil";
 import MapUtil from "_core/utils/MapUtil";
 import { KeyboardControlsContainer } from "components/KeyboardControls";
 import { LayerMenuContainer } from "components/LayerMenu";
-import { MapContainer, MapControlsContainer, CoordinateTracker } from "components/Map";
+import {
+    MapContainer,
+    MapControlsContainer,
+    CoordinateTracker,
+    FeatureSelectMenu
+} from "components/Map";
 import { CurrentDatePicker } from "components/DatePicker";
 import { AlertsContainer } from "_core/components/Alerts";
 import stylesCore from "_core/components/App/AppContainer.scss";
@@ -102,6 +107,7 @@ export class AppContainer extends Component {
                         <MapControlsContainer />
                         <AlertsContainer />
                         <CoordinateTracker />
+                        <FeatureSelectMenu />
                         <CurrentDatePicker />
                     </div>
                 </MuiThemeProvider>

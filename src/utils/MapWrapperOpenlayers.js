@@ -379,6 +379,39 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
         }
     }
 
+    getDataAtPoint(coords, pixel, palettes) {
+        try {
+            let data = []; // the collection of pixel data to return
+            let coord = this.map.getCoordinateFromPixel(pixel);
+
+            this.map.forEachFeatureAtPixel(
+                pixel,
+                (feature, mapLayer) => {
+                    data.push({
+                        layerId: mapLayer.get("_layerId"),
+                        feature: feature,
+                        coords: coord
+                    });
+                },
+                {
+                    layerFilter: mapLayer => {
+                        return (
+                            mapLayer.getVisible() && mapLayer.get("_layerId") === "_vector_drawings"
+                        );
+                    },
+                    hitTolerance: 3
+                }
+            );
+
+            return data;
+
+            // return data;
+        } catch (err) {
+            console.warn("Error in MapWrapperOpenlayers.getDataAtPoint:", err);
+            return [];
+        }
+    }
+
     ////////////////////// END OVERRIDES //////////////////////
 
     setProjection(projCode) {
