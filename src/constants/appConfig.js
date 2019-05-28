@@ -21,7 +21,8 @@ const OPS_CONFIG = Immutable.fromJS(window.APPLICATION_CONFIG);
 const APP_CONFIG = Immutable.fromJS({
     BUILT_IN_LAYER_PARTIALS: BUILT_IN_LAYERS.layers,
     CESIUM_BASE_URL: "assets/cesium",
-    DELETE_LAYER_PARTIALS: false
+    DELETE_LAYER_PARTIALS: false,
+    RENDER_NODE: undefined
 });
 
 // define and export the final config

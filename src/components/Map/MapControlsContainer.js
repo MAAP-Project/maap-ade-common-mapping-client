@@ -5,7 +5,7 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -14,18 +14,61 @@ import Earth from "mdi-material-ui/Earth";
 import PlusIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import HomeIcon from "@material-ui/icons/Home";
+import FullscreenIcon from "@material-ui/icons/Fullscreen";
+import FullscreenExitIcon from "@material-ui/icons/FullscreenExit";
 import Paper from "@material-ui/core/Paper";
 import * as mapActionsCore from "_core/actions/mapActions";
 import * as appActionsCore from "_core/actions/appActions";
 import * as appActions from "actions/appActions";
-import MiscUtil from "_core/utils/MiscUtil";
+import * as appStringsCore from "_core/constants/appStrings";
+import MiscUtil from "utils/MiscUtil";
 import { MapButton, EnhancedTooltip } from "_core/components/Reusables";
 import { BasemapPicker, MapToolsButton } from "components/Map";
-import { MapControlsContainer as MapControlsContainerCore } from "_core/components/Map/MapControlsContainer.js";
 import stylesCore from "_core/components/Map/MapControlsContainer.scss";
 import styles from "components/Map/MapControlsContainer.scss";
 
-export class MapControlsContainer extends MapControlsContainerCore {
+export class MapControlsContainer extends Component {
+    componentDidMount() {
+        // have to retroactively sync the state given browser specific hardware options to enter/exit full screen
+        document.addEventListener(
+            "fullscreenchange",
+            () => {
+                this.handleFullScreenChange();
+            },
+            false
+        );
+        document.addEventListener(
+            "webkitfullscreenchange",
+            () => {
+                this.handleFullScreenChange();
+            },
+            false
+        );
+        document.addEventListener(
+            "mozfullscreenchange",
+            () => {
+                this.handleFullScreenChange();
+            },
+            false
+        );
+    }
+
+    handleFullScreenChange() {
+        if (MiscUtil.getIsInFullScreenMode()) {
+            this.props.appActionsCore.setFullScreenMode(true);
+        } else {
+            this.props.appActionsCore.setFullScreenMode(false);
+        }
+    }
+
+    setViewMode() {
+        if (this.props.in3DMode) {
+            this.props.mapActionsCore.setMapViewMode(appStringsCore.MAP_VIEW_MODE_2D);
+        } else {
+            this.props.mapActionsCore.setMapViewMode(appStringsCore.MAP_VIEW_MODE_3D);
+        }
+    }
+
     render() {
         let containerClasses = MiscUtil.generateStringFromSet({
             [this.props.className]: typeof this.props.className !== "undefined",
@@ -65,7 +108,7 @@ export class MapControlsContainer extends MapControlsContainerCore {
                     </EnhancedTooltip>
                     <EnhancedTooltip title="Zoom In" placement="right">
                         <MapButton
-                            onClick={this.props.mapActions.zoomIn}
+                            onClick={this.props.mapActionsCore.zoomIn}
                             aria-label="Zoom in"
                             className={stylesCore.lineButton}
                         >
@@ -74,7 +117,7 @@ export class MapControlsContainer extends MapControlsContainerCore {
                     </EnhancedTooltip>
                     <EnhancedTooltip title="Zoom Out" placement="right">
                         <MapButton
-                            onClick={this.props.mapActions.zoomOut}
+                            onClick={this.props.mapActionsCore.zoomOut}
                             aria-label="Zoom out"
                             className={stylesCore.lastButton}
                         >
@@ -86,30 +129,46 @@ export class MapControlsContainer extends MapControlsContainerCore {
                     <MapToolsButton
                         className={`${stylesCore.firstButton} ${stylesCore.lineButton}`}
                     />
-                    <BasemapPicker className={stylesCore.lastButton} />
+                    <BasemapPicker className={stylesCore.lineButton} />
+                    <EnhancedTooltip title="Fullscreen" placement="right">
+                        <MapButton
+                            onClick={() =>
+                                this.props.appActionsCore.setFullScreenMode(
+                                    !this.props.isFullscreen
+                                )
+                            }
+                            aria-label="Fullscreen"
+                            className={stylesCore.lastButton}
+                        >
+                            {this.props.isFullscreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
+                        </MapButton>
+                    </EnhancedTooltip>
                 </Paper>
             </div>
         );
     }
 }
 
-MapControlsContainer.propTypes = Object.assign({}, MapControlsContainerCore.propTypes, {
-    resetMapView: PropTypes.func.isRequired
-});
+MapControlsContainer.propTypes = {
+    in3DMode: PropTypes.bool.isRequired,
+    isFullscreen: PropTypes.bool.isRequired,
+    mapActionsCore: PropTypes.object.isRequired,
+    appActionsCore: PropTypes.object.isRequired,
+    resetMapView: PropTypes.func.isRequired,
+    className: PropTypes.string
+};
 
 function mapStateToProps(state) {
     return {
         in3DMode: state.map.getIn(["view", "in3DMode"]),
-        distractionFreeMode: state.view.get("distractionFreeMode"),
-        mapControlsToolsOpen: state.view.get("mapControlsToolsOpen"),
-        mapControlsHidden: state.view.get("mapControlsHidden")
+        isFullscreen: state.view.get("isFullscreen")
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        mapActions: bindActionCreators(mapActionsCore, dispatch),
-        appActions: bindActionCreators(appActionsCore, dispatch),
+        mapActionsCore: bindActionCreators(mapActionsCore, dispatch),
+        appActionsCore: bindActionCreators(appActionsCore, dispatch),
         resetMapView: bindActionCreators(appActions.resetMapView, dispatch)
     };
 }
