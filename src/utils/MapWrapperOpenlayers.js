@@ -382,7 +382,6 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
     getDataAtPoint(coords, pixel, palettes) {
         try {
             let data = []; // the collection of pixel data to return
-            let coord = this.map.getCoordinateFromPixel(pixel);
 
             this.map.forEachFeatureAtPixel(
                 pixel,
@@ -390,7 +389,7 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
                     data.push({
                         layerId: mapLayer.get("_layerId"),
                         feature: feature,
-                        coords: coord
+                        featureId: feature.get("_id")
                     });
                 },
                 {

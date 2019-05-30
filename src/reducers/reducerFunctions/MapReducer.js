@@ -41,6 +41,42 @@ export default class MapReducer extends MapReducerCore {
         return state.set("areaSelections", Immutable.Map());
     }
 
+    static pixelClick(state, action) {
+        let pixelCoordinate = state.getIn(["view", "pixelClickCoordinate"]).set("isValid", false);
+        if (
+            !state.getIn(["drawing", "isDrawingEnabled"]) &&
+            !state.getIn(["measuring", "isMeasuringEnabled"])
+        ) {
+            state.get("maps").forEach(map => {
+                if (map.isActive) {
+                    let pixel = map.getPixelFromClickEvent(action.clickEvt);
+                    if (pixel) {
+                        let coords = map.getLatLonFromPixelCoordinate(pixel);
+                        if (coords && coords.isValid) {
+                            let data = Immutable.fromJS(
+                                map.getDataAtPoint(coords, pixel, state.get("palettes"))
+                            );
+                            data = data.slice(0, 1); // just the first entry
+
+                            pixelCoordinate = pixelCoordinate
+                                .set("lat", coords.lat)
+                                .set("lon", coords.lon)
+                                .set("x", pixel[0])
+                                .set("y", pixel[1])
+                                .set("data", data)
+                                .set("isValid", coords.isValid);
+                            return false;
+                        } else {
+                            pixelCoordinate = pixelCoordinate.set("isValid", false);
+                        }
+                    }
+                }
+                return true;
+            });
+        }
+        return state.setIn(["view", "pixelClickCoordinate"], pixelCoordinate);
+    }
+
     static setMapProjection(state, action) {
         const aProj = action.projection;
         const proj = MapUtil.getPreconfiguredProjection(
