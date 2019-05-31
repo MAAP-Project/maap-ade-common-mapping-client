@@ -1,4 +1,5 @@
 import appConfig from "constants/appConfig";
+import * as appStrings from "constants/appStrings";
 import * as appStringsCore from "_core/constants/appStrings";
 import MapWrapperCesiumCore from "_core/utils/MapWrapperCesium";
 
@@ -183,6 +184,129 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
         }
     }
 
+    addGeometry(geometry, interactionType, geodesic = false) {
+        const getGeomCartesianCoords = (geometry, multiplePoints = true) => {
+            let cartesianCoords = null;
+            // Check coordinate type
+            if (geometry.coordinateType === appStringsCore.COORDINATE_TYPE_CARTOGRAPHIC) {
+                // Transform coordinates from cartographic to cartesian
+                if (multiplePoints) {
+                    cartesianCoords = geometry.coordinates.map(x => {
+                        return this.latLonToCartesian(x.lat, x.lon);
+                    });
+                } else {
+                    const rawCoords = geometry.coordinates;
+                    cartesianCoords = this.latLonToCartesian(rawCoords.lat, rawCoords.lon);
+                }
+            } else if (geometry.coordinateType === appStringsCore.COORDINATE_TYPE_CARTESIAN) {
+                cartesianCoords = geometry.coordinates;
+            } else {
+                console.warn(
+                    `Unhandled coordinate type when trying to draw cesium ${geometry.type}:`,
+                    geometry.coordinateType
+                );
+                return false;
+            }
+            return cartesianCoords;
+        };
+        const getShapeMaterial = () => {
+            let material = this.cesium.Material.fromType(this.cesium.Material.RimLightingType);
+            material.uniforms.color = new this.cesium.Color.fromCssColorString(
+                appConfig.GEOMETRY_FILL_COLOR
+            );
+            material.uniforms.rimColor = new this.cesium.Color.fromCssColorString(
+                appConfig.GEOMETRY_FILL_COLOR
+            );
+            return material;
+        };
+
+        try {
+            if (geometry.type === appStringsCore.GEOMETRY_CIRCLE) {
+                let cesiumCenter = geometry.center;
+                // Check coordinate type
+                if (geometry.coordinateType === appStringsCore.COORDINATE_TYPE_CARTOGRAPHIC) {
+                    cesiumCenter = this.latLonToCartesian(geometry.center.lat, geometry.center.lon);
+                }
+                const material = getShapeMaterial();
+                let primitiveToAdd = new this.drawHelper.CirclePrimitive({
+                    center: cesiumCenter,
+                    radius: geometry.radius,
+                    material: material,
+                    showDrawingOutline: true
+                });
+                primitiveToAdd.id = geometry.id;
+                primitiveToAdd._interactionType = interactionType;
+                primitiveToAdd.setStrokeStyle(
+                    new this.cesium.Color.fromCssColorString(appConfig.GEOMETRY_STROKE_COLOR),
+                    appConfig.GEOMETRY_STROKE_WEIGHT
+                );
+                this.map.scene.primitives.add(primitiveToAdd);
+                return true;
+            } else if (
+                geometry.type === appStringsCore.GEOMETRY_LINE_STRING ||
+                geometry.type === appStringsCore.GEOMETRY_LINE
+            ) {
+                let cartesianCoords = getGeomCartesianCoords(geometry, true);
+                let material = this.cesium.Material.fromType(this.cesium.Material.ColorType);
+                material.uniforms.color = new this.cesium.Color.fromCssColorString(
+                    appConfig.GEOMETRY_STROKE_COLOR
+                );
+                let primitiveToAdd = new this.drawHelper.PolylinePrimitive({
+                    positions: cartesianCoords,
+                    // width: appConfig.GEOMETRY_STROKE_WEIGHT,
+                    width: 1.0, // match the other shapes
+                    material: material,
+                    showDrawingOutline: true,
+                    geodesic: true
+                });
+                primitiveToAdd._interactionType = interactionType;
+                primitiveToAdd.id = geometry.id;
+                this.map.scene.primitives.add(primitiveToAdd);
+                return true;
+            } else if (
+                geometry.type === appStringsCore.GEOMETRY_POLYGON ||
+                geometry.type === appStringsCore.GEOMETRY_BOX
+            ) {
+                const cartesianCoords = getGeomCartesianCoords(geometry, true);
+                const material = getShapeMaterial();
+                let primitiveToAdd = new this.drawHelper.PolygonPrimitive({
+                    positions: cartesianCoords,
+                    material: material,
+                    showDrawingOutline: true
+                });
+                primitiveToAdd.id = geometry.id;
+                primitiveToAdd._interactionType = interactionType;
+                primitiveToAdd.setStrokeStyle(
+                    new this.cesium.Color.fromCssColorString(appConfig.GEOMETRY_STROKE_COLOR),
+                    appConfig.GEOMETRY_STROKE_WEIGHT
+                );
+                this.map.scene.primitives.add(primitiveToAdd);
+                return true;
+            } else if (geometry.type === appStringsCore.GEOMETRY_POINT) {
+                let cartesianCoords = getGeomCartesianCoords(geometry, false);
+                const pointPrimitive = new this.cesium.PointPrimitive({
+                    position: cartesianCoords,
+                    color: new this.cesium.Color.fromCssColorString(
+                        appConfig.GEOMETRY_STROKE_COLOR
+                    ),
+                    outlineColor: new this.cesium.Color(0.0, 0.0, 0.0, 1.0),
+                    outlineWeight: appConfig.GEOMETRY_STROKE_WEIGHT,
+                    pixelSize: 8.0
+                });
+                pointPrimitive.id = geometry.id;
+                // add to our persistent PointPrimitiveCollection
+                this.pointCollection.add(pointPrimitive);
+                return true;
+            }
+
+            console.warn("add geometry not complete in cesium", geometry, " is unsupported");
+            return false;
+        } catch (err) {
+            console.warn("Error in MapWrapperCesium.addGeometry:", err);
+            return false;
+        }
+    }
+
     resetView() {
         this.setExtent(appConfig.DEFAULT_BBOX_EXTENT);
     }
@@ -194,11 +318,54 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
             if (f._interactionType === appStringsCore.INTERACTION_DRAW) {
                 acc.push({
                     layerId: "_vector_drawings",
-                    feature: f
+                    feature: f,
+                    featureId: feature.id
                 });
             }
             return acc;
         }, []);
         return data.slice(0, 1);
+    }
+
+    removeShape(shapeId) {
+        try {
+            let rFeature = false;
+            let pList = this.map.scene.primitives;
+            for (let i = 0; i < pList.length; ++i) {
+                let f = pList.get(i);
+                if (f.id === shapeId) {
+                    rFeature = f;
+                    break;
+                }
+            }
+
+            if (rFeature) {
+                pList.remove(rFeature);
+            }
+            return true;
+        } catch (err) {
+            console.warn(`WARN: could not remove shape with id ${shapeId}`, err);
+            return false;
+        }
+    }
+
+    addEventListener(eventStr, callback) {
+        try {
+            switch (eventStr) {
+                case appStrings.EVENT_MOVE_START:
+                    this.map.camera.moveStart.addEventListener(callback);
+                    return true;
+
+                default:
+                    return MapWrapperCesiumCore.prototype.addEventListener.call(
+                        this,
+                        eventStr,
+                        callback
+                    );
+            }
+        } catch (err) {
+            console.warn("Error in MapWrapperCesium.addEventListener:", err);
+            return false;
+        }
     }
 }

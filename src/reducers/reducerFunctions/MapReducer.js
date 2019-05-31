@@ -215,4 +215,28 @@ export default class MapReducer extends MapReducerCore {
         }
         return state;
     }
+
+    static removeDrawing(state, action) {
+        const { id } = action;
+        let anySucceed = state.get("maps").reduce((acc, map) => {
+            if (map.removeShape(id)) {
+                return true;
+            }
+            return acc;
+        }, false);
+
+        if (anySucceed) {
+            return state.removeIn(["areaSelections", id]);
+        }
+        return state;
+    }
+
+    static invalidatePixelClick(state, action) {
+        return state.setIn(["view", "pixelClickCoordinate", "isValid"], false);
+    }
+
+    static setMapViewMode(state, action) {
+        state = MapReducerCore.setMapViewMode(state, action);
+        return this.invalidatePixelClick(state, action);
+    }
 }

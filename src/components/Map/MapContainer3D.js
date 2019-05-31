@@ -1,9 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { MapContainer3D as MapContainer3DCore } from "_core/components/Map/MapContainer3D.js";
-import * as mapActions from "_core/actions/mapActions";
-import * as appStrings from "_core/constants/appStrings";
+import * as mapActionsCore from "_core/actions/mapActions";
+import * as appActions from "actions/appActions";
+import * as appStrings from "constants/appStrings";
+import * as appStringsCore from "_core/constants/appStrings";
 import MiscUtil from "utils/MiscUtil";
 import stylesCore from "_core/components/Map/MapContainer.scss";
 import displayStylesCore from "_core/styles/display.scss";
@@ -12,8 +15,10 @@ export class MapContainer3D extends MapContainer3DCore {
     initializeMapListeners() {
         MapContainer3DCore.prototype.initializeMapListeners.call(this);
 
-        let map = this.props.maps.get(appStrings.MAP_LIB_3D);
+        let map = this.props.maps.get(appStringsCore.MAP_LIB_3D);
         if (typeof map !== "undefined") {
+            map.addEventListener(appStrings.EVENT_MOVE_START, () => this.handleMapMoveStart(map));
+
             // mark complete
             this.listenersInitialized = true;
             console.log("3D Map Listeners Initialized");
@@ -24,7 +29,15 @@ export class MapContainer3D extends MapContainer3DCore {
         // Disable drawing
         this.props.mapActions.disableDrawing();
         // Add geometry to other maps
-        this.props.mapActions.addGeometryToMap(geometry, appStrings.INTERACTION_DRAW, false);
+        this.props.mapActions.addGeometryToMap(geometry, appStringsCore.INTERACTION_DRAW, false);
+    }
+
+    handleMapMoveStart(map) {
+        // Only fire move event if this map is active
+        // and target inactive map
+        if (map.isActive) {
+            this.props.invalidatePixelClick();
+        }
     }
 
     render() {
@@ -49,6 +62,10 @@ export class MapContainer3D extends MapContainer3DCore {
     }
 }
 
+MapContainer3D.propTypes = Object.assign({}, MapContainer3DCore.propTypes, {
+    invalidatePixelClick: PropTypes.func.isRequired
+});
+
 function mapStateToProps(state) {
     return {
         maps: state.map.get("maps"),
@@ -60,7 +77,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        mapActions: bindActionCreators(mapActions, dispatch)
+        invalidatePixelClick: bindActionCreators(appActions.invalidatePixelClick, dispatch),
+        mapActions: bindActionCreators(mapActionsCore, dispatch)
     };
 }
 
