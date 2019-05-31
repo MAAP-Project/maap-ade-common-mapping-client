@@ -7,6 +7,7 @@ import { defaults as Ol_Interaction_Defaults } from "ol/interaction";
 import Ol_Interaction_Draw, { createBox } from "ol/interaction/Draw";
 import Ol_Geom_Linestring from "ol/geom/LineString";
 import Ol_Geom_Polygon from "ol/geom/Polygon";
+import * as appStrings from "constants/appStrings";
 import * as appStringsCore from "_core/constants/appStrings";
 import appConfig from "constants/appConfig";
 import MapUtil from "utils/MapUtil";
@@ -379,6 +380,38 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
         }
     }
 
+    getDataAtPoint(coords, pixel, palettes) {
+        try {
+            let data = []; // the collection of pixel data to return
+
+            this.map.forEachFeatureAtPixel(
+                pixel,
+                (feature, mapLayer) => {
+                    data.push({
+                        layerId: mapLayer.get("_layerId"),
+                        feature: feature,
+                        featureId: feature.getId()
+                    });
+                },
+                {
+                    layerFilter: mapLayer => {
+                        return (
+                            mapLayer.getVisible() && mapLayer.get("_layerId") === "_vector_drawings"
+                        );
+                    },
+                    hitTolerance: 3
+                }
+            );
+
+            return data;
+
+            // return data;
+        } catch (err) {
+            console.warn("Error in MapWrapperOpenlayers.getDataAtPoint:", err);
+            return [];
+        }
+    }
+
     ////////////////////// END OVERRIDES //////////////////////
 
     setProjection(projCode) {
@@ -423,5 +456,45 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
             size: mapSize,
             constrainResolution: false
         });
+    }
+
+    removeShape(shapeId) {
+        try {
+            const mapLayers = this.map.getLayers().getArray();
+            const mapLayer = this.miscUtil.findObjectInArray(
+                mapLayers,
+                "_layerId",
+                "_vector_drawings"
+            );
+            const source = mapLayer.getSource();
+            const rFeature = source.getFeatureById(shapeId);
+
+            if (rFeature) {
+                source.removeFeature(rFeature);
+            }
+            return true;
+        } catch (err) {
+            console.warn(`WARN: could not remove shape with id ${shapeId}`, err);
+            return false;
+        }
+    }
+
+    addEventListener(eventStr, callback) {
+        try {
+            switch (eventStr) {
+                case appStrings.EVENT_MOVE_START:
+                    return this.map.addEventListener("movestart", callback);
+
+                default:
+                    return MapWrapperOpenlayersCore.prototype.addEventListener.call(
+                        this,
+                        eventStr,
+                        callback
+                    );
+            }
+        } catch (err) {
+            console.warn("Error in MapWrapperOpenlayers.addEventListener:", err);
+            return false;
+        }
     }
 }

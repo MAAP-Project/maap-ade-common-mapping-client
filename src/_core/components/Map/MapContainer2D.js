@@ -79,11 +79,6 @@ export class MapContainer2D extends Component {
                 geometry => this.handleMeasureEnd(geometry, appStrings.MEASURE_AREA),
                 appStrings.INTERACTION_MEASURE
             );
-
-            // mark complete
-            this.listenersInitialized = true;
-
-            console.log("2D Map Listeners Initialized");
         } else {
             console.error("Cannot initialize event listeners: 2D MAP NOT AVAILABLE");
         }
@@ -139,7 +134,7 @@ export class MapContainer2D extends Component {
         // need to get some sort of stored state value
         if (this.props.initialLoadComplete && !this.listenersInitialized) {
             this.initializeMapListeners();
-            // this.listenersInitialized = true;
+            this.listenersInitialized = true;
         }
 
         let containerClass = MiscUtil.generateStringFromSet({

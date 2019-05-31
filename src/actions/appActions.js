@@ -53,6 +53,14 @@ export function loadLayerSource(options, defOptions = DEFAULT_LAYER_OPS) {
     };
 }
 
+export function removeDrawing(id) {
+    return { type: actionTypes.REMOVE_DRAWING, id };
+}
+
+export function invalidatePixelClick(id) {
+    return { type: actionTypes.INVALIDATE_PIXEL_CLICK };
+}
+
 export function initializeMap(options) {
     return dispatch => {
         // load in built-in layers

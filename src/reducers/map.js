@@ -23,6 +23,12 @@ export default function map(state = mapState, action, opt_reducer = MapReducer) 
         case actionTypes.RESIZE_MAP:
             return opt_reducer.resizeMap(state, action);
 
+        case actionTypes.REMOVE_DRAWING:
+            return opt_reducer.removeDrawing(state, action);
+
+        case actionTypes.INVALIDATE_PIXEL_CLICK:
+            return opt_reducer.invalidatePixelClick(state, action);
+
         default:
             return mapCore.call(this, state, action, opt_reducer);
     }
