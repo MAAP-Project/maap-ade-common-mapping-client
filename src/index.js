@@ -64,7 +64,10 @@ export class CMC {
             el = target;
         }
         this.domNode = el;
-        appConfig.RENDER_NODE = this.domNode;
+    }
+
+    componentDidMount() {
+        appConfig.RENDER_NODE = this.appNode || this.domNode;
     }
 
     render() {
@@ -72,6 +75,7 @@ export class CMC {
             render(
                 <Provider store={this._store}>
                     <AppContainer
+                        ref={node => (this.appNode = node)}
                         linkDispatch={dispatch => this._linkDispatch(dispatch, resolve)}
                     />
                 </Provider>,
