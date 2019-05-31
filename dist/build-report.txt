@@ -1,33 +1,33 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: cba25a8767f3a36e49b2
+Webpack stats: Hash: b757dded06e58d8062b8
 Version: webpack 4.28.3
-Time: 18954ms
-Built at: 2019-05-28 13:59:18
+Time: 43789ms
+Built at: 2019-05-31 14:12:49
                          Asset      Size  Chunks                    Chunk Names
-07f07f39b8e2305e39ff.worker.js  4.12 KiB          [emitted]         
-                    bundle.css    35 KiB       0  [emitted]         bundle
-                     bundle.js  4.44 MiB       0  [emitted]  [big]  bundle
+1d13acfd67b82518a74e.worker.js  4.12 KiB          [emitted]         
+                    bundle.css  35.4 KiB       0  [emitted]         bundle
+                     bundle.js  4.54 MiB       0  [emitted]  [big]  bundle
                     index.html   9.6 KiB          [emitted]         
                inlineStyles.js  1.18 KiB       1  [emitted]         inlineStyles
 Entrypoint bundle [big] = bundle.js bundle.css
 Entrypoint inlineStyles = inlineStyles.js
   [0] ./node_modules/react/index.js 190 bytes {0} [built]
-  [9] ./src/constants/appConfig.js + 1 modules 7.02 KiB {0} [built]
+  [7] ./src/constants/appConfig.js + 1 modules 7.02 KiB {0} [built]
       | ./src/constants/appConfig.js 977 bytes [built]
       | ./src/_core/constants/appConfig.js 6.05 KiB [built]
- [10] ./node_modules/@babel/runtime/helpers/classCallCheck.js 196 bytes {0} [built]
+  [9] ./node_modules/@babel/runtime/helpers/classCallCheck.js 196 bytes {0} [built]
  [11] ./node_modules/@babel/runtime/helpers/createClass.js 596 bytes {0} [built]
  [27] ./node_modules/immutable/dist/immutable.js 139 KiB {0} [built]
  [36] ./node_modules/react-dom/index.js 1.33 KiB {0} [built]
-[106] (webpack)/buildin/global.js 472 bytes {0} [built]
-[473] ./node_modules/path-browserify/index.js 6.04 KiB {0} [built]
-[475] ./src/store/configureStore.js 362 bytes {0} [built]
-[476] ./src/default-data/layers.json 6.11 KiB {0} [built]
-[521] multi ./src/index 28 bytes {0} [built]
-[522] ./node_modules/@babel/polyfill/lib/index.js 893 bytes {0} [built]
-[704] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
-[899] ./src/styles/inlineStyles.js 238 bytes {1} [built]
-[901] ./src/index.js + 137 modules 457 KiB {0} [built]
+[117] (webpack)/buildin/global.js 472 bytes {0} [built]
+[470] ./node_modules/path-browserify/index.js 6.04 KiB {0} [built]
+[472] ./src/store/configureStore.js 362 bytes {0} [built]
+[473] ./src/default-data/layers.json 6.11 KiB {0} [built]
+[517] multi ./src/index 28 bytes {0} [built]
+[518] ./node_modules/@babel/polyfill/lib/index.js 893 bytes {0} [built]
+[702] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
+[897] ./src/styles/inlineStyles.js 238 bytes {1} [built]
+[899] ./src/index.js + 138 modules 467 KiB {0} [built]
       | ./src/index.js 3.03 KiB [built]
       | ./node_modules/react-redux/es/index.js 270 bytes [built]
       | ./src/components/App/index.js 73 bytes [built]
@@ -35,25 +35,25 @@ Entrypoint inlineStyles = inlineStyles.js
       | ./node_modules/react-redux/es/components/Provider.js 2.29 KiB [built]
       | ./node_modules/react-redux/es/components/connectAdvanced.js 8.26 KiB [built]
       | ./node_modules/react-redux/es/connect/connect.js 4.83 KiB [built]
-      | ./src/components/App/AppContainer.js 5.16 KiB [built]
-      | ./node_modules/react-redux/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js 204 bytes [built]
-      | ./node_modules/react-redux/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js 192 bytes [built]
-      | ./node_modules/react-redux/node_modules/@babel/runtime/helpers/esm/extends.js 397 bytes [built]
-      | ./node_modules/react-redux/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js 350 bytes [built]
+      | ./src/components/App/AppContainer.js 5.25 KiB [built]
+      | ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js 204 bytes [built]
+      | ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js 192 bytes [built]
+      | ./node_modules/@babel/runtime/helpers/esm/extends.js 397 bytes [built]
+      | ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js 350 bytes [built]
       | ./node_modules/react-redux/es/utils/shallowEqual.js 676 bytes [built]
       | ./node_modules/react-redux/es/connect/mapDispatchToProps.js 915 bytes [built]
       | ./node_modules/react-redux/es/connect/mapStateToProps.js 504 bytes [built]
-      |     + 123 hidden modules
-    + 931 hidden modules
+      |     + 124 hidden modules
+    + 930 hidden modules
 
 WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
 This can impact web performance.
 Assets: 
-  bundle.js (4.44 MiB)
+  bundle.js (4.54 MiB)
 
 WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
 Entrypoints:
-  bundle (4.48 MiB)
+  bundle (4.57 MiB)
       bundle.js
       bundle.css
 
@@ -215,6 +215,10 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Map/CoordinateTracker.scss 714 bytes {0} [built]
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
+Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/Map/FeatureSelectMenu.scss:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Map/FeatureSelectMenu.scss 763 bytes {0} [built]
+    [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/Map/MapControlsContainer.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Map/MapControlsContainer.scss 366 bytes {0} [built]
@@ -237,8 +241,8 @@ Child html-webpack-plugin for "index.html":
     [3] (webpack)/buildin/module.js 497 bytes {0} [built]
 Child worker:
                              Asset      Size  Chunks             Chunk Names
-    07f07f39b8e2305e39ff.worker.js  4.12 KiB       0  [emitted]  main
-    Entrypoint main = 07f07f39b8e2305e39ff.worker.js
+    1d13acfd67b82518a74e.worker.js  4.12 KiB       0  [emitted]  main
+    Entrypoint main = 1d13acfd67b82518a74e.worker.js
     [0] ./node_modules/@babel/runtime/helpers/defineProperty.js 289 bytes {0} [built]
     [1] ./node_modules/@babel/runtime/helpers/classCallCheck.js 196 bytes {0} [built]
     [2] ./node_modules/@babel/runtime/helpers/createClass.js 596 bytes {0} [built]
