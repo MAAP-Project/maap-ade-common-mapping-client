@@ -1,8 +1,8 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: d3590f07db45d63a9e7f
+Webpack stats: Hash: b757dded06e58d8062b8
 Version: webpack 4.28.3
-Time: 15929ms
-Built at: 2019-05-31 15:01:56
+Time: 16524ms
+Built at: 2019-06-04 14:50:49
                          Asset      Size  Chunks                    Chunk Names
 1d13acfd67b82518a74e.worker.js  4.12 KiB          [emitted]         
                     bundle.css  35.4 KiB       0  [emitted]         bundle
@@ -28,7 +28,7 @@ Entrypoint inlineStyles = inlineStyles.js
 [702] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 [897] ./src/styles/inlineStyles.js 238 bytes {1} [built]
 [899] ./src/index.js + 138 modules 467 KiB {0} [built]
-      | ./src/index.js 3.22 KiB [built]
+      | ./src/index.js 3.03 KiB [built]
       | ./node_modules/react-redux/es/index.js 270 bytes [built]
       | ./src/components/App/index.js 73 bytes [built]
       | ./node_modules/react-redux/es/components/Context.js 118 bytes [built]
