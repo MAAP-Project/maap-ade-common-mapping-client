@@ -24,6 +24,7 @@ import {
     FeatureSelectMenu
 } from "components/Map";
 import { CurrentDatePicker } from "components/DatePicker";
+import { PlotCommandDisplay } from "components/Plot";
 import { AlertsContainer } from "_core/components/Alerts";
 import stylesCore from "_core/components/App/AppContainer.scss";
 
@@ -109,6 +110,7 @@ export class AppContainer extends Component {
                         <CoordinateTracker />
                         <FeatureSelectMenu />
                         <CurrentDatePicker />
+                        <PlotCommandDisplay />
                     </div>
                 </MuiThemeProvider>
             </JssProvider>

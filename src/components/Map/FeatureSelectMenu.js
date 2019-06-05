@@ -23,7 +23,15 @@ export class FeatureSelectMenu extends Component {
     }
 
     plotData() {
-        const { invalidatePixelClick } = this.props;
+        const {
+            clickData,
+            invalidatePixelClick,
+            generatePlotCommand,
+            setPlotCommandDisplay
+        } = this.props;
+        const shape = clickData.get("data").get(0);
+        generatePlotCommand(shape.get("featureId"));
+        setPlotCommandDisplay(true);
         invalidatePixelClick();
     }
 
@@ -50,13 +58,13 @@ export class FeatureSelectMenu extends Component {
                         className={styles.contextMenuItem}
                         aria-label="Plot"
                         onClick={() => {
-                            console.log("GOOSE");
+                            this.plotData();
                         }}
                     >
                         <ListItemIcon classes={{ root: styles.listItemIcon }}>
                             <BarChartIcon />
                         </ListItemIcon>
-                        <ListItemText inset primary="Plot Data" />
+                        <ListItemText inset primary="Get Plot Commands" />
                     </MenuItem>
                     <MenuItem
                         className={styles.contextMenuItem}
@@ -81,6 +89,8 @@ FeatureSelectMenu.propTypes = {
     clickData: PropTypes.object.isRequired,
     removeDrawing: PropTypes.func.isRequired,
     invalidatePixelClick: PropTypes.func.isRequired,
+    generatePlotCommand: PropTypes.func.isRequired,
+    setPlotCommandDisplay: PropTypes.func.isRequired,
     className: PropTypes.string
 };
 
@@ -93,7 +103,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         invalidatePixelClick: bindActionCreators(appActions.invalidatePixelClick, dispatch),
-        removeDrawing: bindActionCreators(appActions.removeDrawing, dispatch)
+        removeDrawing: bindActionCreators(appActions.removeDrawing, dispatch),
+        generatePlotCommand: bindActionCreators(appActions.generatePlotCommand, dispatch),
+        setPlotCommandDisplay: bindActionCreators(appActions.setPlotCommandDisplay, dispatch)
     };
 }
 
