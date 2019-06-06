@@ -8,7 +8,6 @@ export default class PlotReducer {
     static generatePlotCommand(state, action) {
         const { layerIds, startDate, endDate, geometry } = action;
 
-        const layersStr = layerIds.join(", ");
         const startDateStr = moment(startDate || new Date())
             .utc()
             .toISOString();
@@ -19,9 +18,10 @@ export default class PlotReducer {
             .remove("coordinateType")
             .remove("id")
             .toJS();
+        const layersStr = layerIds.join(", ");
         const geometryStr = JSON.stringify(geom);
 
-        const commandStr = `data = ipycmc.retrieve_data("timeseries", [${layersStr}], "${startDateStr}", "${endDateStr}", ${geometryStr})`;
+        const commandStr = `data = ipycmc.retrieve_data("timeseries", "${startDateStr}", "${endDateStr}", [${layersStr}], ${geometryStr})`;
 
         return state
             .setIn(["commandInfo", "layers"], layerIds)
