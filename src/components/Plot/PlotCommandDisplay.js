@@ -51,7 +51,7 @@ export class PlotCommandDisplay extends Component {
                 onClose={this.closeModal}
                 aria-labelledby="customized-dialog-title"
                 open={display}
-                container={appConfig.RENDER_NODE}
+                container={() => appConfig.RENDER_NODE}
                 maxWidth="md"
                 className={containerClasses}
             >
