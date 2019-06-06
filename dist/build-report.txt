@@ -1,11 +1,11 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: 4d6dc395a00de36b39c2
+Webpack stats: Hash: 2bcee727aa539f083ef0
 Version: webpack 4.28.3
-Time: 38574ms
-Built at: 2019-06-05 16:51:24
+Time: 38108ms
+Built at: 2019-06-06 10:40:39
                          Asset      Size  Chunks                    Chunk Names
 1d13acfd67b82518a74e.worker.js  4.12 KiB          [emitted]         
-                    bundle.css  36.1 KiB       0  [emitted]         bundle
+                    bundle.css  36.3 KiB       0  [emitted]         bundle
                      bundle.js  4.54 MiB       0  [emitted]  [big]  bundle
                     index.html   9.6 KiB          [emitted]         
                inlineStyles.js  1.18 KiB       1  [emitted]         inlineStyles
@@ -229,7 +229,7 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/Plot/PlotCommandDisplay.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
-    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Plot/PlotCommandDisplay.scss 1.12 KiB {0} [built]
+    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Plot/PlotCommandDisplay.scss 1.38 KiB {0} [built]
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/styles/common.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename

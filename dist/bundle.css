@@ -184,6 +184,9 @@
     border-radius: 2px;
     font-size: 22px;
     overflow: hidden; }
+.PlotCommandDisplay__root___10K9x {
+  position: absolute !important; }
+
 .PlotCommandDisplay__closeButton___2QJn5 {
   position: absolute;
   right: 8px;
@@ -216,6 +219,9 @@
   height: 0px;
   overflow: hidden;
   opacity: 0; }
+
+.PlotCommandDisplay__modalBackdrop___30gOw {
+  position: absolute !important; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
