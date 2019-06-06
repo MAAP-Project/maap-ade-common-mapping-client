@@ -25,6 +25,7 @@ export class PlotCommandDisplay extends Component {
             this.retrieveCmdText.select();
 
             document.execCommand("copy");
+            this.retrieveCmdText.blur();
         }
     };
 
@@ -34,6 +35,7 @@ export class PlotCommandDisplay extends Component {
             this.plotCmdText.select();
 
             document.execCommand("copy");
+            this.plotCmdText.blur();
         }
     };
 
@@ -76,7 +78,7 @@ export class PlotCommandDisplay extends Component {
                     </Typography>
                     <Typography variant="overline">Signature</Typography>
                     <div className={styles.commandText}>
-                        {`retrieve_data(plotType:String, layer_ids:Array<String>, startDate:String, endDate:String, geometry:Object)`}
+                        {`retrieve_data(plotType:String, startDate:String, endDate:String, layer_ids:Array<String>, geometry:Object)`}
                     </div>
                     <Typography variant="overline">Command</Typography>
                     <div className={styles.commandText}>{commandStr}</div>
