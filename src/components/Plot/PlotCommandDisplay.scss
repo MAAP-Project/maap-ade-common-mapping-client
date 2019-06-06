@@ -1,11 +1,23 @@
 .root {
+    position: absolute !important;
+}
+
+.title {
+    padding: 10px 24px;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .closeButton {
     position: absolute;
-    right: 8px;
-    top: 8px;
+    right: 20px;
+    top: 50%;
+    transform: translate(0px, -50%);
     color: #9e9e9e;
+}
+
+.content {
+    padding: 10px 24px 24px;
 }
 
 .buttonRow {
@@ -13,6 +25,7 @@
 }
 
 .commandText {
+    composes: fontRobotoMono from "../../_core/styles/text.scss";
     width: 100%;
     overflow: hidden;
     overflow-x: auto;
@@ -22,6 +35,8 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     padding: 4px 7px;
     box-sizing: border-box;
+    white-space: nowrap;
+    font-size: 13px;
 }
 
 .hiddenCmdText {
@@ -33,4 +48,8 @@
     height: 0px;
     overflow: hidden;
     opacity: 0;
+}
+
+.modalBackdrop {
+    position: absolute !important;
 }
