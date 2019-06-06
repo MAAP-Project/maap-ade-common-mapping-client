@@ -1,0 +1,36 @@
+.root {
+}
+
+.closeButton {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    color: #9e9e9e;
+}
+
+.buttonRow {
+    text-align: right;
+}
+
+.commandText {
+    width: 100%;
+    overflow: hidden;
+    overflow-x: auto;
+    user-select: text;
+    cursor: text;
+    margin: 5px 0px 12px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 4px 7px;
+    box-sizing: border-box;
+}
+
+.hiddenCmdText {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+}

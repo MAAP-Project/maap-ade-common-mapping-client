@@ -17,6 +17,7 @@ import asynchronous from "_core/reducers/async";
 import analytics from "_core/reducers/analytics";
 import alerts from "_core/reducers/alerts";
 import webWorker from "_core/reducers/webWorker";
+import plot from "reducers/plot";
 
 const rootReducer = combineReducers({
     view,
@@ -29,7 +30,8 @@ const rootReducer = combineReducers({
     asynchronous,
     analytics,
     alerts,
-    webWorker
+    webWorker,
+    plot
 });
 
 export default rootReducer;
