@@ -1044,11 +1044,9 @@ button.AppContainer__context-menu-item___1M1Z0 {
   position: absolute;
   top: 0px;
   left: 0px;
-  visibility: hidden;
-  width: 0px;
-  height: 0px;
   overflow: hidden;
-  opacity: 0; }
+  opacity: 0;
+  z-index: -1; }
 
 .PlotCommandDisplay__modalBackdrop___30gOw {
   position: absolute !important; }

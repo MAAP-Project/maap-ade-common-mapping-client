@@ -1,11 +1,11 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: ffe34e81beb43e489c25
+Webpack stats: Hash: ba5871042bb1f9db36a1
 Version: webpack 4.28.3
-Time: 42351ms
-Built at: 2019-06-06 11:37:48
+Time: 39244ms
+Built at: 2019-06-06 14:50:42
                          Asset      Size  Chunks                    Chunk Names
 1d13acfd67b82518a74e.worker.js  4.12 KiB          [emitted]         
-                    bundle.css  36.6 KiB       0  [emitted]         bundle
+                    bundle.css  36.5 KiB       0  [emitted]         bundle
                      bundle.js  4.54 MiB       0  [emitted]  [big]  bundle
                     index.html   9.6 KiB          [emitted]         
                inlineStyles.js  1.18 KiB       1  [emitted]         inlineStyles
@@ -27,7 +27,7 @@ Entrypoint inlineStyles = inlineStyles.js
 [519] ./node_modules/@babel/polyfill/lib/index.js 893 bytes {0} [built]
 [703] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 [899] ./src/styles/inlineStyles.js 238 bytes {1} [built]
-[901] ./src/index.js + 140 modules 476 KiB {0} [built]
+[901] ./src/index.js + 140 modules 475 KiB {0} [built]
       | ./src/index.js 3.03 KiB [built]
       | ./node_modules/react-redux/es/index.js 270 bytes [built]
       | ./src/components/App/index.js 73 bytes [built]
@@ -231,7 +231,7 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
     [1] ./node_modules/css-loader/dist/cjs.js?{"url":false,"modules":true,"importLoaders":2,"localIdentName":"[name]__[local]___[hash:base64:5]","sourceMap":false}!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/_core/styles/text.scss 923 bytes {0} [built]
-    [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Plot/PlotCommandDisplay.scss 2.51 KiB {0} [built]
+    [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Plot/PlotCommandDisplay.scss 2.48 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/styles/common.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/styles/common.scss 288 bytes {0} [built]
