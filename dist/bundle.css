@@ -942,24 +942,6 @@
 
 .LayerMenuContainer__emptyLabel___2gYLD {
   padding: 7px 9px; }
-.DatePicker__datePickerSelection___3No85 {
-  position: relative;
-  text-align: center;
-  padding: 2px 5px; }
-
-.DatePicker__inputs___2EyoD {
-  padding: 5px 0px; }
-
-.DatePicker__inputWrapper___2qEaC {
-  padding: 3px 5px;
-  font-size: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-sizing: border-box; }
-  .DatePicker__inputWrapper___2qEaC:before {
-    display: none; }
-
-.DatePicker__input___2HDL1 {
-  padding: 0px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1002,6 +984,24 @@ button.AppContainer__context-menu-item___1M1Z0 {
   height: 100%;
   overflow: hidden;
   white-space: nowrap; }
+.DatePicker__datePickerSelection___3No85 {
+  position: relative;
+  text-align: center;
+  padding: 2px 5px; }
+
+.DatePicker__inputs___2EyoD {
+  padding: 5px 0px; }
+
+.DatePicker__inputWrapper___2qEaC {
+  padding: 3px 5px;
+  font-size: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; }
+  .DatePicker__inputWrapper___2qEaC:before {
+    display: none; }
+
+.DatePicker__input___2HDL1 {
+  padding: 0px; }
 .PlotCommandDisplay__root___10K9x {
   position: absolute !important; }
 
