@@ -4,31 +4,43 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.BasemapPicker__basemapPicker___10CS1 {
-  margin-top: 10px; }
-
-.BasemapPicker__image___l0xRz {
+.LayerControlContainer__layerControl___1acOl {
+  position: relative;
   width: 100%;
-  height: 44px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover; }
+  margin: 0px; }
 
-.BasemapPicker__caption___bCCHR {
-  font-weight: 500;
-  padding: 2px 8px 2px 3px; }
+.LayerControlContainer__layerControlContent___1QBQL {
+  padding: 0px 13px;
+  height: 38px; }
 
-.BasemapPicker__buttonBase___r-mpP {
-  padding: 2px;
-  padding-bottom: 0px; }
+.LayerControlContainer__iconButtonSmall___veXhr {
+  width: 25px;
+  height: 25px; }
+
+.LayerControlContainer__collapseEntered___B0Fjx {
+  overflow: visible; }
+
+.LayerControlContainer__layerControlIconRow___2xMJC {
+  position: relative;
+  display: inline-block;
+  vertical-align: top; }
+
+.LayerControlContainer__colorbar___3Op29 {
+  vertical-align: top;
+  margin-right: 5px; }
+
+.LayerControlContainer__popover___1PxGF {
+  z-index: 1; }
+
+.LayerControlContainer__positionPopover___2pJOg {
+  -webkit-transform: translate(-4px, 0px);
+          transform: translate(-4px, 0px); }
+
+/* MUI Overrides */
+.LayerControlContainer__dense___TPliE {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 5px; }
 .common__cursorCrosshair___z3Gwf {
   cursor: crosshair; }
 .LayerPositionControl__positionControl___WtMPX {
@@ -155,6 +167,21 @@
   box-shadow: none; }
   .CoordinateTracker__coordinateTracker___1dScm p {
     font-size: 0.8rem; }
+.FeatureSelectMenu__root___ybZL_ {
+  position: absolute; }
+
+.FeatureSelectMenu__contextMenuItem___1g6kS {
+  min-width: 50px;
+  text-align: left;
+  justify-content: left; }
+
+.FeatureSelectMenu__listItemIcon___9kZEi {
+  margin-right: 0px; }
+  .FeatureSelectMenu__listItemIcon___9kZEi svg,
+  .FeatureSelectMenu__listItemIcon___9kZEi i {
+    font-size: 22px;
+    padding-left: 1px;
+    padding-top: 0px; }
 .CurrentDateDisplay__root___1fIsr {
   font-weight: 700; }
 .CurrentDatePicker__root___19Pco {
@@ -166,7 +193,8 @@
   padding: 0px 5px;
   display: flex;
   align-items: center;
-  flex-flow: row nowrap; }
+  flex-flow: row nowrap;
+  box-sizing: border-box; }
 
 .CurrentDatePicker__picker___1cUS7 {
   flex: 1 1; }
@@ -390,29 +418,6 @@
  */
 /* colors */
 /* neutrals */
-.LayerControlLabel__controlLabel___Je-Ud {
-  background: #e91e63;
-  padding: 5px;
-  font-size: 1.2rem;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
 .LayerPositionIcon__orderLabel___1hp-N {
   -webkit-font-smoothing: antialiased;
   position: relative;
@@ -440,6 +445,29 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.LayerControlLabel__controlLabel___Je-Ud {
+  background: #e91e63;
+  padding: 5px;
+  font-size: 1.2rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
 .LayerPositionControl__positionControl___2dPPC {
   display: inline-block; }
 
@@ -450,78 +478,6 @@
   height: 26px;
   line-height: 0px;
   width: 50%; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-.LayerControlContainer__layerControl___1acOl {
-  position: relative;
-  width: 100%;
-  margin: 0px; }
-
-.LayerControlContainer__layerControlContent___1QBQL {
-  padding: 0px 13px;
-  height: 38px; }
-
-.LayerControlContainer__iconButtonSmall___veXhr {
-  width: 25px;
-  height: 25px; }
-
-.LayerControlContainer__collapseEntered___B0Fjx {
-  overflow: visible; }
-
-.LayerControlContainer__layerControlIconRow___2xMJC {
-  position: relative;
-  display: inline-block;
-  vertical-align: top; }
-
-.LayerControlContainer__colorbar___3Op29 {
-  vertical-align: top;
-  margin-right: 5px; }
-
-.LayerControlContainer__popover___1PxGF {
-  z-index: 1; }
-
-.LayerControlContainer__positionPopover___2pJOg {
-  -webkit-transform: translate(-4px, 0px);
-          transform: translate(-4px, 0px); }
-
-/* MUI Overrides */
-.LayerControlContainer__dense___TPliE {
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 5px; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-.ModalMenu__modalMenu___bxnC9 {
-  max-width: 550px; }
-
-.ModalMenu__close___X4Hu4 {
-  margin-right: -12px;
-  margin-left: 20px; }
-
-.ModalMenu__back___3XFa1 {
-  margin-left: -12px;
-  margin-right: 20px; }
-
-/* MUI overrides */
-.ModalMenu__appbar___19M56 {
-  position: relative; }
-
-.ModalMenu__flex___2XGaV {
-  flex: 1; }
-
-.ModalMenu__root___2TGYK {
-  padding: 0px; }
-
-.ModalMenu__paper___VEB1x {
-  overflow-y: inherit; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -607,87 +563,6 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.BaseMapList__preview___1IJ7y {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-  float: left;
-  background: #fafafa;
-  white-space: normal;
-  font-size: 1.2rem;
-  line-height: 1.2rem; }
-
-/* MUI overrides */
-.BaseMapList__menuItemRoot___1J2tO {
-  padding: 20px 10px; }
-
-.BaseMapList__selectMenu___EWU1A {
-  height: 60px;
-  padding-top: 10px; }
-
-.BaseMapList__selectMenuIcon___3CxBe {
-  top: 24px; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.MapContainer__mapContainer___22fhH {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-  background-color: #212121; }
-
-.MapContainer__mapRenderWrapper___ZMex1 {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: #545454; }
-
-.MapContainer__mapRender___1Zvrz {
-  width: 100%;
-  height: 100%; }
-
-.cesium-viewer,
-.cesium-viewer-cesiumWidgetContainer,
-.cesium-widget,
-.cesium-widget canvas {
-  height: 100%;
-  width: 100%; }
-
-.cesium-viewer-bottom {
-  display: none; }
-
-.react-contextmenu-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
 .DrawingTooltip__drawingTooltip___16zfD {
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
@@ -758,14 +633,6 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-.AlertsContainer__root___1oxKQ {
-  min-width: 450px; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -774,23 +641,76 @@
  */
 /* colors */
 /* neutrals */
-.CoordinateTracker__coordinateTracker___1FBZB {
-  position: absolute;
-  bottom: 75px;
-  right: 15px;
+.MapContainer__mapContainer___22fhH {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   z-index: 0;
-  pointer-events: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  padding: 0.1rem 0.5rem;
-  border-radius: 2px;
-  background: rgba(0, 0, 0, 0.26);
-  color: white;
-  box-shadow: none; }
-  .CoordinateTracker__coordinateTracker___1FBZB p {
-    font-size: 1.1rem; }
+  background-color: #212121; }
+
+.MapContainer__mapRenderWrapper___ZMex1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #545454; }
+
+.MapContainer__mapRender___1Zvrz {
+  width: 100%;
+  height: 100%; }
+
+.cesium-viewer,
+.cesium-viewer-cesiumWidgetContainer,
+.cesium-widget,
+.cesium-widget canvas {
+  height: 100%;
+  width: 100%; }
+
+.cesium-viewer-bottom {
+  display: none; }
+
+.react-contextmenu-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+.ModalMenu__modalMenu___bxnC9 {
+  max-width: 550px; }
+
+.ModalMenu__close___X4Hu4 {
+  margin-right: -12px;
+  margin-left: 20px; }
+
+.ModalMenu__back___3XFa1 {
+  margin-left: -12px;
+  margin-right: 20px; }
+
+/* MUI overrides */
+.ModalMenu__appbar___19M56 {
+  position: relative; }
+
+.ModalMenu__flex___2XGaV {
+  flex: 1; }
+
+.ModalMenu__root___2TGYK {
+  padding: 0px; }
+
+.ModalMenu__paper___VEB1x {
+  overflow-y: inherit; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+.AlertsContainer__root___1oxKQ {
+  min-width: 450px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1082,6 +1002,54 @@ button.AppContainer__context-menu-item___1M1Z0 {
   height: 100%;
   overflow: hidden;
   white-space: nowrap; }
+.PlotCommandDisplay__root___10K9x {
+  position: absolute !important; }
+
+.PlotCommandDisplay__title___3-5Z1 {
+  padding: 10px 24px;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3); }
+
+.PlotCommandDisplay__closeButton___2QJn5 {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  -webkit-transform: translate(0px, -50%);
+          transform: translate(0px, -50%);
+  color: #9e9e9e; }
+
+.PlotCommandDisplay__content___3wS93 {
+  padding: 10px 24px 24px; }
+
+.PlotCommandDisplay__buttonRow___3-3m8 {
+  text-align: right; }
+
+.PlotCommandDisplay__commandText___3MluN {
+  width: 100%;
+  overflow: hidden;
+  overflow-x: auto;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+  cursor: text;
+  margin: 5px 0px 12px 0px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 4px 7px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  font-size: 13px; }
+
+.PlotCommandDisplay__hiddenCmdText___L4Hn4 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  opacity: 0;
+  z-index: -1; }
+
+.PlotCommandDisplay__modalBackdrop___30gOw {
+  position: absolute !important; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1168,6 +1136,73 @@ button.AppContainer__context-menu-item___1M1Z0 {
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
+.Colorbar__colorbar___FOiOP {
+  width: 255px;
+  line-height: 1.2rem;
+  height: 25px;
+  display: inline-block;
+  background-repeat: repeat;
+  background-size: 50%;
+  position: relative; }
+
+.Colorbar__warning___3xjKl {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.075rem;
+  font-weight: 600; }
+
+.Colorbar__typeNone___1P-KY {
+  height: 16px;
+  text-align: center;
+  color: #9e9e9e;
+  background: #eee; }
+
+.Colorbar__labelContainer___2eUhX {
+  height: 1.1rem;
+  text-align: center;
+  line-height: 1.1rem;
+  width: 255px;
+  margin-top: 2px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between; }
+
+.Colorbar__label___3MyEF {
+  font-size: 1.1rem;
+  vertical-align: top; }
+
+.Colorbar__units___jOZ9Q { }
+
+.Colorbar__min___1YAfH { }
+
+.Colorbar__max___3BXbe { }
+
+.Colorbar__colorPreview___1Nm1u {
+  height: 1.1rem;
+  text-align: center;
+  line-height: 1.1rem;
+  width: 255px;
+  margin-top: 2px;
+  display: block; }
+
+.Colorbar__color___2VFmI {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%; }
+
+.Colorbar__value___7_A0P {
+  margin-left: 0.3rem; }
+
+.Colorbar__hoverCross___3WQok:hover {
+  cursor: crosshair; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1233,73 +1268,6 @@ button.AppContainer__context-menu-item___1M1Z0 {
     background-color: #e91e63;
     -webkit-transform: scale(2);
             transform: scale(2); }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-.Colorbar__colorbar___FOiOP {
-  width: 255px;
-  line-height: 1.2rem;
-  height: 25px;
-  display: inline-block;
-  background-repeat: repeat;
-  background-size: 50%;
-  position: relative; }
-
-.Colorbar__warning___3xjKl {
-  position: relative;
-  text-transform: uppercase;
-  font-size: 1rem;
-  letter-spacing: 0.075rem;
-  font-weight: 600; }
-
-.Colorbar__typeNone___1P-KY {
-  height: 16px;
-  text-align: center;
-  color: #9e9e9e;
-  background: #eee; }
-
-.Colorbar__labelContainer___2eUhX {
-  height: 1.1rem;
-  text-align: center;
-  line-height: 1.1rem;
-  width: 255px;
-  margin-top: 2px;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between; }
-
-.Colorbar__label___3MyEF {
-  font-size: 1.1rem;
-  vertical-align: top; }
-
-.Colorbar__units___jOZ9Q { }
-
-.Colorbar__min___1YAfH { }
-
-.Colorbar__max___3BXbe { }
-
-.Colorbar__colorPreview___1Nm1u {
-  height: 1.1rem;
-  text-align: center;
-  line-height: 1.1rem;
-  width: 255px;
-  margin-top: 2px;
-  display: block; }
-
-.Colorbar__color___2VFmI {
-  display: inline-block;
-  width: 1.1rem;
-  height: 1.1rem;
-  border-radius: 50%; }
-
-.Colorbar__value___7_A0P {
-  margin-left: 0.3rem; }
-
-.Colorbar__hoverCross___3WQok:hover {
-  cursor: crosshair; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
