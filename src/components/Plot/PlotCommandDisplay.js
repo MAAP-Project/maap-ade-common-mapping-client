@@ -54,6 +54,9 @@ export class PlotCommandDisplay extends Component {
                 container={() => appConfig.RENDER_NODE}
                 maxWidth="md"
                 className={containerClasses}
+                BackdropProps={{
+                    className: styles.modalBackdrop
+                }}
             >
                 <MuiDialogTitle disableTypography className={styles.title}>
                     <Typography variant="h6">Notebook Plot Commands</Typography>
@@ -65,18 +68,18 @@ export class PlotCommandDisplay extends Component {
                         <CloseIcon />
                     </IconButton>
                 </MuiDialogTitle>
-                <MuiDialogContent>
+                <MuiDialogContent className={styles.content}>
                     <Typography variant="subtitle2">Retrieve Data</Typography>
                     <Typography gutterBottom>
                         Enter this command to retrieve a json data structure packed with the
                         selected data. You may want to modify the plot type and the time range.
                     </Typography>
                     <Typography variant="overline">Signature</Typography>
-                    <pre className={styles.commandText}>
+                    <div className={styles.commandText}>
                         {`retrieve_data(plotType:String, layer_ids:Array<String>, startDate:String, endDate:String, geometry:Object)`}
-                    </pre>
+                    </div>
                     <Typography variant="overline">Command</Typography>
-                    <pre className={styles.commandText}>{commandStr}</pre>
+                    <div className={styles.commandText}>{commandStr}</div>
                     <input
                         type="text"
                         ref={node => {
@@ -89,7 +92,7 @@ export class PlotCommandDisplay extends Component {
                         readOnly
                     />
                     <div className={styles.buttonRow}>
-                        <Button onClick={this.copyRetrieve} color="primary">
+                        <Button onClick={this.copyRetrieve} color="primary" size="small">
                             Copy Retrieval Command
                         </Button>
                     </div>
@@ -99,11 +102,11 @@ export class PlotCommandDisplay extends Component {
                         may want to modify the plot type.
                     </Typography>
                     <Typography variant="overline">Signature</Typography>
-                    <pre className={styles.commandText}>
+                    <div className={styles.commandText}>
                         {`plot_data(plotType:String, data:Object)`}
-                    </pre>
+                    </div>
                     <Typography variant="overline">Command</Typography>
-                    <pre className={styles.commandText}>{plotStr}</pre>
+                    <div className={styles.commandText}>{plotStr}</div>
                     <input
                         type="text"
                         ref={node => {
@@ -116,7 +119,7 @@ export class PlotCommandDisplay extends Component {
                         readOnly
                     />
                     <div className={styles.buttonRow}>
-                        <Button onClick={this.copyPlot} color="primary">
+                        <Button onClick={this.copyPlot} color="primary" size="small">
                             Copy Plot Command
                         </Button>
                     </div>
