@@ -53,6 +53,42 @@ export function loadLayerSource(options, defOptions = DEFAULT_LAYER_OPS) {
     };
 }
 
+export function removeDrawing(id) {
+    return { type: actionTypes.REMOVE_DRAWING, id };
+}
+
+export function invalidatePixelClick(id) {
+    return { type: actionTypes.INVALIDATE_PIXEL_CLICK };
+}
+
+export function generatePlotCommand(geometryId) {
+    return (dispatch, getState) => {
+        const state = getState();
+
+        const layerIds = state.map
+            .getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA])
+            .filter(layer => layer.get("isActive"))
+            .toList()
+            .map(layer => layer.get("id"));
+        const startDate = state.map.get("date");
+        const geometry = state.map
+            .get("areaSelections")
+            .find(geom => geom.get("id") === geometryId);
+        if (geometry) {
+            dispatch({
+                type: actionTypes.GENERATE_PLOT_COMMAND,
+                layerIds,
+                startDate,
+                geometry: geometry.toJS()
+            });
+        }
+    };
+}
+
+export function setPlotCommandDisplay(display) {
+    return { type: actionTypes.SET_PLOT_COMMAND_DISPLAY, display };
+}
+
 export function initializeMap(options) {
     return dispatch => {
         // load in built-in layers

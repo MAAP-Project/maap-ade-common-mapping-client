@@ -33,12 +33,13 @@ import appConfig from "constants/appConfig";
 
 if (process.env.NODE_ENV !== "production") {
     const store = configureStore();
+    const target = document.getElementById("app");
 
     render(
         <Provider store={store}>
             <AppContainer />
         </Provider>,
-        document.getElementById("app")
+        target
     );
 }
 
@@ -63,6 +64,7 @@ export class CMC {
             el = target;
         }
         this.domNode = el;
+        appConfig.RENDER_NODE = this.domNode;
     }
 
     render() {

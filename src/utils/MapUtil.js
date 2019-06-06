@@ -24,6 +24,34 @@ export default class MapUtil extends MapUtilCore {
                         Ol_Proj.get(appStringsCore.PROJECTIONS.latlon.code).getUnits()
                     ]
             });
+        } else if (geometry.type === appStringsCore.GEOMETRY_BOX) {
+            const coords = geometry.coordinates;
+            const maxLon = coords.reduce((acc, c) => {
+                if (c.lon > acc) {
+                    return c.lon;
+                }
+                return acc;
+            }, Number.NEGATIVE_INFINITY);
+            const maxLat = coords.reduce((acc, c) => {
+                if (c.lat > acc) {
+                    return c.lat;
+                }
+                return acc;
+            }, Number.NEGATIVE_INFINITY);
+            const minLon = coords.reduce((acc, c) => {
+                if (c.lon < acc) {
+                    return c.lon;
+                }
+                return acc;
+            }, Number.POSITIVE_INFINITY);
+            const minLat = coords.reduce((acc, c) => {
+                if (c.lat < acc) {
+                    return c.lat;
+                }
+                return acc;
+            }, Number.POSITIVE_INFINITY);
+
+            return geom.set("coordinates", Immutable.List([minLon, minLat, maxLon, maxLat]));
         }
         return geom;
     }
