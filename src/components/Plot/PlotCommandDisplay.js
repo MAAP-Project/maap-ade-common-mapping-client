@@ -24,8 +24,7 @@ export class PlotCommandDisplay extends Component {
             this.retrieveCmdText.focus();
             this.retrieveCmdText.select();
 
-            const successful = document.execCommand("copy");
-            console.log(`CMD SUCCESS: ${successful} -- ${this.retrieveCmdText.value}`);
+            document.execCommand("copy");
         }
     };
 
@@ -34,8 +33,7 @@ export class PlotCommandDisplay extends Component {
             this.plotCmdText.focus();
             this.plotCmdText.select();
 
-            const successful = document.execCommand("copy");
-            console.log(`CMD SUCCESS: ${successful} -- ${this.plotCmdText.value}`);
+            document.execCommand("copy");
         }
     };
 
