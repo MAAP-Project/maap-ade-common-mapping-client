@@ -7,7 +7,6 @@
     ],
     "main": "dist/bundle.js",
     "scripts": {
-        "postinstall": "scripts/postinstall.sh",
         "prestart": "npm run prep:dist",
         "precommit": "lint-staged",
         "start": "npm run open:src",
