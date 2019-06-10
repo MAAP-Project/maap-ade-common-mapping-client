@@ -56,10 +56,10 @@ export class PlotCommandDisplay extends Component {
             `endDate = "${moment(commandInfo.get("endDate"))
                 .utc()
                 .toISOString()}"`,
-            `ds = ["${commandInfo
+            `ds = [${commandInfo
                 .get("layers")
                 .map(l => '"' + l + '"')
-                .join(", ")}"]`,
+                .join(", ")}]`,
             `geometry = ${JSON.stringify(commandInfo.get("geometry"))}`,
             `# Retrieve the data`,
             `data = ipycmc.retrieve_data(plotType, startDate, endDate, ds, geometry)`,
