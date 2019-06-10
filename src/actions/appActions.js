@@ -1,4 +1,5 @@
 import moment from "moment";
+import Immutable from "immutable";
 import * as actionTypes from "constants/actionTypes";
 import * as actionTypesCore from "_core/constants/actionTypes";
 import * as appStringsCore from "_core/constants/appStrings";
@@ -6,16 +7,16 @@ import * as mapActionsCore from "_core/actions/mapActions";
 import MiscUtil from "_core/utils/MiscUtil";
 import appConfig from "constants/appConfig";
 
-const DEFAULT_LAYER_OPS = {
+const DEFAULT_LAYER_OPS = Immutable.fromJS({
     type: appStringsCore.LAYER_GROUP_TYPE_DATA,
-    handleAs: appStringsCore.LAYER_GIBS_RASTER,
+    handleAs: appStringsCore.LAYER_WMTS_RASTER,
     wmtsOptions: {
         urlFunctions: {
             openlayers: "kvpTimeParam",
             cesium: "kvpTimeParam"
         }
     }
-};
+});
 
 export function dispatchAction(action) {
     return action;
@@ -45,11 +46,12 @@ export function setMapProjection(projection) {
     };
 }
 
-export function loadLayerSource(options, defOptions = DEFAULT_LAYER_OPS) {
-    const o = Object.assign({}, options, { defOptions });
+export function loadLayerSource(options, defaultOps = {}) {
+    const defOps = DEFAULT_LAYER_OPS.mergeDeep(defaultOps).toJS();
+    options.defaultOps = defOps;
 
     return dispatch => {
-        dispatch(loadSingleLayerSource(o, true));
+        dispatch(loadSingleLayerSource(options, true));
     };
 }
 

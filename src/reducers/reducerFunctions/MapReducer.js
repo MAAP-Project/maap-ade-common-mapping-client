@@ -146,7 +146,7 @@ export default class MapReducer extends MapReducerCore {
             let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
             let newPartials = this.generatePartialsListFromJson(
                 action.config,
-                action.options.defOptions
+                action.options.defaultOps
             );
             return state.setIn(
                 ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
@@ -156,7 +156,7 @@ export default class MapReducer extends MapReducerCore {
             let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
             let newPartials = this.generatePartialsListFromWmtsXml(
                 action.config,
-                action.options.defOptions
+                action.options.defaultOps
             );
             return state.setIn(
                 ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
