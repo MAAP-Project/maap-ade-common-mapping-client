@@ -137,6 +137,10 @@ export function stepDate(forward) {
     };
 }
 
+export function zoomToLayer(layerId) {
+    return { type: actionTypes.ZOOM_TO_LAYER, layerId };
+}
+
 function loadSingleLayerSource(options, mergeOnLoad = false) {
     return dispatch => {
         return MiscUtil.asyncFetch({
