@@ -60,7 +60,7 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
                 ? appConfig.GIBS_IMAGERY_RESOLUTIONS[configProj.code][0]
                 : undefined;
 
-            return new Ol_Map({
+            const map = new Ol_Map({
                 target: container,
                 layers: [vectorLayer],
                 view: new Ol_View({
@@ -77,6 +77,15 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
                     keyboard: false
                 })
             });
+
+            map.on("precompose", function(evt) {
+                evt.context.imageSmoothingEnabled = false;
+                evt.context.webkitImageSmoothingEnabled = false;
+                evt.context.mozImageSmoothingEnabled = false;
+                evt.context.msImageSmoothingEnabled = false;
+            });
+
+            return map;
         } catch (err) {
             console.warn("Error in MapWrapperOpenlayers.createMap:", err);
             return false;

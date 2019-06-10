@@ -1,13 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Grow from "@material-ui/core/Grow";
-import Popover from "@material-ui/core/Popover";
+import MyLocationIcon from "@material-ui/icons/MyLocation";
 import { Manager, Target, Popper } from "react-popper";
-import { EnhancedSwitch, ClickAwayListener } from "_core/components/Reusables";
-import * as mapActions from "_core/actions/mapActions";
+import { EnhancedSwitch, ClickAwayListener, IconButtonSmall } from "_core/components/Reusables";
+import * as appActions from "actions/appActions";
+import * as mapActionsCore from "_core/actions/mapActions";
 import { LayerPositionIcon, LayerOpacityIcon } from "_core/components/LayerMenu";
 import { LayerPositionControl, LayerOpacityControl } from "components/LayerMenu";
 import MiscUtil from "_core/utils/MiscUtil";
@@ -143,6 +144,13 @@ export class LayerControlContainer extends LayerControlContainerCore {
                         </Popper>
                     </ClickAwayListener>
                 </Manager>
+                <IconButtonSmall
+                    color="inherit"
+                    className={styles.iconButtonSmall}
+                    onClick={() => this.props.zoomToLayer(this.props.layer.get("id"))}
+                >
+                    <MyLocationIcon />
+                </IconButtonSmall>
             </div>
         );
     }
@@ -157,9 +165,14 @@ export class LayerControlContainer extends LayerControlContainerCore {
     }
 }
 
+LayerControlContainer.propTypes = Object.assign({}, LayerControlContainerCore.propTypes, {
+    zoomToLayer: PropTypes.func.isRequired
+});
+
 function mapDispatchToProps(dispatch) {
     return {
-        mapActions: bindActionCreators(mapActions, dispatch)
+        zoomToLayer: bindActionCreators(appActions.zoomToLayer, dispatch),
+        mapActions: bindActionCreators(mapActionsCore, dispatch)
     };
 }
 

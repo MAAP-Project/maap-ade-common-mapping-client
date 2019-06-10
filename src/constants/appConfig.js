@@ -22,7 +22,9 @@ const APP_CONFIG = Immutable.fromJS({
     BUILT_IN_LAYER_PARTIALS: BUILT_IN_LAYERS.layers,
     CESIUM_BASE_URL: "assets/cesium",
     DELETE_LAYER_PARTIALS: false,
-    RENDER_NODE: undefined
+    RENDER_NODE: undefined,
+    MAX_ZOOM: 24,
+    MIN_ZOOM_DISTANCE_3D: 100.0
 });
 
 // define and export the final config
