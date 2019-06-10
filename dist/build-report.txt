@@ -1,8 +1,8 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: cc7f92a33284b832be0f
+Webpack stats: Hash: 60279cda6e7f9da0908e
 Version: webpack 4.28.3
-Time: 40059ms
-Built at: 2019-06-06 15:12:22
+Time: 41108ms
+Built at: 2019-06-10 13:46:49
                          Asset      Size  Chunks                    Chunk Names
 1d13acfd67b82518a74e.worker.js  4.12 KiB          [emitted]         
                     bundle.css  36.5 KiB       0  [emitted]         bundle
@@ -12,12 +12,12 @@ Built at: 2019-06-06 15:12:22
 Entrypoint bundle [big] = bundle.js bundle.css
 Entrypoint inlineStyles = inlineStyles.js
   [0] ./node_modules/react/index.js 190 bytes {0} [built]
-  [7] ./src/constants/appConfig.js + 1 modules 7.02 KiB {0} [built]
+  [8] ./src/constants/appConfig.js + 1 modules 7.02 KiB {0} [built]
       | ./src/constants/appConfig.js 977 bytes [built]
       | ./src/_core/constants/appConfig.js 6.05 KiB [built]
   [9] ./node_modules/@babel/runtime/helpers/classCallCheck.js 196 bytes {0} [built]
  [10] ./node_modules/@babel/runtime/helpers/createClass.js 596 bytes {0} [built]
- [27] ./node_modules/immutable/dist/immutable.js 139 KiB {0} [built]
+ [25] ./node_modules/immutable/dist/immutable.js 139 KiB {0} [built]
  [36] ./node_modules/react-dom/index.js 1.33 KiB {0} [built]
 [118] (webpack)/buildin/global.js 472 bytes {0} [built]
 [473] ./node_modules/path-browserify/index.js 6.04 KiB {0} [built]
@@ -27,7 +27,7 @@ Entrypoint inlineStyles = inlineStyles.js
 [519] ./node_modules/@babel/polyfill/lib/index.js 893 bytes {0} [built]
 [703] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 [899] ./src/styles/inlineStyles.js 238 bytes {1} [built]
-[901] ./src/index.js + 140 modules 475 KiB {0} [built]
+[901] ./src/index.js + 140 modules 475 KiB {0} [built] [1 warning]
       | ./src/index.js 3.03 KiB [built]
       | ./node_modules/react-redux/es/index.js 270 bytes [built]
       | ./src/components/App/index.js 73 bytes [built]
@@ -45,6 +45,20 @@ Entrypoint inlineStyles = inlineStyles.js
       | ./node_modules/react-redux/es/connect/mapStateToProps.js 504 bytes [built]
       |     + 126 hidden modules
     + 933 hidden modules
+
+WARNING in ./src/components/Plot/PlotCommandDisplay.js
+Module Warning (from ./node_modules/eslint-loader/index.js):
+
+/Users/fplatt/Workspace/maap-common-mapping-client/src/components/Plot/PlotCommandDisplay.js
+  106:25  warning  Dangerous property 'dangerouslySetInnerHTML' found  react/no-danger
+
+✖ 1 problem (0 errors, 1 warning)
+
+ @ ./src/components/Plot/index.js 1:0-86 1:0-86
+ @ ./src/components/App/AppContainer.js
+ @ ./src/components/App/index.js
+ @ ./src/index.js
+ @ multi ./src/index
 
 WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
 This can impact web performance.
