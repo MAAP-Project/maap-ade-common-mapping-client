@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import moment from "moment";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
@@ -40,13 +41,36 @@ export class PlotCommandDisplay extends Component {
     };
 
     render() {
-        const { display, commandStr, className } = this.props;
+        const { display, commandStr, commandInfo, className } = this.props;
         const containerClasses = MiscUtil.generateStringFromSet({
             [styles.root]: true,
             [this.props.className]: typeof className !== "undefined"
         });
 
-        const plotStr = `ipycmc.plot_data("timeseries", data)`;
+        const cmds = [
+            `# Initialize parameter variables`,
+            `plotType = "timeseries"`,
+            `startDate = "${moment(commandInfo.get("startDate"))
+                .utc()
+                .toISOString()}"`,
+            `endDate = "${moment(commandInfo.get("endDate"))
+                .utc()
+                .toISOString()}"`,
+            `ds = ["${commandInfo
+                .get("layers")
+                .map(l => '"' + l + '"')
+                .join(", ")}"]`,
+            `geometry = ${JSON.stringify(commandInfo.get("geometry"))}`,
+            `# Retrieve the data`,
+            `data = ipycmc.retrieve_data(plotType, startDate, endDate, ds, geometry)`,
+            `# Plot the data`,
+            `ipycmc.plot_data(plotType, data)`
+        ];
+
+        const fullCmd = `<p>${cmds.slice(0, 6).join("<br />")}</p>
+            <p>${cmds.slice(6, 8).join("<br />")}</p>
+            <p>${cmds.slice(8).join("<br />")}</p>`;
+        const fullCmdTxt = cmds.join("\r\n");
 
         return (
             <Dialog
@@ -71,18 +95,17 @@ export class PlotCommandDisplay extends Component {
                     </IconButton>
                 </MuiDialogTitle>
                 <MuiDialogContent className={styles.content}>
-                    <Typography variant="subtitle2">Retrieve Data</Typography>
                     <Typography gutterBottom>
                         Enter this command to retrieve a json data structure packed with the
-                        selected data. You may want to modify the plot type and the time range.
+                        selected data and then plot it using Plotly. You may want to modify the
+                        default plot type and the time range.
                     </Typography>
-                    <Typography variant="overline">Signature</Typography>
-                    <div className={styles.commandText}>
-                        {`retrieve_data(plotType:String, startDate:String, endDate:String, layer_ids:Array<String>, geometry:Object)`}
-                    </div>
                     <Typography variant="overline">Command</Typography>
-                    <div className={styles.commandText}>{commandStr}</div>
-                    <input
+                    <div
+                        className={styles.commandText}
+                        dangerouslySetInnerHTML={{ __html: fullCmd }}
+                    />
+                    <textarea
                         type="text"
                         ref={node => {
                             if (typeof node !== "undefined") {
@@ -90,39 +113,12 @@ export class PlotCommandDisplay extends Component {
                             }
                         }}
                         className={styles.hiddenCmdText}
-                        value={commandStr}
+                        value={fullCmdTxt}
                         readOnly
                     />
                     <div className={styles.buttonRow}>
                         <Button onClick={this.copyRetrieve} color="primary" size="small">
-                            Copy Retrieval Command
-                        </Button>
-                    </div>
-                    <Typography variant="subtitle2">Plot Data</Typography>
-                    <Typography gutterBottom>
-                        Enter this command to plot the retrieved data with our Plotly wrapper. You
-                        may want to modify the plot type.
-                    </Typography>
-                    <Typography variant="overline">Signature</Typography>
-                    <div className={styles.commandText}>
-                        {`plot_data(plotType:String, data:Object)`}
-                    </div>
-                    <Typography variant="overline">Command</Typography>
-                    <div className={styles.commandText}>{plotStr}</div>
-                    <input
-                        type="text"
-                        ref={node => {
-                            if (typeof node !== "undefined") {
-                                this.plotCmdText = node;
-                            }
-                        }}
-                        className={styles.hiddenCmdText}
-                        value={plotStr}
-                        readOnly
-                    />
-                    <div className={styles.buttonRow}>
-                        <Button onClick={this.copyPlot} color="primary" size="small">
-                            Copy Plot Command
+                            Copy Command
                         </Button>
                     </div>
                 </MuiDialogContent>
@@ -134,6 +130,7 @@ export class PlotCommandDisplay extends Component {
 PlotCommandDisplay.propTypes = {
     display: PropTypes.bool.isRequired,
     commandStr: PropTypes.string.isRequired,
+    commandInfo: PropTypes.object.isRequired,
     setPlotCommandDisplay: PropTypes.func.isRequired,
     className: PropTypes.string
 };
@@ -141,6 +138,7 @@ PlotCommandDisplay.propTypes = {
 function mapStateToProps(state) {
     return {
         commandStr: state.plot.get("commandStr"),
+        commandInfo: state.plot.get("commandInfo"),
         display: state.plot.get("display")
     };
 }

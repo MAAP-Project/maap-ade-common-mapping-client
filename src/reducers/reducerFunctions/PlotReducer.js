@@ -25,9 +25,9 @@ export default class PlotReducer {
 
         return state
             .setIn(["commandInfo", "layers"], layerIds)
-            .setIn(["commandInfo", "startDate"], startDate)
-            .setIn(["commandInfo", "endDate"], endDate)
-            .setIn(["commandInfo", "geometry"], geometry)
+            .setIn(["commandInfo", "startDate"], startDate || new Date())
+            .setIn(["commandInfo", "endDate"], endDate || new Date())
+            .setIn(["commandInfo", "geometry"], geom)
             .set("commandStr", commandStr);
     }
 
