@@ -28,7 +28,7 @@ export class LayerMenuContainer extends Component {
     constructor(props) {
         super(props);
 
-        this.pageMax = 10;
+        this.pageMax = 9;
         this.page = 0;
         this.onlyActive = false;
     }
