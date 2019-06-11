@@ -127,7 +127,8 @@
 .LayerControlContainer__iconButtonSmall___3kdRN {
   width: 28px !important;
   height: 28px !important;
-  font-size: 22px !important; }
+  font-size: 22px !important;
+  color: rgba(0, 0, 0, 0.54); }
   .LayerControlContainer__iconButtonSmall___3kdRN span span {
     left: -23px;
     top: -11px;
