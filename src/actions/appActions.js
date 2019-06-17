@@ -63,32 +63,58 @@ export function invalidatePixelClick(id) {
     return { type: actionTypes.INVALIDATE_PIXEL_CLICK };
 }
 
-export function generatePlotCommand(geometryId) {
-    return (dispatch, getState) => {
-        const state = getState();
+export function generatePlotCommand(options, fillDefault = false) {
+    return dispatch => {
+        dispatch(setPlotCommandInfo(options, fillDefault));
 
-        const layerIds = state.map
-            .getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA])
-            .filter(layer => layer.get("isActive"))
-            .toList()
-            .map(layer => layer.get("id"));
-        const startDate = state.map.get("date");
-        const geometry = state.map
-            .get("areaSelections")
-            .find(geom => geom.get("id") === geometryId);
-        if (geometry) {
-            dispatch({
-                type: actionTypes.GENERATE_PLOT_COMMAND,
-                layerIds,
-                startDate,
-                geometry: geometry.toJS()
-            });
-        }
+        dispatch({ type: actionTypes.GENERATE_PLOT_COMMAND });
     };
 }
 
 export function setPlotCommandDisplay(display) {
     return { type: actionTypes.SET_PLOT_COMMAND_DISPLAY, display };
+}
+
+export function setPlotCommandInfo(options, fillDefault = false) {
+    return (dispatch, getState) => {
+        const state = getState();
+
+        if (options) {
+            let { startDate, endDate, geometry, layers, plotType } = options;
+            if (typeof geometry === "number" || typeof geometry === "string") {
+                options.geometry = state.map
+                    .get("areaSelections")
+                    .find(geom => geom.get("id") === geometry);
+            }
+
+            if (fillDefault) {
+                if (typeof startDate === "undefined") {
+                    options.startDate = state.map.get("date");
+                }
+
+                if (typeof endDate === "undefined") {
+                    options.endDate = moment
+                        .utc(options.startDate)
+                        .subtract(1, "w")
+                        .toDate();
+                }
+
+                if (typeof layers === "undefined") {
+                    options.layers = state.map
+                        .getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA])
+                        .filter(layer => layer.get("isActive"))
+                        .toList()
+                        .map(l => l.get("id"));
+                }
+
+                if (typeof plotType === "undefined") {
+                    options.plotType = "timeseries";
+                }
+            }
+
+            dispatch({ type: actionTypes.SET_PLOT_COMMAND_INFO, options });
+        }
+    };
 }
 
 export function initializeMap(options) {

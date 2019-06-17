@@ -6,29 +6,44 @@ import moment from "moment";
 
 export default class PlotReducer {
     static generatePlotCommand(state, action) {
-        const { layerIds, startDate, endDate, geometry } = action;
+        const commandInfo = state.get("commandInfo");
+        const fullCmdTxt = [
+            `# Initialize parameter variables`,
+            `plotType = ${commandInfo.get("plotType")}`,
+            `startDate = "${moment(commandInfo.get("startDate"))
+                .utc()
+                .toISOString()}"`,
+            `endDate = "${moment(commandInfo.get("endDate"))
+                .utc()
+                .toISOString()}"`,
+            `ds = [${commandInfo
+                .get("layers")
+                .toList()
+                .map(l => '"' + l + '"')
+                .join(", ")}]`,
+            `geometry = ${JSON.stringify(commandInfo.get("geometry"))}`,
+            `# Retrieve the data`,
+            `data = ipycmc.retrieve_data(plotType, startDate, endDate, ds, geometry)`,
+            `# Plot the data`,
+            `ipycmc.plot_data(plotType, data)`
+        ].join("\r\n");
 
-        const startDateStr = moment(startDate || new Date())
-            .utc()
-            .toISOString();
-        const endDateStr = moment(endDate || new Date())
-            .utc()
-            .toISOString();
-        const geom = Immutable.fromJS(geometry)
-            .remove("coordinateType")
-            .remove("id")
-            .toJS();
-        const layersStr = layerIds.join(", ");
-        const geometryStr = JSON.stringify(geom);
+        console.log(fullCmdTxt);
 
-        const commandStr = `data = ipycmc.retrieve_data("timeseries", "${startDateStr}", "${endDateStr}", [${layersStr}], ${geometryStr})`;
+        return state.set("commandStr", fullCmdTxt);
+    }
 
+    static setPlotCommandInfo(state, action) {
+        const currOps = state.get("commandInfo");
         return state
-            .setIn(["commandInfo", "layers"], layerIds)
-            .setIn(["commandInfo", "startDate"], startDate || new Date())
-            .setIn(["commandInfo", "endDate"], endDate || new Date())
-            .setIn(["commandInfo", "geometry"], geom)
-            .set("commandStr", commandStr);
+            .setIn(["commandInfo", "plotType"], action.options.plotType || currOps.get("plotType"))
+            .setIn(["commandInfo", "layers"], action.options.layers || currOps.get("layers"))
+            .setIn(
+                ["commandInfo", "startDate"],
+                action.options.startDate || currOps.get("startDate")
+            )
+            .setIn(["commandInfo", "endDate"], action.options.endDate || currOps.get("endDate"))
+            .setIn(["commandInfo", "geometry"], action.options.geometry || currOps.get("geometry"));
     }
 
     static setPlotCommandDisplay(state, action) {
