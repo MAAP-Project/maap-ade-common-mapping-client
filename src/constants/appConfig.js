@@ -24,7 +24,13 @@ const APP_CONFIG = Immutable.fromJS({
     DELETE_LAYER_PARTIALS: false,
     RENDER_NODE: undefined,
     MAX_ZOOM: 24,
-    MIN_ZOOM_DISTANCE_3D: 100.0
+    MIN_ZOOM_DISTANCE_3D: 100.0,
+    PLOT_TYPES: [
+        { label: "Time Series", value: "timeseries" },
+        { label: "Time Average Map", value: "timeavgmap" },
+        { label: "Hovmöller - Latitude", value: "hovmollerlat" },
+        { label: "Hovmöller - Longitude", value: "hovmollerlon" }
+    ]
 });
 
 // define and export the final config

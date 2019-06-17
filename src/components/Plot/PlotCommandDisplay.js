@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import moment from "moment";
+import Immutable from "immutable";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
@@ -10,14 +11,27 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Input from "@material-ui/core/Input";
+import ListItemText from "@material-ui/core/ListItemText";
+import Checkbox from "@material-ui/core/Checkbox";
+import { DatePicker } from "components/DatePicker";
 import MiscUtil from "utils/MiscUtil";
 import appConfig from "constants/appConfig";
 import * as appActions from "actions/appActions";
+import * as appStringsCore from "_core/constants/appStrings";
 import styles from "components/Plot/PlotCommandDisplay.scss";
 
 export class PlotCommandDisplay extends Component {
     closeModal = () => {
         this.props.setPlotCommandDisplay(false);
+    };
+
+    generatePlotCommand = () => {
+        this.props.generatePlotCommand();
     };
 
     copyRetrieve = () => {
@@ -40,37 +54,39 @@ export class PlotCommandDisplay extends Component {
         }
     };
 
+    handlePlotTypeChange = event => {
+        this.props.setPlotCommandInfo({ plotType: event.target.value });
+    };
+
+    handleStartDateChange = date => {
+        this.props.setPlotCommandInfo({ startDate: moment.utc(date).toDate() });
+    };
+
+    handleEndDateChange = date => {
+        this.props.setPlotCommandInfo({ endDate: moment.utc(date).toDate() });
+    };
+
+    handleLayerChange = event => {
+        const ids = event.target.value;
+        const selected = ids.reduce((acc, id) => {
+            if (acc.includes(id)) {
+                // duplicate --> remove
+                return acc.delete(id);
+            }
+            return acc.add(id);
+        }, Immutable.Set());
+
+        this.props.setPlotCommandInfo({ layers: selected });
+    };
+
     render() {
-        const { display, commandStr, commandInfo, className } = this.props;
+        const { display, commandInfo, className, layers } = this.props;
         const containerClasses = MiscUtil.generateStringFromSet({
             [styles.root]: true,
             [this.props.className]: typeof className !== "undefined"
         });
 
-        const cmds = [
-            `# Initialize parameter variables`,
-            `plotType = "timeseries"`,
-            `startDate = "${moment(commandInfo.get("startDate"))
-                .utc()
-                .toISOString()}"`,
-            `endDate = "${moment(commandInfo.get("endDate"))
-                .utc()
-                .toISOString()}"`,
-            `ds = [${commandInfo
-                .get("layers")
-                .map(l => '"' + l + '"')
-                .join(", ")}]`,
-            `geometry = ${JSON.stringify(commandInfo.get("geometry"))}`,
-            `# Retrieve the data`,
-            `data = ipycmc.retrieve_data(plotType, startDate, endDate, ds, geometry)`,
-            `# Plot the data`,
-            `ipycmc.plot_data(plotType, data)`
-        ];
-
-        const fullCmd = `<p>${cmds.slice(0, 6).join("<br />")}</p>
-            <p>${cmds.slice(6, 8).join("<br />")}</p>
-            <p>${cmds.slice(8).join("<br />")}</p>`;
-        const fullCmdTxt = cmds.join("\r\n");
+        const selectedLayers = commandInfo.get("layers");
 
         return (
             <Dialog
@@ -96,29 +112,73 @@ export class PlotCommandDisplay extends Component {
                 </MuiDialogTitle>
                 <MuiDialogContent className={styles.content}>
                     <Typography gutterBottom>
-                        Enter this command to retrieve a json data structure packed with the
-                        selected data and then plot it using Plotly. You may want to modify the
-                        default plot type and the time range.
+                        Use the controls below to generate and run a plot command for the notebook.
                     </Typography>
-                    <Typography variant="overline">Command</Typography>
-                    <div
-                        className={styles.commandText}
-                        dangerouslySetInnerHTML={{ __html: fullCmd }}
-                    />
-                    <textarea
-                        type="text"
-                        ref={node => {
-                            if (typeof node !== "undefined") {
-                                this.retrieveCmdText = node;
-                            }
-                        }}
-                        className={styles.hiddenCmdText}
-                        value={fullCmdTxt}
-                        readOnly
-                    />
+                    <div className={styles.optionsRow}>
+                        <FormControl className={styles.formControl}>
+                            <InputLabel htmlFor="plot-type">Plot Type</InputLabel>
+                            <Select
+                                value={commandInfo.get("plotType")}
+                                onChange={this.handlePlotTypeChange}
+                                className={styles.formInputWrapper}
+                                inputProps={{
+                                    name: "plot",
+                                    id: "plot-type",
+                                    className: styles.formInput
+                                }}
+                            >
+                                {appConfig.PLOT_TYPES.map(x => (
+                                    <MenuItem key={`plot_${x.value}`} value={x.value}>
+                                        {x.label}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                        <FormControl className={styles.formControl}>
+                            <InputLabel htmlFor="ds-select">Datasets</InputLabel>
+                            <Select
+                                multiple
+                                value={selectedLayers.toList().toJS()}
+                                onChange={this.handleLayerChange}
+                                className={styles.formInputWrapper}
+                                inputProps={{
+                                    className: styles.formInput
+                                }}
+                                input={<Input id="ds-select" name="ds-select" />}
+                                renderValue={selected =>
+                                    selected.map(l => layers.getIn([l, "title"])).join(", ")
+                                }
+                            >
+                                {layers.toList().map(l => (
+                                    <MenuItem key={`layer_op_${l.get("id")}`} value={l.get("id")}>
+                                        <Checkbox checked={selectedLayers.includes(l.get("id"))} />
+                                        <ListItemText primary={l.get("title")} />
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                    </div>
+                    <div className={styles.optionsRow}>
+                        <FormControl className={styles.datePickerWrapper}>
+                            <InputLabel>Start Date</InputLabel>
+                            <DatePicker
+                                date={commandInfo.get("startDate")}
+                                setDate={this.handleStartDateChange}
+                                className={styles.datePicker}
+                            />
+                        </FormControl>
+                        <FormControl className={styles.datePickerWrapper}>
+                            <InputLabel>End Date</InputLabel>
+                            <DatePicker
+                                date={commandInfo.get("endDate")}
+                                setDate={this.handleEndDateChange}
+                                className={styles.datePicker}
+                            />
+                        </FormControl>
+                    </div>
                     <div className={styles.buttonRow}>
-                        <Button onClick={this.copyRetrieve} color="primary" size="small">
-                            Copy Command
+                        <Button onClick={this.generatePlotCommand} color="primary" size="small">
+                            Generate Command
                         </Button>
                     </div>
                 </MuiDialogContent>
@@ -131,7 +191,10 @@ PlotCommandDisplay.propTypes = {
     display: PropTypes.bool.isRequired,
     commandStr: PropTypes.string.isRequired,
     commandInfo: PropTypes.object.isRequired,
+    layers: PropTypes.object.isRequired,
     setPlotCommandDisplay: PropTypes.func.isRequired,
+    setPlotCommandInfo: PropTypes.func.isRequired,
+    generatePlotCommand: PropTypes.func.isRequired,
     className: PropTypes.string
 };
 
@@ -139,12 +202,15 @@ function mapStateToProps(state) {
     return {
         commandStr: state.plot.get("commandStr"),
         commandInfo: state.plot.get("commandInfo"),
-        display: state.plot.get("display")
+        display: state.plot.get("display"),
+        layers: state.map.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA])
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
+        setPlotCommandInfo: bindActionCreators(appActions.setPlotCommandInfo, dispatch),
+        generatePlotCommand: bindActionCreators(appActions.generatePlotCommand, dispatch),
         setPlotCommandDisplay: bindActionCreators(appActions.setPlotCommandDisplay, dispatch)
     };
 }
