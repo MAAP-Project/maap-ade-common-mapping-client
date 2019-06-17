@@ -943,24 +943,6 @@
 
 .LayerMenuContainer__emptyLabel___2gYLD {
   padding: 7px 9px; }
-.DatePicker__datePickerSelection___3No85 {
-  position: relative;
-  text-align: center;
-  padding: 2px 5px; }
-
-.DatePicker__inputs___2EyoD {
-  padding: 5px 0px; }
-
-.DatePicker__inputWrapper___2qEaC {
-  padding: 3px 5px;
-  font-size: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-sizing: border-box; }
-  .DatePicker__inputWrapper___2qEaC:before {
-    display: none; }
-
-.DatePicker__input___2HDL1 {
-  padding: 0px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1003,6 +985,24 @@ button.AppContainer__context-menu-item___1M1Z0 {
   height: 100%;
   overflow: hidden;
   white-space: nowrap; }
+.DatePicker__datePickerSelection___3No85 {
+  position: relative;
+  text-align: center;
+  padding: 2px 5px; }
+
+.DatePicker__inputs___2EyoD {
+  padding: 5px 0px; }
+
+.DatePicker__inputWrapper___2qEaC {
+  padding: 3px 5px;
+  font-size: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; }
+  .DatePicker__inputWrapper___2qEaC:before {
+    display: none; }
+
+.DatePicker__input___2HDL1 {
+  padding: 0px; }
 .PlotCommandDisplay__root___10K9x {
   position: absolute !important; }
 
@@ -1051,6 +1051,24 @@ button.AppContainer__context-menu-item___1M1Z0 {
 
 .PlotCommandDisplay__modalBackdrop___30gOw {
   position: absolute !important; }
+
+.PlotCommandDisplay__optionsRow___3P0J5 {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-bottom: 15px; }
+  .PlotCommandDisplay__optionsRow___3P0J5 .PlotCommandDisplay__formInputWrapper___eyvly {
+    font-size: 16px; }
+  .PlotCommandDisplay__optionsRow___3P0J5 .PlotCommandDisplay__formInput___3C4DC {
+    padding-top: 5px;
+    padding-bottom: 5px; }
+  .PlotCommandDisplay__optionsRow___3P0J5 .PlotCommandDisplay__formControl___2vPpA,
+  .PlotCommandDisplay__optionsRow___3P0J5 .PlotCommandDisplay__datePickerWrapper___3EWX6 {
+    width: 200px;
+    flex-basis: 200px;
+    margin: 8px 0px; }
+  .PlotCommandDisplay__optionsRow___3P0J5 .PlotCommandDisplay__datePicker___1X-NB {
+    margin-top: 21px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
