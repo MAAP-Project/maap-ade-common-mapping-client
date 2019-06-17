@@ -1,7 +1,6 @@
 //IMPORTANT: Note that with Redux, state should NEVER be changed.
 //State is considered immutable. Instead,
 //create a copy of the state passed and set new values on the copy.
-import Immutable from "immutable";
 import moment from "moment";
 
 export default class PlotReducer {
@@ -28,9 +27,9 @@ export default class PlotReducer {
             `ipycmc.plot_data(plotType, data)`
         ].join("\r\n");
 
-        console.log(fullCmdTxt);
+        const currCtr = state.get("commandGenCtr");
 
-        return state.set("commandStr", fullCmdTxt);
+        return state.set("commandStr", fullCmdTxt).set("commandGenCtr", currCtr + 1);
     }
 
     static setPlotCommandInfo(state, action) {

@@ -10,6 +10,7 @@ export const plotState = Immutable.fromJS({
         geometry: {}
     },
     commandStr: "",
+    commandGenCtr: -1,
     display: false,
     alerts: []
 });
