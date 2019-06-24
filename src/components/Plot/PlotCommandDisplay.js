@@ -122,7 +122,11 @@ export class PlotCommandDisplay extends Component {
                                 onChange={this.handlePlotTypeChange}
                                 className={styles.formInputWrapper}
                                 MenuProps={{
-                                    container: () => appConfig.RENDER_NODE
+                                    container: () => appConfig.RENDER_NODE,
+                                    className: styles.menuWrapper,
+                                    BackdropProps: {
+                                        className: styles.modalBackdrop
+                                    }
                                 }}
                                 inputProps={{
                                     name: "plot",
@@ -145,7 +149,11 @@ export class PlotCommandDisplay extends Component {
                                 onChange={this.handleLayerChange}
                                 className={styles.formInputWrapper}
                                 MenuProps={{
-                                    container: () => appConfig.RENDER_NODE
+                                    container: () => appConfig.RENDER_NODE,
+                                    className: styles.menuWrapper,
+                                    BackdropProps: {
+                                        className: styles.modalBackdrop
+                                    }
                                 }}
                                 inputProps={{
                                     className: styles.formInput
