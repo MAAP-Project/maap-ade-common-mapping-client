@@ -122,6 +122,9 @@ export class PlotCommandDisplay extends Component {
                                 value={commandInfo.get("plotType")}
                                 onChange={this.handlePlotTypeChange}
                                 className={styles.formInputWrapper}
+                                MenuProps={{
+                                    container: () => appConfig.RENDER_NODE
+                                }}
                                 inputProps={{
                                     name: "plot",
                                     id: "plot-type",
