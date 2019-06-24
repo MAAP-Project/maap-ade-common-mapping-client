@@ -159,7 +159,10 @@ export class PlotCommandDisplay extends Component {
                                 {layers.toList().map(l => (
                                     <MenuItem key={`layer_op_${l.get("id")}`} value={l.get("id")}>
                                         <Checkbox checked={selectedLayers.includes(l.get("id"))} />
-                                        <ListItemText primary={l.get("title")} />
+                                        <ListItemText
+                                            primary={l.get("title")}
+                                            className={styles.menuItemText}
+                                        />
                                     </MenuItem>
                                 ))}
                             </Select>
