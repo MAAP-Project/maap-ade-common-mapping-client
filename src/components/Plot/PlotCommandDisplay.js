@@ -79,6 +79,16 @@ export class PlotCommandDisplay extends Component {
         this.props.setPlotCommandInfo({ layers: selected });
     };
 
+    renderSelectedDatasets = selected => {
+        const { layers } = this.props;
+
+        if (selected.length > 1) {
+            return `${selected.length} selected`;
+        } else {
+            return selected.map(l => layers.getIn([l, "title"])).join(", ");
+        }
+    };
+
     render() {
         const { display, commandInfo, className, layers } = this.props;
         const containerClasses = MiscUtil.generateStringFromSet({
@@ -152,9 +162,7 @@ export class PlotCommandDisplay extends Component {
                                     className: styles.formInput
                                 }}
                                 input={<Input id="ds-select" name="ds-select" />}
-                                renderValue={selected =>
-                                    selected.map(l => layers.getIn([l, "title"])).join(", ")
-                                }
+                                renderValue={this.renderSelectedDatasets}
                             >
                                 {layers.toList().map(l => (
                                     <MenuItem key={`layer_op_${l.get("id")}`} value={l.get("id")}>
