@@ -88,13 +88,13 @@ export function setPlotCommandInfo(options, fillDefault = false) {
             }
 
             if (fillDefault) {
-                if (typeof startDate === "undefined") {
-                    options.startDate = state.map.get("date");
+                if (typeof endDate === "undefined") {
+                    options.endDate = state.map.get("date");
                 }
 
-                if (typeof endDate === "undefined") {
-                    options.endDate = moment
-                        .utc(options.startDate)
+                if (typeof startDate === "undefined") {
+                    options.startDate = moment
+                        .utc(options.endDate)
                         .subtract(1, "w")
                         .toDate();
                 }
