@@ -96,6 +96,7 @@ export class PlotCommandDisplay extends Component {
                 container={() => appConfig.RENDER_NODE}
                 maxWidth="md"
                 className={containerClasses}
+                disableEnforceFocus={true}
                 BackdropProps={{
                     className: styles.modalBackdrop
                 }}
@@ -122,7 +123,7 @@ export class PlotCommandDisplay extends Component {
                                 onChange={this.handlePlotTypeChange}
                                 className={styles.formInputWrapper}
                                 MenuProps={{
-                                    container: () => appConfig.RENDER_NODE,
+                                    container: appConfig.RENDER_NODE,
                                     className: styles.menuWrapper,
                                     BackdropProps: {
                                         className: styles.modalBackdrop
@@ -149,7 +150,7 @@ export class PlotCommandDisplay extends Component {
                                 onChange={this.handleLayerChange}
                                 className={styles.formInputWrapper}
                                 MenuProps={{
-                                    container: () => appConfig.RENDER_NODE,
+                                    container: appConfig.RENDER_NODE,
                                     className: styles.menuWrapper,
                                     BackdropProps: {
                                         className: styles.modalBackdrop
