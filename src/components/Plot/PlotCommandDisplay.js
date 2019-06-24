@@ -123,11 +123,7 @@ export class PlotCommandDisplay extends Component {
                                 onChange={this.handlePlotTypeChange}
                                 className={styles.formInputWrapper}
                                 MenuProps={{
-                                    container: appConfig.RENDER_NODE,
-                                    className: styles.menuWrapper,
-                                    BackdropProps: {
-                                        className: styles.modalBackdrop
-                                    }
+                                    container: () => appConfig.RENDER_NODE
                                 }}
                                 inputProps={{
                                     name: "plot",
@@ -150,11 +146,7 @@ export class PlotCommandDisplay extends Component {
                                 onChange={this.handleLayerChange}
                                 className={styles.formInputWrapper}
                                 MenuProps={{
-                                    container: appConfig.RENDER_NODE,
-                                    className: styles.menuWrapper,
-                                    BackdropProps: {
-                                        className: styles.modalBackdrop
-                                    }
+                                    container: () => appConfig.RENDER_NODE
                                 }}
                                 inputProps={{
                                     className: styles.formInput
@@ -167,7 +159,10 @@ export class PlotCommandDisplay extends Component {
                                 {layers.toList().map(l => (
                                     <MenuItem key={`layer_op_${l.get("id")}`} value={l.get("id")}>
                                         <Checkbox checked={selectedLayers.includes(l.get("id"))} />
-                                        <ListItemText primary={l.get("title")} />
+                                        <ListItemText
+                                            primary={l.get("title")}
+                                            className={styles.menuItemText}
+                                        />
                                     </MenuItem>
                                 ))}
                             </Select>
