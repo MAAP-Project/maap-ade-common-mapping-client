@@ -161,7 +161,7 @@ export class PlotCommandDisplay extends Component {
                                         <Checkbox checked={selectedLayers.includes(l.get("id"))} />
                                         <ListItemText
                                             primary={l.get("title")}
-                                            className={styles.menuItemText}
+                                            classes={{ primary: styles.menuItemText }}
                                         />
                                     </MenuItem>
                                 ))}
