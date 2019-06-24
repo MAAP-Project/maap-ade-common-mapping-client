@@ -151,10 +151,7 @@ export class PlotCommandDisplay extends Component {
                                 className={styles.formInputWrapper}
                                 MenuProps={{
                                     container: appConfig.RENDER_NODE,
-                                    className: styles.menuWrapper,
-                                    BackdropProps: {
-                                        className: styles.modalBackdrop
-                                    }
+                                    className: styles.menuWrapper
                                 }}
                                 inputProps={{
                                     className: styles.formInput
