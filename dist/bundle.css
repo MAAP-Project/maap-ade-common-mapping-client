@@ -1049,7 +1049,8 @@ button.AppContainer__context-menu-item___1M1Z0 {
   opacity: 0;
   z-index: -1; }
 
-.PlotCommandDisplay__modalBackdrop___30gOw {
+.PlotCommandDisplay__modalBackdrop___30gOw,
+.PlotCommandDisplay__menuWrapper___2ePec {
   position: absolute !important; }
 
 .PlotCommandDisplay__optionsRow___3P0J5 {
