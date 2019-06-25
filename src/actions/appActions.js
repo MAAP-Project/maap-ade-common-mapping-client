@@ -1,4 +1,5 @@
 import moment from "moment";
+import Immutable from "immutable";
 import * as actionTypes from "constants/actionTypes";
 import * as actionTypesCore from "_core/constants/actionTypes";
 import * as appStringsCore from "_core/constants/appStrings";
@@ -6,16 +7,16 @@ import * as mapActionsCore from "_core/actions/mapActions";
 import MiscUtil from "_core/utils/MiscUtil";
 import appConfig from "constants/appConfig";
 
-const DEFAULT_LAYER_OPS = {
+const DEFAULT_LAYER_OPS = Immutable.fromJS({
     type: appStringsCore.LAYER_GROUP_TYPE_DATA,
-    handleAs: appStringsCore.LAYER_GIBS_RASTER,
+    handleAs: appStringsCore.LAYER_WMTS_RASTER,
     wmtsOptions: {
         urlFunctions: {
             openlayers: "kvpTimeParam",
             cesium: "kvpTimeParam"
         }
     }
-};
+});
 
 export function dispatchAction(action) {
     return action;
@@ -45,11 +46,12 @@ export function setMapProjection(projection) {
     };
 }
 
-export function loadLayerSource(options, defOptions = DEFAULT_LAYER_OPS) {
-    const o = Object.assign({}, options, { defOptions });
+export function loadLayerSource(options, defaultOps = {}) {
+    const defOps = DEFAULT_LAYER_OPS.mergeDeep(defaultOps).toJS();
+    options.defaultOps = defOps;
 
     return dispatch => {
-        dispatch(loadSingleLayerSource(o, true));
+        dispatch(loadSingleLayerSource(options, true));
     };
 }
 
@@ -61,32 +63,58 @@ export function invalidatePixelClick(id) {
     return { type: actionTypes.INVALIDATE_PIXEL_CLICK };
 }
 
-export function generatePlotCommand(geometryId) {
-    return (dispatch, getState) => {
-        const state = getState();
+export function generatePlotCommand(options, fillDefault = false) {
+    return dispatch => {
+        dispatch(setPlotCommandInfo(options, fillDefault));
 
-        const layerIds = state.map
-            .getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA])
-            .filter(layer => layer.get("isActive"))
-            .toList()
-            .map(layer => layer.get("id"));
-        const startDate = state.map.get("date");
-        const geometry = state.map
-            .get("areaSelections")
-            .find(geom => geom.get("id") === geometryId);
-        if (geometry) {
-            dispatch({
-                type: actionTypes.GENERATE_PLOT_COMMAND,
-                layerIds,
-                startDate,
-                geometry: geometry.toJS()
-            });
-        }
+        dispatch({ type: actionTypes.GENERATE_PLOT_COMMAND });
     };
 }
 
 export function setPlotCommandDisplay(display) {
     return { type: actionTypes.SET_PLOT_COMMAND_DISPLAY, display };
+}
+
+export function setPlotCommandInfo(options, fillDefault = false) {
+    return (dispatch, getState) => {
+        const state = getState();
+
+        if (options) {
+            let { startDate, endDate, geometry, datasets, plotType } = options;
+            if (typeof geometry === "number" || typeof geometry === "string") {
+                options.geometry = state.map
+                    .get("areaSelections")
+                    .find(geom => geom.get("id") === geometry);
+            }
+
+            if (fillDefault) {
+                if (typeof endDate === "undefined") {
+                    options.endDate = state.map.get("date");
+                }
+
+                if (typeof startDate === "undefined") {
+                    options.startDate = moment
+                        .utc(options.endDate)
+                        .subtract(1, "w")
+                        .toDate();
+                }
+
+                if (typeof datasets === "undefined") {
+                    options.datasets = state.map
+                        .getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA])
+                        .filter(layer => layer.get("isActive"))
+                        .toList()
+                        .map(l => l.get("id"));
+                }
+
+                if (typeof plotType === "undefined") {
+                    options.plotType = "timeseries";
+                }
+            }
+
+            dispatch({ type: actionTypes.SET_PLOT_COMMAND_INFO, options });
+        }
+    };
 }
 
 export function initializeMap(options) {
@@ -133,6 +161,10 @@ export function stepDate(forward) {
 
         dispatch(setDate(nextDate));
     };
+}
+
+export function zoomToLayer(layerId) {
+    return { type: actionTypes.ZOOM_TO_LAYER, layerId };
 }
 
 function loadSingleLayerSource(options, mergeOnLoad = false) {

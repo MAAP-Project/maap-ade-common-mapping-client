@@ -51,3 +51,33 @@
 .modalBackdrop {
     position: absolute !important;
 }
+
+.optionsRow {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    .formInputWrapper {
+        font-size: 16px;
+    }
+
+    .formInput {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .formControl,
+    .datePickerWrapper {
+        width: 200px;
+        flex-basis: 200px;
+        margin: 8px 0px;
+    }
+
+    .datePicker {
+        margin-top: 21px;
+    }
+}
+
+.menuItemText {
+    font-size: 14px;
+}

@@ -29,6 +29,9 @@ export default function map(state = mapState, action, opt_reducer = MapReducer) 
         case actionTypes.INVALIDATE_PIXEL_CLICK:
             return opt_reducer.invalidatePixelClick(state, action);
 
+        case actionTypes.ZOOM_TO_LAYER:
+            return opt_reducer.zoomToLayer(state, action);
+
         default:
             return mapCore.call(this, state, action, opt_reducer);
     }

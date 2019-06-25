@@ -5,6 +5,8 @@ import { layerModel } from "_core/reducers/models/map";
 import MapUtil from "utils/MapUtil";
 
 export default class MapReducer extends MapReducerCore {
+    static mapUtil = MapUtil;
+
     static addGeometryToMap(state, action) {
         let alerts = state.get("alerts");
         // Add geometry to each inactive map
@@ -27,7 +29,7 @@ export default class MapReducer extends MapReducerCore {
                 } else {
                     state = state.setIn(
                         ["areaSelections", action.geometry.id],
-                        MapUtil.standardizeGeom(action.geometry)
+                        this.mapUtil.standardizeGeom(action.geometry)
                     );
                 }
             }
@@ -79,7 +81,7 @@ export default class MapReducer extends MapReducerCore {
 
     static setMapProjection(state, action) {
         const aProj = action.projection;
-        const proj = MapUtil.getPreconfiguredProjection(
+        const proj = this.mapUtil.getPreconfiguredProjection(
             typeof aProj === "string" ? aProj : aProj.code
         );
         if (proj) {
@@ -146,7 +148,7 @@ export default class MapReducer extends MapReducerCore {
             let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
             let newPartials = this.generatePartialsListFromJson(
                 action.config,
-                action.options.defOptions
+                action.options.defaultOps
             );
             return state.setIn(
                 ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
@@ -156,7 +158,7 @@ export default class MapReducer extends MapReducerCore {
             let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
             let newPartials = this.generatePartialsListFromWmtsXml(
                 action.config,
-                action.options.defOptions
+                action.options.defaultOps
             );
             return state.setIn(
                 ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
@@ -238,5 +240,25 @@ export default class MapReducer extends MapReducerCore {
     static setMapViewMode(state, action) {
         state = MapReducerCore.setMapViewMode(state, action);
         return this.invalidatePixelClick(state, action);
+    }
+
+    static zoomToLayer(state, action) {
+        const layer = this.findLayerById(state, action.layerId);
+        if (typeof layer !== "undefined") {
+            const projCode = appStringsCore.PROJECTIONS.latlon.code;
+            const extent = this.mapUtil.transformExtent(
+                layer.getIn(["wmtsOptions", "extents"]).toJS(),
+                layer.getIn(["wmtsOptions", "projection"]),
+                projCode
+            );
+            return this.setMapView(state, {
+                viewInfo: {
+                    extent: extent,
+                    projection: projCode
+                },
+                targetActiveMap: true
+            });
+        }
+        return state;
     }
 }

@@ -26,11 +26,11 @@ export class FeatureSelectMenu extends Component {
         const {
             clickData,
             invalidatePixelClick,
-            generatePlotCommand,
+            setPlotCommandInfo,
             setPlotCommandDisplay
         } = this.props;
         const shape = clickData.get("data").get(0);
-        generatePlotCommand(shape.get("featureId"));
+        setPlotCommandInfo({ geometry: shape.get("featureId") }, true);
         setPlotCommandDisplay(true);
         invalidatePixelClick();
     }
@@ -89,7 +89,7 @@ FeatureSelectMenu.propTypes = {
     clickData: PropTypes.object.isRequired,
     removeDrawing: PropTypes.func.isRequired,
     invalidatePixelClick: PropTypes.func.isRequired,
-    generatePlotCommand: PropTypes.func.isRequired,
+    setPlotCommandInfo: PropTypes.func.isRequired,
     setPlotCommandDisplay: PropTypes.func.isRequired,
     className: PropTypes.string
 };
@@ -104,7 +104,7 @@ function mapDispatchToProps(dispatch) {
     return {
         invalidatePixelClick: bindActionCreators(appActions.invalidatePixelClick, dispatch),
         removeDrawing: bindActionCreators(appActions.removeDrawing, dispatch),
-        generatePlotCommand: bindActionCreators(appActions.generatePlotCommand, dispatch),
+        setPlotCommandInfo: bindActionCreators(appActions.setPlotCommandInfo, dispatch),
         setPlotCommandDisplay: bindActionCreators(appActions.setPlotCommandDisplay, dispatch)
     };
 }
