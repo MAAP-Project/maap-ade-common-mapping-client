@@ -80,7 +80,7 @@ export function setPlotCommandInfo(options, fillDefault = false) {
         const state = getState();
 
         if (options) {
-            let { startDate, endDate, geometry, layers, plotType } = options;
+            let { startDate, endDate, geometry, datasets, plotType } = options;
             if (typeof geometry === "number" || typeof geometry === "string") {
                 options.geometry = state.map
                     .get("areaSelections")
@@ -99,8 +99,8 @@ export function setPlotCommandInfo(options, fillDefault = false) {
                         .toDate();
                 }
 
-                if (typeof layers === "undefined") {
-                    options.layers = state.map
+                if (typeof datasets === "undefined") {
+                    options.datasets = state.map
                         .getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA])
                         .filter(layer => layer.get("isActive"))
                         .toList()
