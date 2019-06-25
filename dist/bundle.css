@@ -127,7 +127,8 @@
 .LayerControlContainer__iconButtonSmall___3kdRN {
   width: 28px !important;
   height: 28px !important;
-  font-size: 22px !important; }
+  font-size: 22px !important;
+  color: rgba(0, 0, 0, 0.54); }
   .LayerControlContainer__iconButtonSmall___3kdRN span span {
     left: -23px;
     top: -11px;
@@ -445,6 +446,22 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
+.LayerPositionControl__positionControl___2dPPC {
+  display: inline-block; }
+
+.LayerPositionControl__positionButton___3UD7S {
+  min-height: 0;
+  height: 20px;
+  display: inline-block;
+  height: 26px;
+  line-height: 0px;
+  width: 50%; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -462,22 +479,6 @@
   letter-spacing: 0.05rem;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-.LayerPositionControl__positionControl___2dPPC {
-  display: inline-block; }
-
-.LayerPositionControl__positionButton___3UD7S {
-  min-height: 0;
-  height: 20px;
-  display: inline-block;
-  height: 26px;
-  line-height: 0px;
-  width: 50%; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1050,6 +1051,27 @@ button.AppContainer__context-menu-item___1M1Z0 {
 
 .PlotCommandDisplay__modalBackdrop___30gOw {
   position: absolute !important; }
+
+.PlotCommandDisplay__optionsRow___3P0J5 {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-bottom: 15px; }
+  .PlotCommandDisplay__optionsRow___3P0J5 .PlotCommandDisplay__formInputWrapper___eyvly {
+    font-size: 16px; }
+  .PlotCommandDisplay__optionsRow___3P0J5 .PlotCommandDisplay__formInput___3C4DC {
+    padding-top: 5px;
+    padding-bottom: 5px; }
+  .PlotCommandDisplay__optionsRow___3P0J5 .PlotCommandDisplay__formControl___2vPpA,
+  .PlotCommandDisplay__optionsRow___3P0J5 .PlotCommandDisplay__datePickerWrapper___3EWX6 {
+    width: 200px;
+    flex-basis: 200px;
+    margin: 8px 0px; }
+  .PlotCommandDisplay__optionsRow___3P0J5 .PlotCommandDisplay__datePicker___1X-NB {
+    margin-top: 21px; }
+
+.PlotCommandDisplay__menuItemText___1ykBv {
+  font-size: 14px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
