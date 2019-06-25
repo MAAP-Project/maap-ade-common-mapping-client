@@ -76,7 +76,7 @@ export class PlotCommandDisplay extends Component {
             return acc.add(id);
         }, Immutable.Set());
 
-        this.props.setPlotCommandInfo({ layers: selected });
+        this.props.setPlotCommandInfo({ datasets: selected });
     };
 
     renderSelectedDatasets = selected => {
@@ -96,7 +96,7 @@ export class PlotCommandDisplay extends Component {
             [this.props.className]: typeof className !== "undefined"
         });
 
-        const selectedLayers = commandInfo.get("layers");
+        const selectedLayers = commandInfo.get("datasets");
 
         return (
             <Dialog

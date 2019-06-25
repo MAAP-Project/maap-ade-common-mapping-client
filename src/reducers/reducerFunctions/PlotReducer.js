@@ -16,7 +16,7 @@ export default class PlotReducer {
                 .utc()
                 .toISOString()}"`,
             `ds = [${commandInfo
-                .get("layers")
+                .get("datasets")
                 .toList()
                 .map(l => '"' + l + '"')
                 .join(", ")}]`,
@@ -36,7 +36,7 @@ export default class PlotReducer {
         const currOps = state.get("commandInfo");
         return state
             .setIn(["commandInfo", "plotType"], action.options.plotType || currOps.get("plotType"))
-            .setIn(["commandInfo", "layers"], action.options.layers || currOps.get("layers"))
+            .setIn(["commandInfo", "datasets"], action.options.datasets || currOps.get("datasets"))
             .setIn(
                 ["commandInfo", "startDate"],
                 action.options.startDate || currOps.get("startDate")
