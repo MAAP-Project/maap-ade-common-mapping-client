@@ -222,7 +222,9 @@ function mapStateToProps(state) {
         commandStr: state.plot.get("commandStr"),
         commandInfo: state.plot.get("commandInfo"),
         display: state.plot.get("display"),
-        layers: state.map.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA])
+        layers: state.map
+            .getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA])
+            .filter(l => l.get("isActive"))
     };
 }
 
