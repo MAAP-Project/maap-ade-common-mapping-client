@@ -1072,6 +1072,9 @@ button.AppContainer__context-menu-item___1M1Z0 {
 
 .PlotCommandDisplay__menuItemText___1ykBv {
   font-size: 14px; }
+
+.PlotCommandDisplay__menuWrapper___2ePec {
+  max-height: 400px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
