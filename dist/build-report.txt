@@ -1,8 +1,8 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: 3be53e7d7c244759e7d9
+Webpack stats: Hash: c2bf9dc0254183d92c94
 Version: webpack 4.28.3
-Time: 18761ms
-Built at: 2019-07-15 14:48:10
+Time: 14137ms
+Built at: 07/15/2019 3:54:27 PM
                          Asset      Size  Chunks                    Chunk Names
 1d13acfd67b82518a74e.worker.js  4.12 KiB          [emitted]         
                     bundle.css  37.4 KiB       0  [emitted]         bundle
@@ -238,10 +238,10 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child html-webpack-plugin for "index.html":
          Asset     Size  Chunks  Chunk Names
-    index.html  534 KiB       0  
+    index.html  535 KiB       0  
     Entrypoint undefined = index.html
     [0] ./node_modules/html-webpack-plugin/lib/loader.js!./src/index_template.html 2.34 KiB {0} [built]
-    [1] ./node_modules/lodash/lodash.js 527 KiB {0} [built]
+    [1] ./node_modules/lodash/lodash.js 528 KiB {0} [built]
     [2] (webpack)/buildin/global.js 472 bytes {0} [built]
     [3] (webpack)/buildin/module.js 497 bytes {0} [built]
 Child worker:

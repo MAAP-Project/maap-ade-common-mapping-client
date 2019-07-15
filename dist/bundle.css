@@ -1,48 +1,84 @@
+.common__cursorCrosshair___z3Gwf {
+  cursor: crosshair; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-.LayerControlContainer__layerControl___1acOl {
-  position: relative;
-  width: 100%;
-  margin: 0px; }
+.display__hidden___bMUAe {
+  display: none; }
 
-.LayerControlContainer__layerControlContent___1QBQL {
-  padding: 0px 13px;
-  height: 38px; }
+.display__mouseHidden___1-dIG {
+  cursor: none; }
 
-.LayerControlContainer__iconButtonSmall___veXhr {
-  width: 25px;
-  height: 25px; }
+.display__mouseVisible___3dQh8 {
+  cursor: initial; }
 
-.LayerControlContainer__collapseEntered___B0Fjx {
-  overflow: visible; }
+.display__noPointer___1UaA_ {
+  pointer-events: none; }
 
-.LayerControlContainer__layerControlIconRow___2xMJC {
-  position: relative;
-  display: inline-block;
-  vertical-align: top; }
+.display__visible___qUEfF {
+  opacity: 1;
+  pointer-events: initial; }
 
-.LayerControlContainer__colorbar___3Op29 {
-  vertical-align: top;
-  margin-right: 5px; }
+.display__invisible___234AB {
+  opacity: 0;
+  pointer-events: none; }
 
-.LayerControlContainer__popover___1PxGF {
-  z-index: 1; }
+.display__hiddenFadeIn___1Uv7N {
+  transition: opacity 0.2s linear 0s; }
 
-.LayerControlContainer__positionPopover___2pJOg {
-  -webkit-transform: translate(-4px, 0px);
-          transform: translate(-4px, 0px); }
+.display__hiddenFadeOut___Qf3yl {
+  transition: opacity 0.2s linear 0s; }
 
-/* MUI Overrides */
-.LayerControlContainer__dense___TPliE {
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 5px; }
-.common__cursorCrosshair___z3Gwf {
-  cursor: crosshair; }
+.display__animationFadeOut___2uSfz {
+  -webkit-animation: display__animationOpacityWithDisplayHide___1NEi6 0.5s both;
+          animation: display__animationOpacityWithDisplayHide___1NEi6 0.5s both; }
+
+.display__animationFadeIn___JKS-r {
+  -webkit-animation: display__animationOpacityWithDisplayShow___2XQpT 0.5s both;
+          animation: display__animationOpacityWithDisplayShow___2XQpT 0.5s both; }
+
+@-webkit-keyframes display__animationOpacityWithDisplayHide___1NEi6 {
+  0% {
+    opacity: 1;
+    display: block; }
+  99% {
+    display: none; }
+  100% {
+    opacity: 0;
+    display: none; } }
+
+@keyframes display__animationOpacityWithDisplayHide___1NEi6 {
+  0% {
+    opacity: 1;
+    display: block; }
+  99% {
+    display: none; }
+  100% {
+    opacity: 0;
+    display: none; } }
+
+@-webkit-keyframes display__animationOpacityWithDisplayShow___2XQpT {
+  0% {
+    opacity: 0;
+    display: none; }
+  1% {
+    display: block; }
+  100% {
+    opacity: 1;
+    display: block; } }
+
+@keyframes display__animationOpacityWithDisplayShow___2XQpT {
+  0% {
+    opacity: 0;
+    display: none; }
+  1% {
+    display: block; }
+  100% {
+    opacity: 1;
+    display: block; } }
 .LayerPositionControl__positionControl___WtMPX {
   display: inline-block; }
 
@@ -53,23 +89,6 @@
   font-size: 13px;
   line-height: 13px;
   width: 50%; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.LayerControlLabel__controlLabel___VJpNi {
-  background: #e91e63;
-  padding: 5px;
-  font-size: 12px;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -90,6 +109,23 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.LayerControlLabel__controlLabel___VJpNi {
+  background: #e91e63;
+  padding: 5px;
+  font-size: 12px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
 .LayerControlContainer__layerControl___S89br {
   height: 38px;
   padding-right: 4px; }
@@ -446,6 +482,22 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
+.LayerPositionControl__positionControl___2dPPC {
+  display: inline-block; }
+
+.LayerPositionControl__positionButton___3UD7S {
+  min-height: 0;
+  height: 20px;
+  display: inline-block;
+  height: 26px;
+  line-height: 0px;
+  width: 50%; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -469,95 +521,43 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-.LayerPositionControl__positionControl___2dPPC {
-  display: inline-block; }
+.LayerControlContainer__layerControl___1acOl {
+  position: relative;
+  width: 100%;
+  margin: 0px; }
 
-.LayerPositionControl__positionButton___3UD7S {
-  min-height: 0;
-  height: 20px;
+.LayerControlContainer__layerControlContent___1QBQL {
+  padding: 0px 13px;
+  height: 38px; }
+
+.LayerControlContainer__iconButtonSmall___veXhr {
+  width: 25px;
+  height: 25px; }
+
+.LayerControlContainer__collapseEntered___B0Fjx {
+  overflow: visible; }
+
+.LayerControlContainer__layerControlIconRow___2xMJC {
+  position: relative;
   display: inline-block;
-  height: 26px;
-  line-height: 0px;
-  width: 50%; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-.display__hidden___bMUAe {
-  display: none; }
+  vertical-align: top; }
 
-.display__mouseHidden___1-dIG {
-  cursor: none; }
+.LayerControlContainer__colorbar___3Op29 {
+  vertical-align: top;
+  margin-right: 5px; }
 
-.display__mouseVisible___3dQh8 {
-  cursor: initial; }
+.LayerControlContainer__popover___1PxGF {
+  z-index: 1; }
 
-.display__noPointer___1UaA_ {
-  pointer-events: none; }
+.LayerControlContainer__positionPopover___2pJOg {
+  -webkit-transform: translate(-4px, 0px);
+          transform: translate(-4px, 0px); }
 
-.display__visible___qUEfF {
-  opacity: 1;
-  pointer-events: initial; }
-
-.display__invisible___234AB {
-  opacity: 0;
-  pointer-events: none; }
-
-.display__hiddenFadeIn___1Uv7N {
-  transition: opacity 0.2s linear 0s; }
-
-.display__hiddenFadeOut___Qf3yl {
-  transition: opacity 0.2s linear 0s; }
-
-.display__animationFadeOut___2uSfz {
-  -webkit-animation: display__animationOpacityWithDisplayHide___1NEi6 0.5s both;
-          animation: display__animationOpacityWithDisplayHide___1NEi6 0.5s both; }
-
-.display__animationFadeIn___JKS-r {
-  -webkit-animation: display__animationOpacityWithDisplayShow___2XQpT 0.5s both;
-          animation: display__animationOpacityWithDisplayShow___2XQpT 0.5s both; }
-
-@-webkit-keyframes display__animationOpacityWithDisplayHide___1NEi6 {
-  0% {
-    opacity: 1;
-    display: block; }
-  99% {
-    display: none; }
-  100% {
-    opacity: 0;
-    display: none; } }
-
-@keyframes display__animationOpacityWithDisplayHide___1NEi6 {
-  0% {
-    opacity: 1;
-    display: block; }
-  99% {
-    display: none; }
-  100% {
-    opacity: 0;
-    display: none; } }
-
-@-webkit-keyframes display__animationOpacityWithDisplayShow___2XQpT {
-  0% {
-    opacity: 0;
-    display: none; }
-  1% {
-    display: block; }
-  100% {
-    opacity: 1;
-    display: block; } }
-
-@keyframes display__animationOpacityWithDisplayShow___2XQpT {
-  0% {
-    opacity: 0;
-    display: none; }
-  1% {
-    display: block; }
-  100% {
-    opacity: 1;
-    display: block; } }
+/* MUI Overrides */
+.LayerControlContainer__dense___TPliE {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 5px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
