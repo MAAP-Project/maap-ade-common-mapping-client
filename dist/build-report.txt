@@ -1,8 +1,8 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: c2bf9dc0254183d92c94
+Webpack stats: Hash: db43077f7901aa00495e
 Version: webpack 4.28.3
-Time: 14137ms
-Built at: 07/15/2019 3:54:27 PM
+Time: 33754ms
+Built at: 07/15/2019 4:26:28 PM
                          Asset      Size  Chunks                    Chunk Names
 1d13acfd67b82518a74e.worker.js  4.12 KiB          [emitted]         
                     bundle.css  37.4 KiB       0  [emitted]         bundle
