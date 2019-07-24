@@ -2,6 +2,7 @@ import Immutable from "immutable";
 import * as appStringsCore from "_core/constants/appStrings";
 import MapReducerCore from "_core/reducers/reducerFunctions/MapReducer";
 import { layerModel } from "_core/reducers/models/map";
+import appConfig from "constants/appConfig";
 import MapUtil from "utils/MapUtil";
 
 export default class MapReducer extends MapReducerCore {
@@ -200,6 +201,64 @@ export default class MapReducer extends MapReducerCore {
             return newLayers;
         }
         return [];
+    }
+
+    static mergeLayers(state, action) {
+        let partials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
+        let refPartial = null;
+        let matchingPartials = null;
+        let mergedLayer = null;
+        let newLayers = null;
+        let unmatchedLayers = Immutable.List();
+        while (partials.size > 0) {
+            // grab a partial
+            refPartial = partials.last();
+            // remove it from future evaluation
+            partials = partials.pop();
+            // grab matching partials
+            matchingPartials = partials.filter(el => {
+                return el.get("id") === refPartial.get("id");
+            });
+            // remove them from future evaluation
+            partials = partials.filter(el => {
+                return el.get("id") !== refPartial.get("id");
+            });
+            // merge the matching partials together
+            mergedLayer = matchingPartials.reduce((acc, el) => {
+                if (el.get("fromJson")) {
+                    return acc.mergeDeep(el);
+                }
+                return el.mergeDeep(acc);
+            }, refPartial);
+            // merge in the default values
+            mergedLayer = this.getLayerModel().mergeDeep(mergedLayer);
+
+            // put the newly minted layer into state storage
+            if (
+                typeof mergedLayer.get("id") !== "undefined" &&
+                typeof state.getIn(["layers", mergedLayer.get("type")]) !== "undefined" &&
+                !state.getIn(["layers", mergedLayer.get("type")]).has(mergedLayer.get("id"))
+            ) {
+                state = state.setIn(
+                    ["layers", mergedLayer.get("type"), mergedLayer.get("id")],
+                    mergedLayer
+                );
+            } else {
+                unmatchedLayers = unmatchedLayers.push(mergedLayer);
+            }
+        }
+
+        if (unmatchedLayers.size > 0) {
+            console.warn(
+                "Error in MapReducer.mergeLayers: could not store merged layers; missing a valid id or type.",
+                unmatchedLayers
+            );
+        }
+
+        if (appConfig.DELETE_LAYER_PARTIALS) {
+            return state.removeIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]); // remove the partials list so that it doesn't intrude later
+        }
+        return state.setIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL], unmatchedLayers); // store only unmatched partials
     }
 
     static activateDefaultBasemap(state, action) {
