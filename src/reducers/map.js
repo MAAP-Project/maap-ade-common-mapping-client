@@ -32,6 +32,9 @@ export default function map(state = mapState, action, opt_reducer = MapReducer) 
         case actionTypes.ZOOM_TO_LAYER:
             return opt_reducer.zoomToLayer(state, action);
 
+        case actionTypes.SET_LAYER_SELECTED:
+            return opt_reducer.setLayerSelected(state, action);
+
         default:
             return mapCore.call(this, state, action, opt_reducer);
     }

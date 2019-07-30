@@ -19,6 +19,10 @@
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
             border-bottom: 1px solid #dedede;
+            .headerRight {
+                flex-basis: 200px;
+                width: 200px;
+            }
         }
         .layerMenuContent {
             max-height: 450px;
@@ -59,6 +63,17 @@
     width: 30px;
     overflow: hidden;
     justify-content: flex-end;
+    align-items: center;
+}
+
+.manageBtn {
+    display: inline-block;
+    padding: 0px 4px;
+    font-size: 12px;
+}
+
+.manageBtnHidden {
+    display: hidden;
 }
 
 .pageCtrls {

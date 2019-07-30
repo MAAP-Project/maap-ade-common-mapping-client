@@ -167,6 +167,14 @@ export function zoomToLayer(layerId) {
     return { type: actionTypes.ZOOM_TO_LAYER, layerId };
 }
 
+export function setLayerManagerOpen(isOpen) {
+    return { type: actionTypes.SET_LAYER_MANAGER_OPEN, isOpen };
+}
+
+export function setLayerSelected(layerId, isSelected) {
+    return { type: actionTypes.SET_LAYER_SELECTED, layerId, isSelected };
+}
+
 function loadSingleLayerSource(options, mergeOnLoad = false) {
     return dispatch => {
         return MiscUtil.asyncFetch({

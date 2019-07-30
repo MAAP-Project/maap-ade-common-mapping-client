@@ -1,0 +1,64 @@
+@import "~styles/colors";
+
+.root {
+    position: absolute !important;
+}
+
+.title {
+    padding: 10px 24px;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.closeButton {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(0px, -50%);
+    color: #9e9e9e;
+}
+
+.content {
+    padding: 10px 24px 24px;
+}
+
+.buttonRow {
+    text-align: right;
+}
+
+.modalBackdrop {
+    position: absolute !important;
+}
+
+.layerList {
+    width: 100%;
+    background-color: white;
+}
+
+.pageCtrls {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background: #f3f3f3;
+    border-top: 1px solid #dedede;
+    .pageNum {
+        font-size: 12px;
+    }
+    .activePageNum {
+        color: $color-primary;
+    }
+    .pageCtrlLeft {
+        flex-basis: 190px;
+        width: 190px;
+        display: inline-block;
+        text-align: left;
+        justify-content: flex-start;
+    }
+    .pageCtrlRight {
+        flex: 1 1;
+        justify-content: flex-end;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+    }
+}

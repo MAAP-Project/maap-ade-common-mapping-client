@@ -15,10 +15,11 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Divider from "@material-ui/core/Divider";
-import List from "@material-ui/core/List";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 import * as appStrings from "_core/constants/appStrings";
 import * as mapActions from "_core/actions/mapActions";
+import * as appActions from "actions/appActions";
 import { LayerControlContainer } from "components/LayerMenu";
 import { EnhancedSwitch, IconButtonSmall } from "_core/components/Reusables";
 import MiscUtil from "_core/utils/MiscUtil";
@@ -49,6 +50,10 @@ export class LayerMenuContainer extends Component {
         this.page = 0;
         this.forceUpdate();
     }
+
+    openManager = () => {
+        this.props.setLayerManagerOpen(true);
+    };
 
     renderPaginationControls(shouldPage, numPages, numActive) {
         if (shouldPage) {
@@ -99,7 +104,7 @@ export class LayerMenuContainer extends Component {
 
     render() {
         let layerList = this.props.layers
-            .filter(layer => !layer.get("isDisabled"))
+            .filter(layer => !layer.get("isDisabled") && layer.get("isSelected"))
             .toList()
             .sort(MiscUtil.getImmutableObjectSort("title"));
         let totalNum = layerList.size;
@@ -133,6 +138,11 @@ export class LayerMenuContainer extends Component {
             [styles.collapse]: this.props.layerMenuOpen
         });
 
+        let manageBtnClasses = MiscUtil.generateStringFromSet({
+            [styles.manageBtn]: true,
+            [styles.manageBtnHidden]: !this.props.layerMenuOpen
+        });
+
         const content =
             displayNum > 0 ? (
                 layerList.map((layer, i) => (
@@ -156,6 +166,13 @@ export class LayerMenuContainer extends Component {
                         </Typography>
                     </div>
                     <div className={styles.headerRight}>
+                        <Button
+                            className={manageBtnClasses}
+                            color="primary"
+                            onClick={this.openManager}
+                        >
+                            Manage
+                        </Button>
                         <IconButtonSmall
                             className={collapseIconClasses}
                             color="default"
@@ -178,7 +195,8 @@ LayerMenuContainer.propTypes = {
     setLayerMenuOpen: PropTypes.func.isRequired,
     layerMenuOpen: PropTypes.bool.isRequired,
     layers: PropTypes.object.isRequired,
-    className: PropTypes.string
+    className: PropTypes.string,
+    setLayerManagerOpen: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -190,7 +208,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setLayerMenuOpen: bindActionCreators(mapActions.setLayerMenuOpen, dispatch)
+        setLayerMenuOpen: bindActionCreators(mapActions.setLayerMenuOpen, dispatch),
+        setLayerManagerOpen: bindActionCreators(appActions.setLayerManagerOpen, dispatch)
     };
 }
 
