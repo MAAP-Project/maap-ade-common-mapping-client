@@ -1,5 +1,5 @@
 import appConfig from "constants/appConfig";
-import { mapState as mapStateCore } from "_core/reducers/models/map";
+import { mapState as mapStateCore, layerModel as layerModelCore } from "_core/reducers/models/map";
 
 export const mapState = mapStateCore.mergeDeep({
     areaSelections: {},
@@ -9,4 +9,8 @@ export const mapState = mapStateCore.mergeDeep({
             data: []
         }
     }
+});
+
+export const layerModel = layerModelCore.mergeDeep({
+    isSelected: true
 });

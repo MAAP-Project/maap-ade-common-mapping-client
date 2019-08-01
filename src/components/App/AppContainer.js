@@ -16,7 +16,7 @@ import * as appActions from "actions/appActions";
 import MiscUtil from "_core/utils/MiscUtil";
 import MapUtil from "_core/utils/MapUtil";
 import { KeyboardControlsContainer } from "components/KeyboardControls";
-import { LayerMenuContainer } from "components/LayerMenu";
+import { LayerMenuContainer, LayerManager } from "components/LayerMenu";
 import {
     MapContainer,
     MapControlsContainer,
@@ -105,6 +105,7 @@ export class AppContainer extends Component {
                         <MapContainer />
                         <KeyboardControlsContainer />
                         <LayerMenuContainer />
+                        <LayerManager />
                         <MapControlsContainer />
                         <AlertsContainer />
                         <CoordinateTracker />
