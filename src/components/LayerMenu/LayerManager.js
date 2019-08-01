@@ -28,7 +28,7 @@ export class LayerManager extends Component {
     constructor(props) {
         super(props);
 
-        this.pageMax = 9;
+        this.pageMax = 2;
         this.page = 0;
         this.onlyActive = false;
     }
@@ -46,6 +46,7 @@ export class LayerManager extends Component {
 
     handleClose = () => {
         const { setLayerManagerOpen } = this.props;
+        this.page = 0;
 
         setLayerManagerOpen(false);
     };
@@ -125,7 +126,7 @@ export class LayerManager extends Component {
                         <CloseIcon />
                     </IconButton>
                 </DialogTitle>
-                <DialogContent>
+                <DialogContent className={styles.content}>
                     <List className={styles.layerList}>
                         {layerList.map(layer => {
                             const labelId = `checkbox-list-label-${layer.get("id")}`;
@@ -136,6 +137,7 @@ export class LayerManager extends Component {
                                     role={undefined}
                                     dense
                                     button
+                                    className={styles.listItem}
                                     onClick={() => this.handleLayerToggle(layer.get("id"))}
                                 >
                                     <ListItemIcon>
@@ -147,11 +149,19 @@ export class LayerManager extends Component {
                                             inputProps={{ "aria-labelledby": labelId }}
                                         />
                                     </ListItemIcon>
-                                    <ListItemText id={labelId} primary={layer.get("title")} />
-                                    <ListItemSecondaryAction>
-                                        <IconButton edge="end" aria-label="comments">
+                                    <ListItemText
+                                        id={labelId}
+                                        primary={layer.get("title")}
+                                        className={styles.layerTitle}
+                                    />
+                                    <ListItemSecondaryAction className={styles.rightAction}>
+                                        <IconButtonSmall
+                                            edge="end"
+                                            aria-label="remove"
+                                            className={styles.removeLayerBtn}
+                                        >
                                             <DeleteIcon />
-                                        </IconButton>
+                                        </IconButtonSmall>
                                     </ListItemSecondaryAction>
                                 </ListItem>
                             );
