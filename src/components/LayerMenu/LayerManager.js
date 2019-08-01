@@ -31,7 +31,7 @@ export class LayerManager extends Component {
     constructor(props) {
         super(props);
 
-        this.pageMax = 5;
+        this.pageMax = 12;
         this.page = 0;
         this.onlyActive = false;
     }

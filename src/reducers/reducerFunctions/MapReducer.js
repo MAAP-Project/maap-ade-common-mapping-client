@@ -327,10 +327,12 @@ export default class MapReducer extends MapReducerCore {
     static setLayerSelected(state, action) {
         const layer = this.findLayerById(state, action.layerId);
         if (typeof layer !== "undefined") {
-            return state.setIn(
+            const selected = !!action.isSelected;
+            state = state.setIn(
                 ["layers", layer.get("type"), layer.get("id"), "isSelected"],
-                !!action.isSelected
+                selected
             );
+            return this.setLayerActive(state, { layer: action.layerId, active: selected });
         }
         return state;
     }
@@ -345,6 +347,7 @@ export default class MapReducer extends MapReducerCore {
     static removeLayerFromApp(state, action) {
         const layer = this.findLayerById(state, action.layerId);
         if (typeof layer !== "undefined") {
+            state = this.setLayerActive(state, { layer: action.layerId, active: false });
             return state.deleteIn(["layers", layer.get("type"), layer.get("id")]);
         }
         return state;
