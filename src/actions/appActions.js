@@ -183,6 +183,10 @@ export function setLayerFilter(filter) {
     return { type: actionTypes.SET_LAYER_FILTER, filter };
 }
 
+export function removeLayerFromApp(layerId) {
+    return { type: actionTypes.REMOVE_LAYER_FROM_APP, layerId };
+}
+
 function loadSingleLayerSource(options, mergeOnLoad = false) {
     return dispatch => {
         return MiscUtil.asyncFetch({

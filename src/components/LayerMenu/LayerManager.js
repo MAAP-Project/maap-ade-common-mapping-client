@@ -66,6 +66,10 @@ export class LayerManager extends Component {
         this.props.clearAllSelected();
     };
 
+    removeLayer = layerId => () => {
+        this.props.removeLayerFromApp(layerId);
+    };
+
     renderPaginationControls(shouldPage, numPages, totalNum) {
         if (shouldPage) {
             return (
@@ -137,6 +141,7 @@ export class LayerManager extends Component {
                                         edge="end"
                                         aria-label="remove"
                                         className={styles.removeLayerBtn}
+                                        onClick={this.removeLayer(layer.get("id"))}
                                     >
                                         <DeleteIcon />
                                     </IconButtonSmall>
@@ -200,7 +205,7 @@ export class LayerManager extends Component {
                 }}
             >
                 <DialogTitle disableTypography className={styles.title}>
-                    <Typography variant="h6">Manage Datasets</Typography>
+                    <Typography variant="h6">Manage Layers</Typography>
                     <IconButton
                         aria-label="Close"
                         className={styles.closeButton}
@@ -256,6 +261,7 @@ LayerManager.propTypes = {
     setLayerSelected: PropTypes.func.isRequired,
     clearAllSelected: PropTypes.func.isRequired,
     setLayerFilter: PropTypes.func.isRequired,
+    removeLayerFromApp: PropTypes.func.isRequired,
     className: PropTypes.string
 };
 
@@ -272,7 +278,8 @@ function mapDispatchToProps(dispatch) {
         setLayerManagerOpen: bindActionCreators(appActions.setLayerManagerOpen, dispatch),
         setLayerSelected: bindActionCreators(appActions.setLayerSelected, dispatch),
         clearAllSelected: bindActionCreators(appActions.clearAllSelected, dispatch),
-        setLayerFilter: bindActionCreators(appActions.setLayerFilter, dispatch)
+        setLayerFilter: bindActionCreators(appActions.setLayerFilter, dispatch),
+        removeLayerFromApp: bindActionCreators(appActions.removeLayerFromApp, dispatch)
     };
 }
 

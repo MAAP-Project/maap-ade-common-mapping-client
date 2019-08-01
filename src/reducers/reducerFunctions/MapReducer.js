@@ -341,4 +341,12 @@ export default class MapReducer extends MapReducerCore {
             .map(l => l.set("isSelected", false));
         return state.setIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA], layers);
     }
+
+    static removeLayerFromApp(state, action) {
+        const layer = this.findLayerById(state, action.layerId);
+        if (typeof layer !== "undefined") {
+            return state.deleteIn(["layers", layer.get("type"), layer.get("id")]);
+        }
+        return state;
+    }
 }

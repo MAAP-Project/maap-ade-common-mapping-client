@@ -38,6 +38,9 @@ export default function map(state = mapState, action, opt_reducer = MapReducer) 
         case actionTypes.CLEAR_ALL_SELECTED_LAYERS:
             return opt_reducer.clearSelectedLayers(state, action);
 
+        case actionTypes.REMOVE_LAYER_FROM_APP:
+            return opt_reducer.removeLayerFromApp(state, action);
+
         default:
             return mapCore.call(this, state, action, opt_reducer);
     }
