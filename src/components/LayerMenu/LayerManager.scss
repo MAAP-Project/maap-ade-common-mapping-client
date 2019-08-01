@@ -7,7 +7,8 @@
 .title {
     padding: 10px 24px;
     position: relative;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: #f3f3f3;
+    border-bottom: 1px solid #dedede;
 }
 
 .closeButton {
@@ -21,6 +22,9 @@
 .content {
     width: 500px;
     padding: 0px;
+    overflow: hidden;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .buttonRow {
@@ -31,9 +35,48 @@
     position: absolute !important;
 }
 
+.controlsContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100%;
+    flex-basis: 55px;
+    min-height: 55px;
+    max-height: 55px;
+    height: 55px;
+    z-index: 1;
+    padding: 0px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.08), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    .textInputRoot {
+        width: 145px;
+        .inputWrapper {
+            font-size: 12px;
+        }
+        .input {
+            padding: 8px 6px;
+        }
+    }
+    .ctrlBtnWrapper {
+        display: inline-block;
+        flex: 1 1 auto;
+        text-align: right;
+        .ctrlBtn {
+            padding: 0px 4px;
+            font-size: 12px;
+        }
+    }
+}
+.inputLabelRoot {
+    transform: translate(14px, 8px) scale(1);
+}
+
 .layerList {
     width: 100%;
     background-color: white;
+    flex: 1 1 auto;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .pageCtrls {
@@ -53,6 +96,7 @@
         width: 190px;
         display: inline-block;
         text-align: left;
+        padding-left: 16px;
         justify-content: flex-start;
     }
     .pageCtrlRight {
@@ -87,4 +131,8 @@
 
 .rightAction {
     right: 16px;
+}
+
+.emptyLabel {
+    padding: 7px 9px;
 }

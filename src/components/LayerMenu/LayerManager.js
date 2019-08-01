@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import Immutable from "immutable";
+import fuzzysearch from "fuzzysearch";
 import CloseIcon from "@material-ui/icons/Close";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
@@ -11,6 +13,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -28,7 +31,7 @@ export class LayerManager extends Component {
     constructor(props) {
         super(props);
 
-        this.pageMax = 2;
+        this.pageMax = 5;
         this.page = 0;
         this.onlyActive = false;
     }
@@ -55,10 +58,23 @@ export class LayerManager extends Component {
         this.props.setLayerSelected(layerId, !this.props.layers.getIn([layerId, "isSelected"]));
     };
 
-    renderPaginationControls(shouldPage, numPages, numActive) {
+    handleFilterChange = evt => {
+        this.props.setLayerFilter(evt.target.value);
+    };
+
+    clearAll = () => {
+        this.props.clearAllSelected();
+    };
+
+    renderPaginationControls(shouldPage, numPages, totalNum) {
         if (shouldPage) {
             return (
                 <div className={styles.pageCtrls}>
+                    <div className={styles.pageCtrlLeft}>
+                        <Typography variant="caption" className={styles.pageNum}>
+                            Total: {totalNum}
+                        </Typography>
+                    </div>
                     <div className={styles.pageCtrlRight}>
                         <Typography variant="caption" className={styles.pageNum}>
                             <span className={styles.activePageNum}>
@@ -86,12 +102,79 @@ export class LayerManager extends Component {
         }
     }
 
+    renderLayerList(layerList) {
+        if (layerList.size > 0) {
+            return (
+                <List className={styles.layerList}>
+                    {layerList.map(layer => {
+                        const labelId = `checkbox-list-label-${layer.get("id")}`;
+
+                        return (
+                            <ListItem
+                                key={layer.get("id")}
+                                role={undefined}
+                                dense
+                                button
+                                className={styles.listItem}
+                                onClick={() => this.handleLayerToggle(layer.get("id"))}
+                            >
+                                <ListItemIcon>
+                                    <Checkbox
+                                        edge="start"
+                                        checked={layer.get("isSelected")}
+                                        tabIndex={-1}
+                                        disableRipple
+                                        inputProps={{ "aria-labelledby": labelId }}
+                                    />
+                                </ListItemIcon>
+                                <ListItemText
+                                    id={labelId}
+                                    primary={layer.get("title")}
+                                    className={styles.layerTitle}
+                                />
+                                <ListItemSecondaryAction className={styles.rightAction}>
+                                    <IconButtonSmall
+                                        edge="end"
+                                        aria-label="remove"
+                                        className={styles.removeLayerBtn}
+                                    >
+                                        <DeleteIcon />
+                                    </IconButtonSmall>
+                                </ListItemSecondaryAction>
+                            </ListItem>
+                        );
+                    })}
+                </List>
+            );
+        } else {
+            return (
+                <Typography variant="body2" className={styles.emptyLabel}>
+                    None
+                </Typography>
+            );
+        }
+    }
+
     render() {
         const { isOpen, layers } = this.props;
-        let layerList = layers
-            .filter(layer => !layer.get("isDisabled"))
-            .toList()
-            .sort(MiscUtil.getImmutableObjectSort("title"));
+        let { filter } = this.props;
+        let selectedCnt = 0;
+        let layerList = layers.reduce((acc, layer) => {
+            if (!layer.get("isDisabled")) {
+                if (layer.get("isSelected")) {
+                    selectedCnt += 1;
+                }
+                return acc.push(layer);
+            }
+            return acc;
+        }, Immutable.List());
+        if (filter !== "") {
+            filter = filter.toLowerCase();
+            layerList = layerList.filter(layer => {
+                return fuzzysearch(filter, layer.get("title").toLowerCase());
+            });
+        }
+        layerList = layerList.toList().sort(MiscUtil.getImmutableObjectSort("title"));
 
         let totalNum = layerList.size;
         const numPages = Math.ceil(totalNum / this.pageMax);
@@ -127,46 +210,37 @@ export class LayerManager extends Component {
                     </IconButton>
                 </DialogTitle>
                 <DialogContent className={styles.content}>
-                    <List className={styles.layerList}>
-                        {layerList.map(layer => {
-                            const labelId = `checkbox-list-label-${layer.get("id")}`;
-
-                            return (
-                                <ListItem
-                                    key={layer.get("id")}
-                                    role={undefined}
-                                    dense
-                                    button
-                                    className={styles.listItem}
-                                    onClick={() => this.handleLayerToggle(layer.get("id"))}
-                                >
-                                    <ListItemIcon>
-                                        <Checkbox
-                                            edge="start"
-                                            checked={layer.get("isSelected")}
-                                            tabIndex={-1}
-                                            disableRipple
-                                            inputProps={{ "aria-labelledby": labelId }}
-                                        />
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        id={labelId}
-                                        primary={layer.get("title")}
-                                        className={styles.layerTitle}
-                                    />
-                                    <ListItemSecondaryAction className={styles.rightAction}>
-                                        <IconButtonSmall
-                                            edge="end"
-                                            aria-label="remove"
-                                            className={styles.removeLayerBtn}
-                                        >
-                                            <DeleteIcon />
-                                        </IconButtonSmall>
-                                    </ListItemSecondaryAction>
-                                </ListItem>
-                            );
-                        })}
-                    </List>
+                    <div className={styles.controlsContainer}>
+                        <TextField
+                            label="Filter"
+                            className={styles.textInputRoot}
+                            value={filter}
+                            onChange={this.handleFilterChange}
+                            margin="none"
+                            variant="outlined"
+                            InputLabelProps={{
+                                classes: {
+                                    root: styles.inputLabelRoot
+                                }
+                            }}
+                            InputProps={{
+                                classes: {
+                                    root: styles.inputWrapper,
+                                    input: styles.input
+                                }
+                            }}
+                        />
+                        <div className={styles.ctrlBtnWrapper}>
+                            <Button
+                                color="primary"
+                                className={styles.ctrlBtn}
+                                onClick={this.clearAll}
+                            >
+                                Clear Selected ({selectedCnt})
+                            </Button>
+                        </div>
+                    </div>
+                    {this.renderLayerList(layerList)}
                 </DialogContent>
                 {this.renderPaginationControls(totalNum > this.pageMax, numPages, totalNum)}
             </Dialog>
@@ -180,6 +254,8 @@ LayerManager.propTypes = {
     filter: PropTypes.string.isRequired,
     setLayerManagerOpen: PropTypes.func.isRequired,
     setLayerSelected: PropTypes.func.isRequired,
+    clearAllSelected: PropTypes.func.isRequired,
+    setLayerFilter: PropTypes.func.isRequired,
     className: PropTypes.string
 };
 
@@ -194,7 +270,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setLayerManagerOpen: bindActionCreators(appActions.setLayerManagerOpen, dispatch),
-        setLayerSelected: bindActionCreators(appActions.setLayerSelected, dispatch)
+        setLayerSelected: bindActionCreators(appActions.setLayerSelected, dispatch),
+        clearAllSelected: bindActionCreators(appActions.clearAllSelected, dispatch),
+        setLayerFilter: bindActionCreators(appActions.setLayerFilter, dispatch)
     };
 }
 

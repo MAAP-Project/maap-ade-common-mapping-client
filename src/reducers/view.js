@@ -8,6 +8,9 @@ export default function view(state = viewState, action, opt_reducer = ViewReduce
         case actionTypes.SET_LAYER_MANAGER_OPEN:
             return opt_reducer.setLayerManagerOpen(state, action);
 
+        case actionTypes.SET_LAYER_FILTER:
+            return opt_reducer.setLayerFilter(state, action);
+
         default:
             return viewCore.call(this, state, action, opt_reducer);
     }

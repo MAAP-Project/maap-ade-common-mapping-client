@@ -334,4 +334,11 @@ export default class MapReducer extends MapReducerCore {
         }
         return state;
     }
+
+    static clearSelectedLayers(state, action) {
+        const layers = state
+            .getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA])
+            .map(l => l.set("isSelected", false));
+        return state.setIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA], layers);
+    }
 }

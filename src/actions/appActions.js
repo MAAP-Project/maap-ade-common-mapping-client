@@ -175,6 +175,14 @@ export function setLayerSelected(layerId, isSelected) {
     return { type: actionTypes.SET_LAYER_SELECTED, layerId, isSelected };
 }
 
+export function clearAllSelected() {
+    return { type: actionTypes.CLEAR_ALL_SELECTED_LAYERS };
+}
+
+export function setLayerFilter(filter) {
+    return { type: actionTypes.SET_LAYER_FILTER, filter };
+}
+
 function loadSingleLayerSource(options, mergeOnLoad = false) {
     return dispatch => {
         return MiscUtil.asyncFetch({
