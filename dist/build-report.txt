@@ -1,11 +1,11 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: c4e4ca91d3541d6471d0
+Webpack stats: Hash: a97ff38d1b64e85f6828
 Version: webpack 4.28.3
-Time: 40667ms
-Built at: 2019-08-01 16:07:32
+Time: 41496ms
+Built at: 2019-08-01 16:19:11
                          Asset      Size  Chunks                    Chunk Names
 7a4d3383c816ac6d0207.worker.js  4.12 KiB          [emitted]         
-                    bundle.css  40.1 KiB       0  [emitted]         bundle
+                    bundle.css  40.3 KiB       0  [emitted]         bundle
                      bundle.js   4.6 MiB       0  [emitted]  [big]  bundle
                     index.html  8.17 KiB          [emitted]         
                inlineStyles.js  1.18 KiB       1  [emitted]         inlineStyles
@@ -35,7 +35,7 @@ Entrypoint inlineStyles = inlineStyles.js
       | ./node_modules/react-redux/es/components/Provider.js 2.29 KiB [built]
       | ./node_modules/react-redux/es/components/connectAdvanced.js 8.26 KiB [built]
       | ./node_modules/react-redux/es/connect/connect.js 4.83 KiB [built]
-      | ./src/components/App/AppContainer.js 6.25 KiB [built]
+      | ./src/components/App/AppContainer.js 6.37 KiB [built]
       | ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js 204 bytes [built]
       | ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js 192 bytes [built]
       | ./node_modules/@babel/runtime/helpers/esm/extends.js 397 bytes [built]
@@ -44,7 +44,7 @@ Entrypoint inlineStyles = inlineStyles.js
       | ./node_modules/react-redux/es/connect/mapDispatchToProps.js 915 bytes [built]
       | ./node_modules/react-redux/es/connect/mapStateToProps.js 504 bytes [built]
       |     + 127 hidden modules
-    + 962 hidden modules
+    + 963 hidden modules
 
 WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
 This can impact web performance.
@@ -176,6 +176,10 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/_core/styles/text.scss 923 bytes {0} [built]
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
+Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/App/AppContainer.scss:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/App/AppContainer.scss 277 bytes {0} [built]
+    [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/DatePicker/CurrentDateDisplay.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/DatePicker/CurrentDateDisplay.scss 281 bytes {0} [built]
@@ -199,7 +203,7 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/LayerMenu/LayerManager.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
-    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/LayerMenu/LayerManager.scss 5 KiB {0} [built]
+    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/LayerMenu/LayerManager.scss 5.06 KiB {0} [built]
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/LayerMenu/LayerMenuContainer.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
@@ -235,7 +239,7 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
     [1] ./node_modules/css-loader/dist/cjs.js?{"url":false,"modules":true,"importLoaders":2,"localIdentName":"[name]__[local]___[hash:base64:5]","sourceMap":false}!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/_core/styles/text.scss 923 bytes {0} [built]
-    [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Plot/PlotCommandDisplay.scss 3.78 KiB {0} [built]
+    [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Plot/PlotCommandDisplay.scss 3.85 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/styles/common.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/styles/common.scss 288 bytes {0} [built]
