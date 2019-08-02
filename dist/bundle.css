@@ -306,8 +306,10 @@
     border-radius: 2px;
     font-size: 22px;
     overflow: hidden; }
-.AppContainer__root___2JgVI * {
+.AppContainer__root___2JgVI {
   box-sizing: border-box; }
+  .AppContainer__root___2JgVI * {
+    box-sizing: border-box; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
