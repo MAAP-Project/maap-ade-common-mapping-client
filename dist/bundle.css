@@ -149,7 +149,10 @@
 /* colors */
 /* neutrals */
 .LayerManager__root___3iPYb {
-  position: absolute !important; }
+  position: absolute !important;
+  box-sizing: border-box; }
+  .LayerManager__root___3iPYb * {
+    box-sizing: border-box; }
 
 .LayerManager__title___3EOlG {
   padding: 10px 24px;
@@ -1133,7 +1136,10 @@ button.AppContainer__context-menu-item___1M1Z0 {
   overflow: hidden;
   white-space: nowrap; }
 .PlotCommandDisplay__root___10K9x {
-  position: absolute !important; }
+  position: absolute !important;
+  box-sizing: border-box; }
+  .PlotCommandDisplay__root___10K9x * {
+    box-sizing: border-box; }
 
 .PlotCommandDisplay__title___3-5Z1 {
   padding: 10px 24px;

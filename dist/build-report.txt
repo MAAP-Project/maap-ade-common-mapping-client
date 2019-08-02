@@ -1,11 +1,11 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: 0b1d0bd0f60879ae0c98
+Webpack stats: Hash: 341e39f913775cece879
 Version: webpack 4.28.3
-Time: 17203ms
-Built at: 2019-08-02 10:05:40
+Time: 18731ms
+Built at: 2019-08-02 10:09:27
                          Asset      Size  Chunks                    Chunk Names
 7a4d3383c816ac6d0207.worker.js  4.12 KiB          [emitted]         
-                    bundle.css  40.3 KiB       0  [emitted]         bundle
+                    bundle.css  40.5 KiB       0  [emitted]         bundle
                      bundle.js   4.6 MiB       0  [emitted]  [big]  bundle
                     index.html  8.17 KiB          [emitted]         
                inlineStyles.js  1.18 KiB       1  [emitted]         inlineStyles
@@ -203,7 +203,7 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/LayerMenu/LayerManager.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
-    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/LayerMenu/LayerManager.scss 5.06 KiB {0} [built]
+    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/LayerMenu/LayerManager.scss 5.15 KiB {0} [built]
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/LayerMenu/LayerMenuContainer.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
@@ -239,7 +239,7 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
     [1] ./node_modules/css-loader/dist/cjs.js?{"url":false,"modules":true,"importLoaders":2,"localIdentName":"[name]__[local]___[hash:base64:5]","sourceMap":false}!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/_core/styles/text.scss 923 bytes {0} [built]
-    [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Plot/PlotCommandDisplay.scss 3.85 KiB {0} [built]
+    [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Plot/PlotCommandDisplay.scss 3.95 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/styles/common.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/styles/common.scss 288 bytes {0} [built]
