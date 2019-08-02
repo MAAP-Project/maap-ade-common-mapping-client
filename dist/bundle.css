@@ -32,23 +32,6 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-/* colors */
-/* neutrals */
-.LayerControlLabel__controlLabel___VJpNi {
-  background: #e91e63;
-  padding: 5px;
-  font-size: 12px;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
 .text__fontRoboto___4V53U {
   font-family: "Roboto", Helvetica, Arial, sans-serif; }
 
@@ -63,6 +46,23 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.LayerControlLabel__controlLabel___VJpNi {
+  background: #e91e63;
+  padding: 5px;
+  font-size: 12px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
 .LayerControlContainer__layerControl___S89br {
   height: 38px;
   padding-right: 4px; }
