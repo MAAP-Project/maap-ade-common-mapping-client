@@ -27,6 +27,7 @@ import { CurrentDatePicker } from "components/DatePicker";
 import { PlotCommandDisplay } from "components/Plot";
 import { AlertsContainer } from "_core/components/Alerts";
 import stylesCore from "_core/components/App/AppContainer.scss";
+import styles from "components/App/AppContainer.scss";
 
 const theme = createMuiTheme({
     typography: {
@@ -96,6 +97,7 @@ export class AppContainer extends Component {
     render() {
         let containerClasses = MiscUtil.generateStringFromSet({
             [stylesCore.appContainer]: true,
+            [styles.root]: true,
             [this.props.className]: typeof this.props.className !== "undefined"
         });
         return (

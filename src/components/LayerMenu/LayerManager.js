@@ -59,6 +59,7 @@ export class LayerManager extends Component {
     };
 
     handleFilterChange = evt => {
+        this.page = 0;
         this.props.setLayerFilter(evt.target.value);
     };
 
