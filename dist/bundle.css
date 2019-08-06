@@ -32,6 +32,23 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
+/* colors */
+/* neutrals */
+.LayerControlLabel__controlLabel___VJpNi {
+  background: #e91e63;
+  padding: 5px;
+  font-size: 12px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
 .text__fontRoboto___4V53U {
   font-family: "Roboto", Helvetica, Arial, sans-serif; }
 
@@ -46,23 +63,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.LayerControlLabel__controlLabel___VJpNi {
-  background: #e91e63;
-  padding: 5px;
-  font-size: 12px;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px; }
 .LayerControlContainer__layerControl___S89br {
   height: 38px;
   padding-right: 4px; }
@@ -935,6 +935,48 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.AppContainer__react-contextmenu___jSAOt {
+  padding: 0px; }
+
+.AppContainer__react-contextmenu___jSAOt:focus {
+  outline: none; }
+
+.AppContainer__popover-label___2HN24 {
+  background: #e91e63;
+  color: #fafafa;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 4px 9px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.3rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
+
+button.AppContainer__context-menu-item___1M1Z0 {
+  padding: 0px 1.2rem; }
+
+.AppContainer__appContainer___1Qi1m {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
 .shadow__light___3axmh {
   box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24); }
 
@@ -1093,48 +1135,6 @@
 
 .DatePicker__input___2HDL1 {
   padding: 0px; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.AppContainer__react-contextmenu___jSAOt {
-  padding: 0px; }
-
-.AppContainer__react-contextmenu___jSAOt:focus {
-  outline: none; }
-
-.AppContainer__popover-label___2HN24 {
-  background: #e91e63;
-  color: #fafafa;
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 4px 9px;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 1.3rem;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px; }
-
-button.AppContainer__context-menu-item___1M1Z0 {
-  padding: 0px 1.2rem; }
-
-.AppContainer__appContainer___1Qi1m {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  white-space: nowrap; }
 .PlotCommandDisplay__root___10K9x {
   position: absolute !important;
   box-sizing: border-box; }
