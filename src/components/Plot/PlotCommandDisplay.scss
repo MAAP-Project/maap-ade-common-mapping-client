@@ -1,16 +1,24 @@
 .root {
     position: absolute !important;
+    box-sizing: border-box;
+    :global(*) {
+        box-sizing: border-box;
+    }
 }
 
 .title {
     padding: 10px 24px;
     position: relative;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: #f3f3f3;
+    border-bottom: 1px solid #dedede;
+    h6 {
+        font-size: 16px;
+    }
 }
 
 .closeButton {
     position: absolute;
-    right: 20px;
+    right: 8px;
     top: 50%;
     transform: translate(0px, -50%);
     color: #9e9e9e;

@@ -16,7 +16,7 @@ import * as appActions from "actions/appActions";
 import MiscUtil from "_core/utils/MiscUtil";
 import MapUtil from "_core/utils/MapUtil";
 import { KeyboardControlsContainer } from "components/KeyboardControls";
-import { LayerMenuContainer } from "components/LayerMenu";
+import { LayerMenuContainer, LayerManager } from "components/LayerMenu";
 import {
     MapContainer,
     MapControlsContainer,
@@ -27,6 +27,7 @@ import { CurrentDatePicker } from "components/DatePicker";
 import { PlotCommandDisplay } from "components/Plot";
 import { AlertsContainer } from "_core/components/Alerts";
 import stylesCore from "_core/components/App/AppContainer.scss";
+import styles from "components/App/AppContainer.scss";
 
 const theme = createMuiTheme({
     typography: {
@@ -96,6 +97,7 @@ export class AppContainer extends Component {
     render() {
         let containerClasses = MiscUtil.generateStringFromSet({
             [stylesCore.appContainer]: true,
+            [styles.root]: true,
             [this.props.className]: typeof this.props.className !== "undefined"
         });
         return (
@@ -105,6 +107,7 @@ export class AppContainer extends Component {
                         <MapContainer />
                         <KeyboardControlsContainer />
                         <LayerMenuContainer />
+                        <LayerManager />
                         <MapControlsContainer />
                         <AlertsContainer />
                         <CoordinateTracker />

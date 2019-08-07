@@ -1,12 +1,16 @@
 import Immutable from "immutable";
 import * as appStringsCore from "_core/constants/appStrings";
 import MapReducerCore from "_core/reducers/reducerFunctions/MapReducer";
-import { layerModel } from "_core/reducers/models/map";
+import { layerModel } from "reducers/models/map";
 import appConfig from "constants/appConfig";
 import MapUtil from "utils/MapUtil";
 
 export default class MapReducer extends MapReducerCore {
     static mapUtil = MapUtil;
+
+    static getLayerModel() {
+        return layerModel;
+    }
 
     static addGeometryToMap(state, action) {
         let alerts = state.get("alerts");
@@ -208,7 +212,6 @@ export default class MapReducer extends MapReducerCore {
         let refPartial = null;
         let matchingPartials = null;
         let mergedLayer = null;
-        let newLayers = null;
         let unmatchedLayers = Immutable.List();
         while (partials.size > 0) {
             // grab a partial
@@ -317,6 +320,35 @@ export default class MapReducer extends MapReducerCore {
                 },
                 targetActiveMap: true
             });
+        }
+        return state;
+    }
+
+    static setLayerSelected(state, action) {
+        const layer = this.findLayerById(state, action.layerId);
+        if (typeof layer !== "undefined") {
+            const selected = !!action.isSelected;
+            state = state.setIn(
+                ["layers", layer.get("type"), layer.get("id"), "isSelected"],
+                selected
+            );
+            return this.setLayerActive(state, { layer: action.layerId, active: selected });
+        }
+        return state;
+    }
+
+    static clearSelectedLayers(state, action) {
+        const layers = state
+            .getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA])
+            .map(l => l.set("isSelected", false));
+        return state.setIn(["layers", appStringsCore.LAYER_GROUP_TYPE_DATA], layers);
+    }
+
+    static removeLayerFromApp(state, action) {
+        const layer = this.findLayerById(state, action.layerId);
+        if (typeof layer !== "undefined") {
+            state = this.setLayerActive(state, { layer: action.layerId, active: false });
+            return state.deleteIn(["layers", layer.get("type"), layer.get("id")]);
         }
         return state;
     }

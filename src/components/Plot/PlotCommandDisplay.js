@@ -6,8 +6,8 @@ import moment from "moment";
 import Immutable from "immutable";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import MuiDialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
@@ -101,7 +101,6 @@ export class PlotCommandDisplay extends Component {
         return (
             <Dialog
                 onClose={this.closeModal}
-                aria-labelledby="customized-dialog-title"
                 open={display}
                 container={() => appConfig.RENDER_NODE}
                 maxWidth="md"
@@ -111,7 +110,7 @@ export class PlotCommandDisplay extends Component {
                     className: styles.modalBackdrop
                 }}
             >
-                <MuiDialogTitle disableTypography className={styles.title}>
+                <DialogTitle disableTypography className={styles.title}>
                     <Typography variant="h6">Notebook Plot Commands</Typography>
                     <IconButton
                         aria-label="Close"
@@ -120,8 +119,8 @@ export class PlotCommandDisplay extends Component {
                     >
                         <CloseIcon />
                     </IconButton>
-                </MuiDialogTitle>
-                <MuiDialogContent className={styles.content}>
+                </DialogTitle>
+                <DialogContent className={styles.content}>
                     <Typography gutterBottom>
                         Use the controls below to generate and run a plot command for the notebook.
                     </Typography>
@@ -200,7 +199,7 @@ export class PlotCommandDisplay extends Component {
                             Generate Command
                         </Button>
                     </div>
-                </MuiDialogContent>
+                </DialogContent>
             </Dialog>
         );
     }
