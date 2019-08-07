@@ -1,12 +1,12 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: 93e370cc1d295ff5da28
+Webpack stats: Hash: c726e469d44b18a28c3e
 Version: webpack 4.28.3
-Time: 40943ms
-Built at: 2019-07-24 14:35:44
+Time: 17325ms
+Built at: 2019-08-07 09:40:46
                          Asset      Size  Chunks                    Chunk Names
 7a4d3383c816ac6d0207.worker.js  4.12 KiB          [emitted]         
-                    bundle.css  36.3 KiB       0  [emitted]         bundle
-                     bundle.js  4.58 MiB       0  [emitted]  [big]  bundle
+                    bundle.css  40.5 KiB       0  [emitted]         bundle
+                     bundle.js   4.6 MiB       0  [emitted]  [big]  bundle
                     index.html  8.17 KiB          [emitted]         
                inlineStyles.js  1.18 KiB       1  [emitted]         inlineStyles
 Entrypoint bundle [big] = bundle.js bundle.css
@@ -16,18 +16,18 @@ Entrypoint inlineStyles = inlineStyles.js
       | ./src/constants/appConfig.js 1.27 KiB [built]
       | ./src/_core/constants/appConfig.js 6.05 KiB [built]
   [9] ./node_modules/@babel/runtime/helpers/classCallCheck.js 196 bytes {0} [built]
- [10] ./node_modules/@babel/runtime/helpers/createClass.js 596 bytes {0} [built]
- [26] ./node_modules/immutable/dist/immutable.js 139 KiB {0} [built]
- [37] ./node_modules/react-dom/index.js 1.33 KiB {0} [built]
-[119] (webpack)/buildin/global.js 472 bytes {0} [built]
-[486] ./node_modules/path-browserify/index.js 8.54 KiB {0} [built]
-[488] ./src/store/configureStore.js 362 bytes {0} [built]
-[489] ./src/default-data/layers.json 6.11 KiB {0} [built]
-[531] multi ./src/index 28 bytes {0} [built]
-[532] ./node_modules/@babel/polyfill/lib/index.js 893 bytes {0} [built]
-[716] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
-[918] ./src/styles/inlineStyles.js 238 bytes {1} [built]
-[920] ./src/index.js + 140 modules 483 KiB {0} [built]
+ [11] ./node_modules/@babel/runtime/helpers/createClass.js 596 bytes {0} [built]
+ [27] ./node_modules/immutable/dist/immutable.js 139 KiB {0} [built]
+ [36] ./node_modules/react-dom/index.js 1.33 KiB {0} [built]
+[121] (webpack)/buildin/global.js 472 bytes {0} [built]
+[490] ./node_modules/path-browserify/index.js 8.54 KiB {0} [built]
+[492] ./src/store/configureStore.js 362 bytes {0} [built]
+[493] ./src/default-data/layers.json 6.11 KiB {0} [built]
+[534] multi ./src/index 28 bytes {0} [built]
+[535] ./node_modules/@babel/polyfill/lib/index.js 893 bytes {0} [built]
+[719] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
+[928] ./src/styles/inlineStyles.js 238 bytes {1} [built]
+[930] ./src/index.js + 141 modules 496 KiB {0} [built]
       | ./src/index.js 3.03 KiB [built]
       | ./node_modules/react-redux/es/index.js 270 bytes [built]
       | ./src/components/App/index.js 73 bytes [built]
@@ -35,7 +35,7 @@ Entrypoint inlineStyles = inlineStyles.js
       | ./node_modules/react-redux/es/components/Provider.js 2.29 KiB [built]
       | ./node_modules/react-redux/es/components/connectAdvanced.js 8.26 KiB [built]
       | ./node_modules/react-redux/es/connect/connect.js 4.83 KiB [built]
-      | ./src/components/App/AppContainer.js 6.17 KiB [built]
+      | ./src/components/App/AppContainer.js 6.37 KiB [built]
       | ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js 204 bytes [built]
       | ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js 192 bytes [built]
       | ./node_modules/@babel/runtime/helpers/esm/extends.js 397 bytes [built]
@@ -43,17 +43,17 @@ Entrypoint inlineStyles = inlineStyles.js
       | ./node_modules/react-redux/es/utils/shallowEqual.js 676 bytes [built]
       | ./node_modules/react-redux/es/connect/mapDispatchToProps.js 915 bytes [built]
       | ./node_modules/react-redux/es/connect/mapStateToProps.js 504 bytes [built]
-      |     + 126 hidden modules
-    + 951 hidden modules
+      |     + 127 hidden modules
+    + 963 hidden modules
 
 WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
 This can impact web performance.
 Assets: 
-  bundle.js (4.58 MiB)
+  bundle.js (4.6 MiB)
 
 WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
 Entrypoints:
-  bundle (4.61 MiB)
+  bundle (4.64 MiB)
       bundle.js
       bundle.css
 
@@ -176,6 +176,10 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/_core/styles/text.scss 923 bytes {0} [built]
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
+Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/App/AppContainer.scss:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/App/AppContainer.scss 275 bytes {0} [built]
+    [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/DatePicker/CurrentDateDisplay.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/DatePicker/CurrentDateDisplay.scss 281 bytes {0} [built]
@@ -197,11 +201,15 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/LayerMenu/LayerControlLabel.scss 721 bytes {0} [built]
     [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
+Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/LayerMenu/LayerManager.scss:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/LayerMenu/LayerManager.scss 5.15 KiB {0} [built]
+    [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/LayerMenu/LayerMenuContainer.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
     [1] ./node_modules/css-loader/dist/cjs.js?{"url":false,"modules":true,"importLoaders":2,"localIdentName":"[name]__[local]___[hash:base64:5]","sourceMap":false}!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/_core/styles/shadow.scss 688 bytes {0} [built]
-    [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/LayerMenu/LayerMenuContainer.scss 6.12 KiB {0} [built]
+    [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/LayerMenu/LayerMenuContainer.scss 6.66 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/LayerMenu/LayerOpacityControl.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
@@ -231,7 +239,7 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
     [1] ./node_modules/css-loader/dist/cjs.js?{"url":false,"modules":true,"importLoaders":2,"localIdentName":"[name]__[local]___[hash:base64:5]","sourceMap":false}!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/_core/styles/text.scss 923 bytes {0} [built]
-    [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Plot/PlotCommandDisplay.scss 3.77 KiB {0} [built]
+    [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/Plot/PlotCommandDisplay.scss 3.95 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/styles/common.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/styles/common.scss 288 bytes {0} [built]
