@@ -29,10 +29,12 @@ export const LAYER_GROUP_TYPE_PARTIAL = "partial";
 // layer config formats
 export const LAYER_CONFIG_JSON = "json";
 export const LAYER_CONFIG_WMTS_XML = "wmts/xml";
+export const LAYER_CONFIG_WMS_XML = "wms/xml";
 
 // layer handler types
 export const LAYER_GIBS_RASTER = "GIBS_raster";
 export const LAYER_WMTS_RASTER = "wmts_raster";
+export const LAYER_WMS_RASTER = "wms_raster";
 export const LAYER_XYZ_RASTER = "xyz_raster";
 export const LAYER_VECTOR_GEOJSON = "vector_geojson";
 export const LAYER_VECTOR_TOPOJSON = "vector_topojson";
@@ -50,9 +52,11 @@ export const FILE_TYPE_XML = "xml";
 export const FILE_TYPE_TEXT = "xml";
 
 // tile URL function
-export const DEFAULT_URL_FUNC = "DEFAULT_URL_FUNC";
+export const DEFAULT_URL_FUNC_WMTS = "DEFAULT_URL_FUNC_WMTS";
+export const DEFAULT_URL_FUNC_WMS = "DEFAULT_URL_FUNC_WMS";
 export const ESRI_CUSTOM_512 = "esriCustom512";
-export const KVP_TIME_PARAM = "kvpTimeParam";
+export const KVP_TIME_PARAM_WMTS = "kvpTimeParam_wmts";
+export const KVP_TIME_PARAM_WMS = "kvpTimeParam_wms";
 export const CATS_URL = "catsUrl";
 
 // tile load function
