@@ -9,11 +9,11 @@ import appConfig from "constants/appConfig";
 
 const DEFAULT_LAYER_OPS = Immutable.fromJS({
     type: appStringsCore.LAYER_GROUP_TYPE_DATA,
-    handleAs: appStringsCore.LAYER_WMTS_RASTER,
-    wmtsOptions: {
+    handleAs: appStringsCore.LAYER_WMS_RASTER,
+    mappingOptions: {
         urlFunctions: {
-            openlayers: "kvpTimeParam",
-            cesium: "kvpTimeParam"
+            openlayers: "kvpTimeParam_wms",
+            cesium: "kvpTimeParam_wms"
         }
     }
 });
@@ -47,7 +47,21 @@ export function setMapProjection(projection) {
 }
 
 export function loadLayerSource(options, defaultOps = {}) {
-    const defOps = DEFAULT_LAYER_OPS.mergeDeep(defaultOps).toJS();
+    // update default tile operationss
+    let defOps = DEFAULT_LAYER_OPS;
+    if (options.type === appStringsCore.LAYER_CONFIG_WMTS_XML) {
+        defOps = defOps.mergeDeep({
+            handleAs: appStringsCore.LAYER_WMTS_RASTER,
+            mappingOptions: {
+                urlFunctions: {
+                    openlayers: "kvpTimeParam_wmts",
+                    cesium: "kvpTimeParam_wmts"
+                }
+            }
+        });
+    }
+
+    defOps = defOps.mergeDeep(defaultOps).toJS();
     options.defaultOps = defOps;
 
     return dispatch => {
