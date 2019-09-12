@@ -88,4 +88,6 @@ export class CMC {
     }
 }
 
+window.CMC = CMC;
+
 export default CMC;
