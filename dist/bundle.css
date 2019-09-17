@@ -714,53 +714,6 @@
  */
 /* colors */
 /* neutrals */
-.MapContainer__mapContainer___22fhH {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-  background-color: #212121; }
-
-.MapContainer__mapRenderWrapper___ZMex1 {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: #545454; }
-
-.MapContainer__mapRender___1Zvrz {
-  width: 100%;
-  height: 100%; }
-
-.cesium-viewer,
-.cesium-viewer-cesiumWidgetContainer,
-.cesium-widget,
-.cesium-widget canvas {
-  height: 100%;
-  width: 100%; }
-
-.cesium-viewer-bottom {
-  display: none; }
-
-.react-contextmenu-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
 .MapControlsContainer__mapControlsContainer___3pI3k {
   position: absolute;
   bottom: 125px;
@@ -799,6 +752,53 @@
 
 .MapControlsContainer__singleButton___3RIy8 {
   border-radius: 2px; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.MapContainer__mapContainer___22fhH {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  background-color: #212121; }
+
+.MapContainer__mapRenderWrapper___ZMex1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #545454; }
+
+.MapContainer__mapRender___1Zvrz {
+  width: 100%;
+  height: 100%; }
+
+.cesium-viewer,
+.cesium-viewer-cesiumWidgetContainer,
+.cesium-widget,
+.cesium-widget canvas {
+  height: 100%;
+  width: 100%; }
+
+.cesium-viewer-bottom {
+  display: none; }
+
+.react-contextmenu-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -897,48 +897,6 @@
   width: 100px;
   padding: 6px 0;
   display: inline-block; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.AppContainer__react-contextmenu___jSAOt {
-  padding: 0px; }
-
-.AppContainer__react-contextmenu___jSAOt:focus {
-  outline: none; }
-
-.AppContainer__popover-label___2HN24 {
-  background: #e91e63;
-  color: #fafafa;
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 4px 9px;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 1.3rem;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px; }
-
-button.AppContainer__context-menu-item___1M1Z0 {
-  padding: 0px 1.2rem; }
-
-.AppContainer__appContainer___1Qi1m {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  white-space: nowrap; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1115,6 +1073,48 @@ button.AppContainer__context-menu-item___1M1Z0 {
 
 .LayerMenuContainer__emptyLabel___2gYLD {
   padding: 7px 9px; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.AppContainer__react-contextmenu___jSAOt {
+  padding: 0px; }
+
+.AppContainer__react-contextmenu___jSAOt:focus {
+  outline: none; }
+
+.AppContainer__popover-label___2HN24 {
+  background: #e91e63;
+  color: #fafafa;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 4px 9px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.3rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
+
+button.AppContainer__context-menu-item___1M1Z0 {
+  padding: 0px 1.2rem; }
+
+.AppContainer__appContainer___1Qi1m {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap; }
 .DatePicker__datePickerSelection___3No85 {
   position: relative;
   text-align: center;

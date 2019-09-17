@@ -1,8 +1,8 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: b62e60cb67b34b399a02
+Webpack stats: Hash: a65c6b0c937bc0291278
 Version: webpack 4.28.3
-Time: 40200ms
-Built at: 2019-09-12 14:33:33
+Time: 39182ms
+Built at: 2019-09-17 12:57:02
                          Asset      Size  Chunks                    Chunk Names
                     bundle.css  40.5 KiB       0  [emitted]         bundle
                      bundle.js  4.62 MiB       0  [emitted]  [big]  bundle
@@ -35,7 +35,7 @@ Entrypoint inlineStyles = inlineStyles.js
       | ./node_modules/react-redux/es/components/Provider.js 2.29 KiB [built]
       | ./node_modules/react-redux/es/components/connectAdvanced.js 8.26 KiB [built]
       | ./node_modules/react-redux/es/connect/connect.js 4.83 KiB [built]
-      | ./src/components/App/AppContainer.js 6.37 KiB [built]
+      | ./src/components/App/AppContainer.js 6.44 KiB [built]
       | ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js 204 bytes [built]
       | ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js 192 bytes [built]
       | ./node_modules/@babel/runtime/helpers/esm/extends.js 397 bytes [built]
