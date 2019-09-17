@@ -903,36 +903,6 @@
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.AlertLevel__root___3pEpU {
-  display: block; }
-
-.AlertLevel__severity___3jWbF {
-  border-bottom: 1px solid #fafafa; }
-  .AlertLevel__severity___3jWbF:last-child {
-    border-bottom: none; }
-
-.AlertLevel__severity1___19Pju {
-  border-left: 3rem solid #fdd835; }
-
-.AlertLevel__severity2___ox7nn {
-  border-left: 3rem solid #fb8c00; }
-
-.AlertLevel__severity3___POQuS {
-  border-left: 3rem solid #e53935; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
 .shadow__light___3axmh {
   box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24); }
 
@@ -1087,6 +1057,54 @@
  */
 /* colors */
 /* neutrals */
+.AlertLevel__root___3pEpU {
+  display: block; }
+
+.AlertLevel__severity___3jWbF {
+  border-bottom: 1px solid #fafafa; }
+  .AlertLevel__severity___3jWbF:last-child {
+    border-bottom: none; }
+
+.AlertLevel__severity1___19Pju {
+  border-left: 3rem solid #fdd835; }
+
+.AlertLevel__severity2___ox7nn {
+  border-left: 3rem solid #fb8c00; }
+
+.AlertLevel__severity3___POQuS {
+  border-left: 3rem solid #e53935; }
+.DatePicker__datePickerSelection___3No85 {
+  position: relative;
+  text-align: center;
+  padding: 2px 5px; }
+
+.DatePicker__inputs___2EyoD {
+  padding: 5px 0px; }
+
+.DatePicker__inputWrapper___2qEaC {
+  padding: 3px 5px;
+  font-size: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; }
+  .DatePicker__inputWrapper___2qEaC:before {
+    display: none; }
+
+.DatePicker__input___2HDL1 {
+  padding: 0px; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
 .AppContainer__react-contextmenu___jSAOt {
   padding: 0px; }
 
@@ -1115,24 +1133,6 @@ button.AppContainer__context-menu-item___1M1Z0 {
   height: 100%;
   overflow: hidden;
   white-space: nowrap; }
-.DatePicker__datePickerSelection___3No85 {
-  position: relative;
-  text-align: center;
-  padding: 2px 5px; }
-
-.DatePicker__inputs___2EyoD {
-  padding: 5px 0px; }
-
-.DatePicker__inputWrapper___2qEaC {
-  padding: 3px 5px;
-  font-size: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-sizing: border-box; }
-  .DatePicker__inputWrapper___2qEaC:before {
-    display: none; }
-
-.DatePicker__input___2HDL1 {
-  padding: 0px; }
 .PlotCommandDisplay__root___10K9x {
   position: absolute !important;
   box-sizing: border-box; }
