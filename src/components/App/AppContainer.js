@@ -58,13 +58,13 @@ const jss = create({
 export class AppContainer extends Component {
     componentDidMount() {
         // disable the right click listener
-        document.addEventListener(
-            "contextmenu",
-            function(e) {
-                e.preventDefault();
-            },
-            false
-        );
+        // document.addEventListener(
+        //     "contextmenu",
+        //     function(e) {
+        //         e.preventDefault();
+        //     },
+        //     false
+        // );
 
         // prep the default projection for the application
         MapUtil.prepProjection();

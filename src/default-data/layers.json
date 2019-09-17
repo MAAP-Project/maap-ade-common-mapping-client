@@ -7,7 +7,7 @@
             "isDefault": true,
             "handleAs": "GIBS_raster",
             "updateParameters": { "time": false },
-            "wmtsOptions": {
+            "mappingOptions": {
                 "matrixSet": "500m",
                 "requestEncoding": "REST",
                 "extents": [-180, -90, 180, 90],
@@ -43,7 +43,7 @@
             "isDefault": true,
             "handleAs": "GIBS_raster",
             "updateParameters": { "time": false },
-            "wmtsOptions": {
+            "mappingOptions": {
                 "matrixSet": "GoogleMapsCompatible_Level8",
                 "requestEncoding": "REST",
                 "extents": [-20037508.34278925, -20037508.34278925, 20037508.34278925, 20037508.34278925],
@@ -79,7 +79,7 @@
             "type": "basemap",
             "handleAs": "GIBS_raster",
             "updateParameters": { "time": false },
-            "wmtsOptions": {
+            "mappingOptions": {
                 "matrixSet": "250m",
                 "requestEncoding": "REST",
                 "extents": [-180, -90, 180, 90],
@@ -115,7 +115,7 @@
             "type": "basemap",
             "handleAs": "GIBS_raster",
             "updateParameters": { "time": false },
-            "wmtsOptions": {
+            "mappingOptions": {
                 "matrixSet": "GoogleMapsCompatible_Level9",
                 "requestEncoding": "REST",
                 "extents": [-20037508.34278925, -20037508.34278925, 20037508.34278925, 20037508.34278925],

@@ -153,6 +153,7 @@ export default class MapReducer extends MapReducerCore {
             let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
             let newPartials = this.generatePartialsListFromJson(
                 action.config,
+                action.options,
                 action.options.defaultOps
             );
             return state.setIn(
@@ -163,6 +164,18 @@ export default class MapReducer extends MapReducerCore {
             let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
             let newPartials = this.generatePartialsListFromWmtsXml(
                 action.config,
+                action.options,
+                action.options.defaultOps
+            );
+            return state.setIn(
+                ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
+                currPartials.concat(newPartials)
+            );
+        } else if (action.options.type === appStringsCore.LAYER_CONFIG_WMS_XML) {
+            let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
+            let newPartials = this.generatePartialsListFromWmsXml(
+                action.config,
+                action.options,
                 action.options.defaultOps
             );
             return state.setIn(
@@ -175,32 +188,60 @@ export default class MapReducer extends MapReducerCore {
         return state;
     }
 
-    static generatePartialsListFromJson(config, options = {}) {
+    static generatePartialsListFromJson(config, options, layerOptions = {}) {
         return config.layers.map(layer => {
             return Immutable.fromJS(layer)
                 .set("fromJson", true)
-                .mergeDeep(options);
+                .mergeDeep(layerOptions);
         });
     }
 
-    static generatePartialsListFromWmtsXml(config, options = {}) {
-        let capabilities = this.mapUtil.parseCapabilities(config);
+    static generatePartialsListFromWmtsXml(config, options, layerOptions = {}) {
+        let capabilities = this.mapUtil.parseWMTSCapabilities(config);
         if (capabilities) {
             let wmtsLayers = capabilities.Contents.Layer;
             let newLayers = wmtsLayers.map(layer => {
+                let id = layer.Identifier || layer.Name;
                 let wmtsOptions = this.mapUtil.getWmtsOptions({
                     capabilities: capabilities,
                     options: {
-                        layer: layer.Identifier,
+                        layer: id,
                         matrixSet: layer.TileMatrixSetLink[0].TileMatrixSet
-                    }
+                    },
+                    requestOptions: options
                 });
                 return Immutable.fromJS({
-                    id: layer.Identifier,
+                    id: id,
                     title: layer.Title,
                     fromJson: false,
-                    wmtsOptions: wmtsOptions
-                }).mergeDeep(options);
+                    mappingOptions: wmtsOptions
+                }).mergeDeep(layerOptions);
+            });
+            return newLayers;
+        }
+        return [];
+    }
+
+    static generatePartialsListFromWmsXml(config, options, layerOptions = {}) {
+        let capabilities = this.mapUtil.parseWMSCapabilities(config);
+        if (capabilities) {
+            let layers = capabilities.Capability.Layer.Layer;
+            let newLayers = layers.map(layer => {
+                let id = layer.Identifier || layer.Name;
+                let wmsOptions = this.mapUtil.getWmsOptions({
+                    capabilities: capabilities,
+                    options: {
+                        layer: id
+                    },
+                    requestOptions: options
+                });
+                return Immutable.fromJS({
+                    id: id,
+                    title: layer.Title,
+                    fromJson: false,
+                    handleAs: appStringsCore.LAYER_WMS_RASTER,
+                    mappingOptions: wmsOptions
+                }).mergeDeep(layerOptions);
             });
             return newLayers;
         }
@@ -270,7 +311,7 @@ export default class MapReducer extends MapReducerCore {
             .getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_BASEMAP])
             .find(layer => {
                 return (
-                    layer.get("isDefault") && layer.getIn(["wmtsOptions", "projection"]) === proj
+                    layer.get("isDefault") && layer.getIn(["mappingOptions", "projection"]) === proj
                 );
             });
 
@@ -309,8 +350,8 @@ export default class MapReducer extends MapReducerCore {
         if (typeof layer !== "undefined") {
             const projCode = appStringsCore.PROJECTIONS.latlon.code;
             const extent = this.mapUtil.transformExtent(
-                layer.getIn(["wmtsOptions", "extents"]).toJS(),
-                layer.getIn(["wmtsOptions", "projection"]),
+                layer.getIn(["mappingOptions", "extents"]).toJS(),
+                layer.getIn(["mappingOptions", "projection"]),
                 projCode
             );
             return this.setMapView(state, {

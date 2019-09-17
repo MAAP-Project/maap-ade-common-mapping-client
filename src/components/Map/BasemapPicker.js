@@ -39,7 +39,7 @@ export class BasemapPicker extends Component {
         // sort and gather the basemaps into a set of dropdown options
         let activeBasemapId = "";
         let basemapList = this.props.basemaps
-            .filter(x => x.getIn(["wmtsOptions", "projection"]) === this.props.projection)
+            .filter(x => x.getIn(["mappingOptions", "projection"]) === this.props.projection)
             .sort(MiscUtil.getImmutableObjectSort("title"));
         let basemapOptions = basemapList.reduce((acc, layer) => {
             if (layer.get("isActive")) {
