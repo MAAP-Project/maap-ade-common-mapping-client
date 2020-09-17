@@ -10,6 +10,21 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
         window.CESIUM_BASE_URL = appConfig.CESIUM_BASE_URL;
     }
 
+    createLayer(layer) {
+        switch (layer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                return this.createVector3DTilesLayer(layer);
+            default:
+                return MapWrapperCesiumCore.prototype.createLayer.call(this, layer);
+        }
+    }
+
+    createVector3DTilesLayer(layer) {
+        return new this.cesium.Cesium3DTileset({
+            url: layer.getIn(["mappingOptions", "url"])
+        });
+    }
+
     addDrawHandler(geometryType, onDrawEnd, interactionType) {
         try {
             const interactionId = `_id${interactionType}${geometryType}`;
