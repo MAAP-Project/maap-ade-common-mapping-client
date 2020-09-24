@@ -240,6 +240,21 @@
                 "tileFunctions": {},
                 "projection": "EPSG:4326"
             }
+        },
+        {
+            "id": "ATL08_ARD-beta___001/peru",
+            "title": "PERU 3D Tiles Test",
+            "type": "data",
+            "handleAs": "vector-3d-tile",
+            "updateParameters": {
+                "time": false
+            },
+            "mappingOptions": {
+                "url": "https://api.maap.xyz/api/3d-tiles/ATL08_ARD-beta___001/peru/ept/ept-tileset/tileset.json",
+                "urlFunctions": {},
+                "tileFunctions": {},
+                "projection": "EPSG:4326"
+            }
         }
     ]
 }

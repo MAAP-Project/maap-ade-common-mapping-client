@@ -13,17 +13,385 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
     createLayer(layer) {
         switch (layer.get("handleAs")) {
             case appStrings.LAYER_VECTOR_3D_TILES:
+                console.log("creating 3D layer");
                 return this.createVector3DTilesLayer(layer);
             default:
                 return MapWrapperCesiumCore.prototype.createLayer.call(this, layer);
         }
     }
 
+    /**
+     * create a wmts cesium layer corresponding
+     * to the given layer
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {object|boolean} cesium layer object or false if it fails
+     * @memberof MapWrapperCesium
+     */
     createVector3DTilesLayer(layer) {
-        return new this.cesium.Cesium3DTileset({
-            url: layer.getIn(["mappingOptions", "url"])
-        });
+        try {
+            let mapLayer = new this.cesium.Cesium3DTileset({
+                url: layer.getIn(["mappingOptions", "url"])
+            });
+            mapLayer.style = new this.cesium.Cesium3DTileStyle({
+                pointSize: 2
+            });
+            this.setLayerRefInfo(layer, mapLayer);
+            console.log("returing map layer", mapLayer);
+            return mapLayer;
+        } catch (err) {
+            console.warn("Error in MapWrapperCesium.createVector3DTilesLayer:", err);
+            return false;
+        }
     }
+
+    /**
+     * add a layer to the map
+     *
+     * @param {object} mapLayer cesium layer object
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    addLayer(mapLayer) {
+        console.log("layer handle as", mapLayer._layerHandleAs);
+        switch (mapLayer._layerHandleAs) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                return this.addVector3DTilesLayer(mapLayer);
+            default:
+                return MapWrapperCesiumCore.prototype.addLayer.call(this, mapLayer);
+        }
+    }
+
+    /**
+     * add a layer to the map
+     *
+     * @param {object} mapLayer cesium layer object
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    addVector3DTilesLayer(mapLayer) {
+        console.log(mapLayer);
+        try {
+            this.map.scene.primitives.add(mapLayer);
+            return true;
+        } catch (err) {
+            console.log("THIS FAILED!!!");
+            console.warn("Error in MapWrapperCesium.add3DLayer:", err);
+            return false;
+        }
+    }
+
+    /**
+     * activate a layer on the map. This will create a new
+     * cesium layer object and add it to the map
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    activateLayer(layer) {
+        switch (layer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                return this.activate3DLayer(layer);
+            default:
+                return MapWrapperCesiumCore.prototype.activateLayer.call(this, layer);
+        }
+    }
+
+    /**
+     * activate a layer on the map. This will create a new
+     * cesium layer object and add it to the map
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    activate3DLayer(layer) {
+        try {
+            let mapLayers = this.getMapLayers(layer.get("handleAs"));
+
+            // check if layer already exists on map, just move to top
+            let mapLayer = this.findLayerInMapLayers(mapLayers, layer);
+            if (mapLayer) {
+                this.moveLayerToTop(layer);
+                return true;
+            }
+
+            // layer does not exist so we must create it
+            mapLayer = this.createLayer(layer);
+
+            // if the creation failed
+            if (!mapLayer) {
+                return false;
+            }
+
+            // layer creation succeeded, add the layer to map and make it visible
+            this.addLayer(mapLayer);
+            mapLayer.show = true;
+            return true;
+        } catch (err) {
+            console.warn("Error in MapWrapperCesium.activate3DLayer:", err);
+            return false;
+        }
+    }
+
+    /**
+     * return the set of layers matching the provided type
+     *
+     * @param {string} type (GIBS_raster|wmts_raster|xyz_raster|vector_geojson|vector_topojson|vector_kml)
+     * @returns {array} list of matching cesium map layers
+     * @memberof MapWrapperCesium
+     */
+    getMapLayers(type) {
+        switch (type) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                return this.map.scene.primitives;
+            default:
+                return MapWrapperCesiumCore.prototype.getMapLayers.call(this, type);
+        }
+    }
+
+    /**
+     * move a layer up in the display stack
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    moveLayerUp(layer) {
+        switch (layer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                return this.move3DLayerUp(layer);
+            default:
+                return MapWrapperCesiumCore.prototype.moveLayerUp.call(this, layer);
+        }
+    }
+
+    /**
+     * move a layer up in the display stack
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    move3DLayerUp(layer) {
+        try {
+            let mapLayers = this.getMapLayers(layer.get("handleAs"));
+            let mapLayer = this.findLayerInMapLayers(mapLayers, layer);
+            console.log("mapLayers", mapLayers);
+            console.log("OTHER KIND", this.map.imageryLayers);
+            console.log("mapLayer", mapLayer);
+            if (mapLayer) {
+                let currIndex = mapLayers._primitives.indexOf(mapLayer);
+                let index = this.findTopInsertIndexForLayer(mapLayers, mapLayer);
+                if (++currIndex < index) {
+                    mapLayers.raise(mapLayer);
+                }
+                return true;
+            }
+            return false;
+        } catch (err) {
+            console.warn("Error in MapWrapperCesium.move3DLayerUp:", err);
+            return false;
+        }
+    }
+
+    /**
+     * move a layer down in the display stack.
+     * The layer will always be above the basemap, which
+     * is always at the absolute bottom of the display
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    moveLayerDown(layer) {
+        switch (layer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                return this.move3DLayerDown(layer);
+            default:
+                return MapWrapperCesiumCore.prototype.moveLayerDown.call(this, layer);
+        }
+    }
+
+    /**
+     * move a layer down in the display stack.
+     * The layer will always be above the basemap, which
+     * is always at the absolute bottom of the display
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    move3DLayerDown(layer) {
+        try {
+            let mapLayers = this.getMapLayers(layer.get("handleAs"));
+            let mapLayer = this.findLayerInMapLayers(mapLayers, layer);
+            if (mapLayer) {
+                let index = mapLayers._primitives.indexOf(mapLayer);
+                if (index > 1) {
+                    mapLayers.lower(mapLayer);
+                }
+                return true;
+            }
+            return false;
+        } catch (err) {
+            console.warn("Error in MapWrapperCesium.move3DLayerDown:", err);
+            return false;
+        }
+    }
+
+    /**
+     * update a layer on the map. This creates a new layer
+     * and replaces the layer with a matching id
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    updateLayer(layer) {
+        switch (layer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                return this.update3DLayer(layer);
+            default:
+                return MapWrapperCesiumCore.prototype.updateLayer.call(this, layer);
+        }
+    }
+
+        /**
+     * update a layer on the map. This creates a new layer
+     * and replaces the layer with a matching id
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    update3DLayer(layer) {
+        try {
+            let mapLayers = this.getMapLayers(layer.get("handleAs"));
+            let mapLayer = this.findLayerInMapLayers(mapLayers, layer);
+            if (mapLayer) {
+                let updatedMapLayer = this.createLayer(layer);
+                let index = mapLayers._primitives.indexOf(mapLayer);
+                mapLayers.remove(mapLayer);
+                mapLayers.add(updatedMapLayer, index);
+            }
+            return true;
+        } catch (err) {
+            console.warn("Error in MapWrapperCesium.update3DLayer:", err);
+            return false;
+        }
+    }
+
+        /**
+     * move a layer to the top of the map display stack
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    moveLayerToTop(layer) {
+        switch (layer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                return this.move3DLayerToTop(layer);
+            default:
+                return MapWrapperCesiumCore.prototype.moveLayerToTop.call(this, layer);
+        }
+    }
+
+    /**
+     * move a layer to the top of the map display stack
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    move3DLayerToTop(layer) {
+        try {
+            let mapLayers = this.getMapLayers(layer.get("handleAs"));
+            let mapLayer = this.findLayerInMapLayers(mapLayers, layer);
+            if (mapLayer) {
+                let currIndex = mapLayers._primitives.indexOf(mapLayer);
+                let index = this.findTopInsertIndexForLayer(mapLayers, mapLayer);
+                while (++currIndex < index) {
+                    // use raise so that we aren't re-requesting tiles every time
+                    mapLayers.raise(mapLayer);
+                }
+                return true;
+            }
+            return false;
+        } catch (err) {
+            console.warn("Error in MapWrapperCesium.move3DLayerToTop:", err);
+            return false;
+        }
+    }
+
+    /**
+     * set the opacity of a layer on the map
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @param {number} opacity value of the opacity [0.0 - 1.0]
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperCesium
+     */
+    setLayerOpacity(layer, opacity) {
+        try {
+            let mapLayers = this.getMapLayers(layer.get("handleAs"));
+            let mapLayer = this.findLayerInMapLayers(mapLayers, layer);
+            console.log(mapLayer);
+            if (mapLayer && typeof mapLayer.alpha !== "undefined") {
+                mapLayer.alpha = opacity;
+                return true;
+            } else if (
+                mapLayer._layerHandleAs === appStrings.LAYER_VECTOR_GEOJSON ||
+                mapLayer._layerHandleAs === appStrings.LAYER_VECTOR_TOPOJSON ||
+                mapLayer._layerHandleAs === appStrings.LAYER_VECTOR_KML
+            ) {
+                mapLayer.entities._entities._array.map(entity => {
+                    if (entity.polygon) {
+                        if (entity.polygon.outlineColor) {
+                            let c = entity.polygon.outlineColor.getValue();
+                            c.alpha = opacity * 1.0;
+                            entity.polygon.outlineColor.setValue(c);
+                        }
+                        if (entity.polygon.fill) {
+                            let c = entity.polygon.fill.getValue();
+                            c.alpha = opacity * 0.5;
+                            entity.polygon.fill.setValue(c);
+                        }
+                        if (entity.polygon.material) {
+                            if (entity.polygon.material.color) {
+                                let c = entity.polygon.material.color.getValue();
+                                c.alpha = opacity * 0.5;
+                                entity.polygon.material.color.setValue(c);
+                            }
+                        }
+                    }
+                    if (entity.polyline) {
+                        let c = entity.polyline.material.color.getValue();
+                        c.alpha = opacity * 1.0;
+                        entity.polyline.material.color.setValue(c);
+                    }
+                    if (entity.billboard) {
+                        let c = entity.billboard.color.getValue();
+                        c.alpha = opacity * 1.0;
+                        entity.billboard.color.setValue(c);
+                    }
+                    if (entity.point) {
+                        let c = entity.point.color.getValue();
+                        c.alpha = opacity * 1.0;
+                        entity.point.color.setValue(c);
+                    }
+                });
+                return true;
+            }
+            return false;
+        } catch (err) {
+            console.warn("Error in MapWrapperCesium.setLayerOpacity:", err);
+            return false;
+        }
+    }
+
 
     addDrawHandler(geometryType, onDrawEnd, interactionType) {
         try {
