@@ -242,18 +242,56 @@
             }
         },
         {
-            "id": "ATL08_ARD-beta___001/peru",
-            "title": "PERU 3D Tiles Test",
+            "id": "Human_Footprint_1995-2004",
+            "title": "Human Footprint",
             "type": "data",
-            "handleAs": "vector-3d-tile",
-            "updateParameters": {
-                "time": false
-            },
+            "isDefault": false,
+            "handleAs": "GIBS_raster",
+            "timeFormat": "YYYY-MM-DDTHH:mm:ssZ",
             "mappingOptions": {
-                "url": "https://api.maap.xyz/api/3d-tiles/ATL08_ARD-beta___001/peru/ept/ept-tileset/tileset.json",
-                "urlFunctions": {},
-                "tileFunctions": {},
-                "projection": "EPSG:4326"
+                "matrixSet": "1km",
+                "requestEncoding": "REST",
+                "extents": [
+                    -180,
+                    -90,
+                    180,
+                    90
+                ],
+                "urlFunctions": {
+                    "openlayers": "kvpTimeParam_wmts",
+                    "cesium": "kvpTimeParam_wmts"
+                },
+                "url": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/Human_Footprint_1995-2004/default/{Time}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png",
+                "projection": "EPSG:4326",
+                "layer": "Human_Footprint_1995-2004",
+                "tileGrid": {
+                    "origin": [
+                        -180,
+                        90
+                    ],
+                    "resolutions": [
+                        0.5625,
+                        0.28125,
+                        0.140625,
+                        0.0703125,
+                        0.03515625,
+                        0.017578125,
+                        0.0087890625
+                    ],
+                    "matrixIds": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "tileSize": 512,
+                    "minZoom": 0,
+                    "maxZoom": 6
+                },
+                "format": "image/png"
             }
         }
     ]

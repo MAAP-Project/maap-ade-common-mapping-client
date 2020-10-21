@@ -2,6 +2,7 @@ import Ol_Map from "ol/Map";
 import Ol_View from "ol/View";
 import Ol_Layer_Vector from "ol/layer/Vector";
 import Ol_Source_Vector from "ol/source/Vector";
+import Ol_Layer_Tile from "ol/layer/Tile";
 import * as Ol_Proj from "ol/proj";
 import { defaults as Ol_Interaction_Defaults } from "ol/interaction";
 import Ol_Interaction_Draw, { createBox } from "ol/interaction/Draw";
@@ -13,6 +14,8 @@ import appConfig from "constants/appConfig";
 import MapUtil from "utils/MapUtil";
 
 import MapWrapperOpenlayersCore from "_core/utils/MapWrapperOpenlayers";
+import Tile from "ol/Tile";
+import XYZ from "ol/source/XYZ";
 
 export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
     ////////////////////// OVERRIDES //////////////////////
@@ -28,6 +31,125 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
         MapWrapperOpenlayersCore.prototype.initStaticClasses.call(this, container, options);
 
         this.mapUtil = MapUtil;
+    }
+
+    /**
+     * creates an openlayers layer source
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @param {object} options raster imagery options for layer from redux state
+     * - url - {string} base url for this layer
+     * - layer - {string} layer identifier
+     * - format - {string} tile resouce format
+     * - requestEncoding - {string} url encoding (REST|KVP)
+     * - matrixSet - {string} matrix set for the tile pyramid
+     * - projection - {string} projection string
+     * - extents - {array} bounding box extents for this layer
+     * - tileGrid - {object} of tiling options
+     *   - origin - {array} lat lon coordinates of layer upper left
+     *   - resolutions - {array} list of tile resolutions
+     *   - matrixIds - {array} identifiers for each zoom level
+     *   - tileSize - {number} size of the tiles
+     * @param {boolean} [fromCache=true] true if the source may be pulled from the cache
+     * @returns {object} openlayers source object
+     * @memberof MapWrapperOpenlayers
+     */
+    createLayerSource(layer, options, fromCache = true) {
+        switch (layer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                console.log("3d");
+                if (fromCache) {
+                    let cacheHash = this.getCacheHash(layer) + "_source";
+                    if (this.layerCache.get(cacheHash)) {
+                        return this.layerCache.get(cacheHash);
+                    }
+                }
+                return this.createWMTSSource(layer, options);
+            default:
+                console.log("default");
+                return MapWrapperOpenlayersCore.prototype.createLayerSource.call(this, layer, options, fromCache);
+        }
+    }
+
+    /**
+     * create an openlayers layer object
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @param {boolean} [fromCache=true] true if the layer may be pulled from the cache
+     * @returns {object|boolean} openlayers layer object or false if it fails
+     * @memberof MapWrapperOpenlayers
+     */
+    createLayer(layer, fromCache = true) {
+        console.log(layer);
+        let mapLayer = {};
+        switch (layer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                mapLayer = this.createWMTSLayer(layer, fromCache);
+            
+
+                // mapLayer = new Tile({
+                //     source: new XYZ({
+                //         url: "",
+                //     }),
+                //     // opacity: layer.get("opacity"),
+                //     // visible: layer.get("isActive"),
+                //     // extent: appConfig.DEFAULT_MAP_EXTENT
+                // });
+
+                mapLayer.setVisible = (t) => {mapLayer.isActive = true;};
+                mapLayer.addEventListener = (t) => {return t;};
+                // mapLayer.getSource = () => {};
+                // mapLayer.getLayerStatesArray = () => {}; 
+                // mapLayer.isActive = true;
+                // mapLayer._layerType = appStrings.LAYER_GROUP_TYPE_DATA;
+                this.setLayerRefInfo(layer, mapLayer);
+                console.log("created", mapLayer);
+                console.log("this is the map list", this.map.getLayers()); 
+                break;
+            default:
+                return MapWrapperOpenlayersCore.prototype.createLayer.call(this, layer, fromCache);
+        }
+
+        return mapLayer;
+    }
+
+    /**
+     * activate a layer on the map. This will create a new
+     * openlayers layer object and add it to the map
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {boolean} true if it succeeds
+     * @memberof MapWrapperOpenlayers
+     */
+    // activateLayer(layer) {
+    //     console.log(this.map.getLayers());
+    //     switch (layer.get("handleAs")) {
+    //         case appStrings.LAYER_VECTOR_3D_TILES:
+    //             return true;
+    //         default:
+    //             return MapWrapperOpenlayersCore.prototype.activateLayer.call(this, layer);
+    //     }
+    // }
+
+    /**
+     * Find the highest index for a layer to be displayed.
+     * Data layers are displayed below reference layers and
+     * above basemaps
+     *
+     * @param {object} mapLayer openlayers map layer to compare
+     * @returns {number} highest index display index for a layer of this type
+     * @memberof MapWrapperOpenlayers
+     */
+    findTopInsertIndexForLayer(mapLayer) {
+        switch (mapLayer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES: {
+                let mapLayers = this.map.getLayers();
+                let index = mapLayers.getLength();
+                return index;
+            }
+            default:
+                return MapWrapperOpenlayersCore.prototype.findTopInsertIndexForLayer.call(this, mapLayer);
+        }
     }
 
     /**
