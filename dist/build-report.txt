@@ -1,8 +1,8 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: e9b7490a7307643bb6d5
+Webpack stats: Hash: bfaaff74c469c9606897
 Version: webpack 4.28.3
-Time: 19517ms
-Built at: 2019-09-17 14:02:43
+Time: 22030ms
+Built at: 10/22/2020 4:20:36 PM
                          Asset      Size  Chunks                    Chunk Names
                     bundle.css  40.5 KiB       0  [emitted]         bundle
                      bundle.js  4.62 MiB       0  [emitted]  [big]  bundle
@@ -22,12 +22,12 @@ Entrypoint inlineStyles = inlineStyles.js
 [122] (webpack)/buildin/global.js 472 bytes {0} [built]
 [493] ./node_modules/path-browserify/index.js 8.54 KiB {0} [built]
 [495] ./src/store/configureStore.js 362 bytes {0} [built]
-[496] ./src/default-data/layers.json 6.12 KiB {0} [built]
+[496] ./src/default-data/layers.json 7.82 KiB {0} [built]
 [537] multi ./src/index 28 bytes {0} [built]
 [538] ./node_modules/@babel/polyfill/lib/index.js 893 bytes {0} [built]
 [722] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
 [931] ./src/styles/inlineStyles.js 238 bytes {1} [built]
-[933] ./src/index.js + 141 modules 496 KiB {0} [built]
+[933] ./src/index.js + 141 modules 497 KiB {0} [built]
       | ./src/index.js 3.05 KiB [built]
       | ./node_modules/react-redux/es/index.js 270 bytes [built]
       | ./src/components/App/index.js 73 bytes [built]
@@ -45,6 +45,42 @@ Entrypoint inlineStyles = inlineStyles.js
       | ./node_modules/react-redux/es/connect/mapStateToProps.js 504 bytes [built]
       |     + 127 hidden modules
     + 966 hidden modules
+
+WARNING in ./src/utils/MapWrapperCesium.js 424:47-78
+"export 'LAYER_VECTOR_GEOJSON' (imported as 'appStrings') was not found in 'constants/appStrings'
+ @ ./src/utils/MapCreator.js
+ @ ./src/_core/reducers/reducerFunctions/MapReducer.js
+ @ ./src/_core/reducers/map.js
+ @ ./src/reducers/map.js
+ @ ./src/reducers/index.js
+ @ ./src/store/configureStore.prod.js
+ @ ./src/store/configureStore.js
+ @ ./src/index.js
+ @ multi ./src/index
+
+WARNING in ./src/utils/MapWrapperCesium.js 424:174-201
+"export 'LAYER_VECTOR_KML' (imported as 'appStrings') was not found in 'constants/appStrings'
+ @ ./src/utils/MapCreator.js
+ @ ./src/_core/reducers/reducerFunctions/MapReducer.js
+ @ ./src/_core/reducers/map.js
+ @ ./src/reducers/map.js
+ @ ./src/reducers/index.js
+ @ ./src/store/configureStore.prod.js
+ @ ./src/store/configureStore.js
+ @ ./src/index.js
+ @ multi ./src/index
+
+WARNING in ./src/utils/MapWrapperCesium.js 424:110-142
+"export 'LAYER_VECTOR_TOPOJSON' (imported as 'appStrings') was not found in 'constants/appStrings'
+ @ ./src/utils/MapCreator.js
+ @ ./src/_core/reducers/reducerFunctions/MapReducer.js
+ @ ./src/_core/reducers/map.js
+ @ ./src/reducers/map.js
+ @ ./src/reducers/index.js
+ @ ./src/store/configureStore.prod.js
+ @ ./src/store/configureStore.js
+ @ ./src/index.js
+ @ multi ./src/index
 
 WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
 This can impact web performance.
@@ -195,8 +231,9 @@ Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist 
     [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/DatePicker/DatePicker.scss 1.5 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/LayerMenu/LayerControlContainer.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
-    [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/LayerMenu/LayerControlContainer.scss 2.07 KiB {0} [built]
-    [1] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
+    [0] ./node_modules/css-loader/dist/runtime/api.js 2.35 KiB {0} [built]
+    [1] ./node_modules/css-loader/dist/cjs.js?{"url":false,"modules":true,"importLoaders":2,"localIdentName":"[name]__[local]___[hash:base64:5]","sourceMap":false}!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/_core/styles/text.scss 923 bytes {0} [built]
+    [2] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/LayerMenu/LayerControlContainer.scss 2.93 KiB {0} [built]
 Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/dist/cjs.js??ref--7-1!node_modules/postcss-loader/src/index.js??postcss!node_modules/sass-loader/lib/loader.js??sass!src/components/LayerMenu/LayerControlLabel.scss:
     Entrypoint undefined = extract-text-webpack-plugin-output-filename
     [0] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??postcss!./node_modules/sass-loader/lib/loader.js??sass!./src/components/LayerMenu/LayerControlLabel.scss 721 bytes {0} [built]
