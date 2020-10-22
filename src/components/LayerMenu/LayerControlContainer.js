@@ -7,8 +7,12 @@ import Grow from "@material-ui/core/Grow";
 import MyLocationIcon from "@material-ui/icons/MyLocation";
 import { Manager, Target, Popper } from "react-popper";
 import { EnhancedSwitch, ClickAwayListener, IconButtonSmall } from "_core/components/Reusables";
+import Button from "@material-ui/core/Button";
+
 import * as appActions from "actions/appActions";
 import * as mapActionsCore from "_core/actions/mapActions";
+// import * as appStrings from "constants/appStrings";
+// import * as appStringsCore from "_core/constants/appStrings";
 import { LayerPositionIcon, LayerOpacityIcon } from "_core/components/LayerMenu";
 import { LayerPositionControl, LayerOpacityControl } from "components/LayerMenu";
 import MiscUtil from "_core/utils/MiscUtil";
@@ -46,6 +50,9 @@ export class LayerControlContainer extends LayerControlContainerCore {
 
     renderIconRow() {
         const active = this.props.layer.get("isActive");
+        const is3DLayer = this.props.layer.get("handleAs") === "vector-3d-tile" ? true : false;
+        const in3DMode = this.props.in3DMode;
+
         let classes = MiscUtil.generateStringFromSet({
             [styles.layerControlIconRow]: true,
             [displayStyles.invisible]: !active,
@@ -63,87 +70,103 @@ export class LayerControlContainer extends LayerControlContainerCore {
             [displayStyles.noPointer]: !this.isChangingOpacity
         });
 
+        if (is3DLayer && !in3DMode) {
+            return (
+                <div className={classes} key={this.props.in3DMode}>
+                    <div className={styles.controlsMessage}>Only visible in 3D</div>
+                </div>
+            );
+        }
+
         return (
-            <div className={classes}>
-                <Manager style={{ display: "inline-block" }}>
-                    <ClickAwayListener
-                        wrap={true}
-                        onClickAway={() => {
-                            if (this.isChangingPosition) {
-                                this.toggleChangingPosition();
-                            }
-                        }}
-                    >
-                        <Target>
-                            <LayerPositionIcon
-                                displayIndex={this.props.layer.get("displayIndex")}
-                                activeNum={this.props.activeNum}
-                                className={styles.iconButtonSmall}
-                                color={this.isChangingPosition ? "primary" : "default"}
-                                onClick={() => this.toggleChangingPosition()}
-                            />
-                        </Target>
-                        <Popper
-                            placement="left"
-                            modifiers={{
-                                computeStyle: {
-                                    gpuAcceleration: false
+            <div className={classes} key={this.props.in3DMode}>
+                {!is3DLayer && (
+                    <Manager style={{ display: "inline-block" }}>
+                        <ClickAwayListener
+                            wrap={true}
+                            onClickAway={() => {
+                                if (this.isChangingPosition) {
+                                    this.toggleChangingPosition();
                                 }
                             }}
-                            eventsEnabled={this.isChangingPosition}
-                            className={positionPopoverClasses}
                         >
-                            <Grow style={{ transformOrigin: "right" }} in={this.isChangingPosition}>
-                                <div>
-                                    <LayerPositionControl
-                                        isActive={this.isChangingPosition}
-                                        moveToTop={() => this.moveToTop()}
-                                        moveToBottom={() => this.moveToBottom()}
-                                        moveUp={() => this.moveUp()}
-                                        moveDown={() => this.moveDown()}
-                                    />
-                                </div>
-                            </Grow>
-                        </Popper>
-                    </ClickAwayListener>
-                    <ClickAwayListener
-                        wrap={true}
-                        onClickAway={() => {
-                            if (this.isChangingOpacity) {
-                                this.toggleChangingOpacity();
-                            }
-                        }}
-                    >
-                        <Target>
-                            <LayerOpacityIcon
-                                opacity={this.props.layer.get("opacity")}
-                                className={styles.iconButtonSmall}
-                                color={this.isChangingOpacity ? "primary" : "default"}
-                                onClick={() => this.toggleChangingOpacity()}
-                            />
-                        </Target>
-                        <Popper
-                            placement="left"
-                            modifiers={{
-                                computeStyle: {
-                                    gpuAcceleration: false
+                            <Target>
+                                <LayerPositionIcon
+                                    displayIndex={this.props.layer.get("displayIndex")}
+                                    activeNum={this.props.activeNum}
+                                    className={styles.iconButtonSmall}
+                                    color={this.isChangingPosition ? "primary" : "default"}
+                                    onClick={() => this.toggleChangingPosition()}
+                                />
+                            </Target>
+                            <Popper
+                                placement="left"
+                                modifiers={{
+                                    computeStyle: {
+                                        gpuAcceleration: false
+                                    }
+                                }}
+                                eventsEnabled={this.isChangingPosition}
+                                className={positionPopoverClasses}
+                            >
+                                <Grow
+                                    style={{ transformOrigin: "right" }}
+                                    in={this.isChangingPosition}
+                                >
+                                    <div>
+                                        <LayerPositionControl
+                                            isActive={this.isChangingPosition}
+                                            moveToTop={() => this.moveToTop()}
+                                            moveToBottom={() => this.moveToBottom()}
+                                            moveUp={() => this.moveUp()}
+                                            moveDown={() => this.moveDown()}
+                                        />
+                                    </div>
+                                </Grow>
+                            </Popper>
+                        </ClickAwayListener>
+                        <ClickAwayListener
+                            wrap={true}
+                            onClickAway={() => {
+                                if (this.isChangingOpacity) {
+                                    this.toggleChangingOpacity();
                                 }
                             }}
-                            className={opacityPopoverClasses}
-                            eventsEnabled={this.isChangingOpacity}
                         >
-                            <Grow style={{ transformOrigin: "right" }} in={this.isChangingOpacity}>
-                                <div>
-                                    <LayerOpacityControl
-                                        isActive={this.isChangingOpacity}
-                                        opacity={this.props.layer.get("opacity")}
-                                        onChange={value => this.changeOpacity(value)}
-                                    />
-                                </div>
-                            </Grow>
-                        </Popper>
-                    </ClickAwayListener>
-                </Manager>
+                            <Target>
+                                <LayerOpacityIcon
+                                    opacity={this.props.layer.get("opacity")}
+                                    className={styles.iconButtonSmall}
+                                    color={this.isChangingOpacity ? "primary" : "default"}
+                                    onClick={() => this.toggleChangingOpacity()}
+                                />
+                            </Target>
+                            <Popper
+                                placement="left"
+                                modifiers={{
+                                    computeStyle: {
+                                        gpuAcceleration: false
+                                    }
+                                }}
+                                className={opacityPopoverClasses}
+                                eventsEnabled={this.isChangingOpacity}
+                            >
+                                <Grow
+                                    style={{ transformOrigin: "right" }}
+                                    in={this.isChangingOpacity}
+                                >
+                                    <div>
+                                        <LayerOpacityControl
+                                            isActive={this.isChangingOpacity}
+                                            opacity={this.props.layer.get("opacity")}
+                                            onChange={value => this.changeOpacity(value)}
+                                        />
+                                    </div>
+                                </Grow>
+                            </Popper>
+                        </ClickAwayListener>
+                    </Manager>
+                )}
                 <IconButtonSmall
                     color="inherit"
                     className={styles.iconButtonSmall}
@@ -166,7 +189,8 @@ export class LayerControlContainer extends LayerControlContainerCore {
 }
 
 LayerControlContainer.propTypes = Object.assign({}, LayerControlContainerCore.propTypes, {
-    zoomToLayer: PropTypes.func.isRequired
+    zoomToLayer: PropTypes.func.isRequired,
+    in3DMode: PropTypes.bool.isRequired
 });
 
 function mapDispatchToProps(dispatch) {

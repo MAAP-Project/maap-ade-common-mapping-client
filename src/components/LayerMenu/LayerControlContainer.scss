@@ -51,3 +51,9 @@
         font-size: 12px;
     }
 }
+
+.controlsMessage {
+    composes: fontRobotoMono from "../../_core/styles/text.scss";
+    font-size: 12px;
+    padding: 0px 3px;
+}
