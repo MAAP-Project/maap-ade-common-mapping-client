@@ -57,7 +57,6 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
     createLayerSource(layer, options, fromCache = true) {
         switch (layer.get("handleAs")) {
             case appStrings.LAYER_VECTOR_3D_TILES:
-                console.log("3d");
                 if (fromCache) {
                     let cacheHash = this.getCacheHash(layer) + "_source";
                     if (this.layerCache.get(cacheHash)) {
@@ -66,8 +65,12 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
                 }
                 return this.createWMTSSource(layer, options);
             default:
-                console.log("default");
-                return MapWrapperOpenlayersCore.prototype.createLayerSource.call(this, layer, options, fromCache);
+                return MapWrapperOpenlayersCore.prototype.createLayerSource.call(
+                    this,
+                    layer,
+                    options,
+                    fromCache
+                );
         }
     }
 
@@ -80,31 +83,20 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
      * @memberof MapWrapperOpenlayers
      */
     createLayer(layer, fromCache = true) {
-        console.log(layer);
         let mapLayer = {};
         switch (layer.get("handleAs")) {
             case appStrings.LAYER_VECTOR_3D_TILES:
                 mapLayer = this.createWMTSLayer(layer, fromCache);
-            
 
-                // mapLayer = new Tile({
-                //     source: new XYZ({
-                //         url: "",
-                //     }),
-                //     // opacity: layer.get("opacity"),
-                //     // visible: layer.get("isActive"),
-                //     // extent: appConfig.DEFAULT_MAP_EXTENT
-                // });
+                // TODO: I think I can remove these
+                mapLayer.setVisible = t => {
+                    mapLayer.isActive = true;
+                };
+                mapLayer.addEventListener = t => {
+                    return t;
+                };
 
-                mapLayer.setVisible = (t) => {mapLayer.isActive = true;};
-                mapLayer.addEventListener = (t) => {return t;};
-                // mapLayer.getSource = () => {};
-                // mapLayer.getLayerStatesArray = () => {}; 
-                // mapLayer.isActive = true;
-                // mapLayer._layerType = appStrings.LAYER_GROUP_TYPE_DATA;
                 this.setLayerRefInfo(layer, mapLayer);
-                console.log("created", mapLayer);
-                console.log("this is the map list", this.map.getLayers()); 
                 break;
             default:
                 return MapWrapperOpenlayersCore.prototype.createLayer.call(this, layer, fromCache);
@@ -112,24 +104,6 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
 
         return mapLayer;
     }
-
-    /**
-     * activate a layer on the map. This will create a new
-     * openlayers layer object and add it to the map
-     *
-     * @param {ImmutableJS.Map} layer layer object from map state in redux
-     * @returns {boolean} true if it succeeds
-     * @memberof MapWrapperOpenlayers
-     */
-    // activateLayer(layer) {
-    //     console.log(this.map.getLayers());
-    //     switch (layer.get("handleAs")) {
-    //         case appStrings.LAYER_VECTOR_3D_TILES:
-    //             return true;
-    //         default:
-    //             return MapWrapperOpenlayersCore.prototype.activateLayer.call(this, layer);
-    //     }
-    // }
 
     /**
      * Find the highest index for a layer to be displayed.
@@ -148,7 +122,10 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
                 return index;
             }
             default:
-                return MapWrapperOpenlayersCore.prototype.findTopInsertIndexForLayer.call(this, mapLayer);
+                return MapWrapperOpenlayersCore.prototype.findTopInsertIndexForLayer.call(
+                    this,
+                    mapLayer
+                );
         }
     }
 

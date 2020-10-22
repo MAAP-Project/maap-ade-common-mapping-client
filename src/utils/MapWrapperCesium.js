@@ -13,7 +13,6 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
     createLayer(layer) {
         switch (layer.get("handleAs")) {
             case appStrings.LAYER_VECTOR_3D_TILES:
-                console.log("creating 3D layer");
                 return this.createVector3DTilesLayer(layer);
             default:
                 return MapWrapperCesiumCore.prototype.createLayer.call(this, layer);
@@ -37,7 +36,6 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
                 pointSize: 2
             });
             this.setLayerRefInfo(layer, mapLayer);
-            console.log("returing map layer", mapLayer);
             return mapLayer;
         } catch (err) {
             console.warn("Error in MapWrapperCesium.createVector3DTilesLayer:", err);
@@ -53,7 +51,6 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
      * @memberof MapWrapperCesium
      */
     addLayer(mapLayer) {
-        console.log("layer handle as", mapLayer._layerHandleAs);
         switch (mapLayer._layerHandleAs) {
             case appStrings.LAYER_VECTOR_3D_TILES:
                 return this.addVector3DTilesLayer(mapLayer);
@@ -70,12 +67,10 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
      * @memberof MapWrapperCesium
      */
     addVector3DTilesLayer(mapLayer) {
-        console.log(mapLayer);
         try {
             this.map.scene.primitives.add(mapLayer);
             return true;
         } catch (err) {
-            console.log("THIS FAILED!!!");
             console.warn("Error in MapWrapperCesium.add3DLayer:", err);
             return false;
         }
@@ -178,9 +173,6 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
         try {
             let mapLayers = this.getMapLayers(layer.get("handleAs"));
             let mapLayer = this.findLayerInMapLayers(mapLayers, layer);
-            console.log("mapLayers", mapLayers);
-            console.log("OTHER KIND", this.map.imageryLayers);
-            console.log("mapLayer", mapLayer);
             if (mapLayer) {
                 let currIndex = mapLayers._primitives.indexOf(mapLayer);
                 let index = this.findTopInsertIndexForLayer(mapLayers, mapLayer);
@@ -258,7 +250,7 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
         }
     }
 
-        /**
+    /**
      * update a layer on the map. This creates a new layer
      * and replaces the layer with a matching id
      *
@@ -283,7 +275,7 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
         }
     }
 
-        /**
+    /**
      * move a layer to the top of the map display stack
      *
      * @param {ImmutableJS.Map} layer layer object from map state in redux
@@ -338,7 +330,6 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
         try {
             let mapLayers = this.getMapLayers(layer.get("handleAs"));
             let mapLayer = this.findLayerInMapLayers(mapLayers, layer);
-            console.log(mapLayer);
             if (mapLayer && typeof mapLayer.alpha !== "undefined") {
                 mapLayer.alpha = opacity;
                 return true;
@@ -391,7 +382,6 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
             return false;
         }
     }
-
 
     addDrawHandler(geometryType, onDrawEnd, interactionType) {
         try {
