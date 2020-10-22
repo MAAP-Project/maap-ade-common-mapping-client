@@ -154,12 +154,12 @@
   },
   "lint-staged": {
     "src/**/*.{js,css,scss}": [
-            "prettier --config .prettierrc --write",
-            "git add"
-        ]
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/MAAP-Project/maap-common-mapping-client"
-    }
+      "prettier --config .prettierrc --write",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MAAP-Project/maap-common-mapping-client"
+  }
 }
