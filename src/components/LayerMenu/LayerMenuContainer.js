@@ -143,11 +143,17 @@ export class LayerMenuContainer extends Component {
             [styles.manageBtnHidden]: !this.props.layerMenuOpen
         });
 
+        const in3DMode = this.props.in3DMode;
+
         const content =
             displayNum > 0 ? (
                 layerList.map((layer, i) => (
-                    <React.Fragment key={layer.get("id") + "_layer_listing"}>
-                        <LayerControlContainer layer={layer} activeNum={activeNum} />
+                    <React.Fragment key={layer.get("id") + in3DMode + "_layer_listing"}>
+                        <LayerControlContainer
+                            layer={layer}
+                            activeNum={activeNum}
+                            in3DMode={in3DMode}
+                        />
                         {i < layerList.size - 1 ? <Divider /> : undefined}
                     </React.Fragment>
                 ))
@@ -195,6 +201,7 @@ LayerMenuContainer.propTypes = {
     setLayerMenuOpen: PropTypes.func.isRequired,
     layerMenuOpen: PropTypes.bool.isRequired,
     layers: PropTypes.object.isRequired,
+    in3DMode: PropTypes.bool.isRequired,
     className: PropTypes.string,
     setLayerManagerOpen: PropTypes.func.isRequired
 };
@@ -202,7 +209,8 @@ LayerMenuContainer.propTypes = {
 function mapStateToProps(state) {
     return {
         layerMenuOpen: state.view.get("layerMenuOpen"),
-        layers: state.map.getIn(["layers", appStrings.LAYER_GROUP_TYPE_DATA])
+        layers: state.map.getIn(["layers", appStrings.LAYER_GROUP_TYPE_DATA]),
+        in3DMode: state.map.getIn(["view", "in3DMode"])
     };
 }
 

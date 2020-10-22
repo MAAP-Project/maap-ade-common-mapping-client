@@ -31,6 +31,94 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
     }
 
     /**
+     * creates an openlayers layer source
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @param {object} options raster imagery options for layer from redux state
+     * - url - {string} base url for this layer
+     * - layer - {string} layer identifier
+     * - format - {string} tile resouce format
+     * - requestEncoding - {string} url encoding (REST|KVP)
+     * - matrixSet - {string} matrix set for the tile pyramid
+     * - projection - {string} projection string
+     * - extents - {array} bounding box extents for this layer
+     * - tileGrid - {object} of tiling options
+     *   - origin - {array} lat lon coordinates of layer upper left
+     *   - resolutions - {array} list of tile resolutions
+     *   - matrixIds - {array} identifiers for each zoom level
+     *   - tileSize - {number} size of the tiles
+     * @param {boolean} [fromCache=true] true if the source may be pulled from the cache
+     * @returns {object} openlayers source object
+     * @memberof MapWrapperOpenlayers
+     */
+    createLayerSource(layer, options, fromCache = true) {
+        switch (layer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                if (fromCache) {
+                    let cacheHash = this.getCacheHash(layer) + "_source";
+                    if (this.layerCache.get(cacheHash)) {
+                        return this.layerCache.get(cacheHash);
+                    }
+                }
+                return this.createWMTSSource(layer, options);
+            default:
+                return MapWrapperOpenlayersCore.prototype.createLayerSource.call(
+                    this,
+                    layer,
+                    options,
+                    fromCache
+                );
+        }
+    }
+
+    /**
+     * create an openlayers layer object
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @param {boolean} [fromCache=true] true if the layer may be pulled from the cache
+     * @returns {object|boolean} openlayers layer object or false if it fails
+     * @memberof MapWrapperOpenlayers
+     */
+    createLayer(layer, fromCache = true) {
+        let mapLayer = {};
+        switch (layer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES:
+                mapLayer = this.createWMTSLayer(layer, fromCache);
+
+                this.setLayerRefInfo(layer, mapLayer);
+                break;
+            default:
+                return MapWrapperOpenlayersCore.prototype.createLayer.call(this, layer, fromCache);
+        }
+
+        return mapLayer;
+    }
+
+    /**
+     * Find the highest index for a layer to be displayed.
+     * Data layers are displayed below reference layers and
+     * above basemaps
+     *
+     * @param {object} mapLayer openlayers map layer to compare
+     * @returns {number} highest index display index for a layer of this type
+     * @memberof MapWrapperOpenlayers
+     */
+    findTopInsertIndexForLayer(mapLayer) {
+        switch (mapLayer.get("handleAs")) {
+            case appStrings.LAYER_VECTOR_3D_TILES: {
+                let mapLayers = this.map.getLayers();
+                let index = mapLayers.getLength();
+                return index;
+            }
+            default:
+                return MapWrapperOpenlayersCore.prototype.findTopInsertIndexForLayer.call(
+                    this,
+                    mapLayer
+                );
+        }
+    }
+
+    /**
      * create an openlayers map object
      *
      * @param {string|domnode} container the domnode to render to
