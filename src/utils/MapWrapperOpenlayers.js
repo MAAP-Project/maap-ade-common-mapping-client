@@ -2,7 +2,6 @@ import Ol_Map from "ol/Map";
 import Ol_View from "ol/View";
 import Ol_Layer_Vector from "ol/layer/Vector";
 import Ol_Source_Vector from "ol/source/Vector";
-import Ol_Layer_Tile from "ol/layer/Tile";
 import * as Ol_Proj from "ol/proj";
 import { defaults as Ol_Interaction_Defaults } from "ol/interaction";
 import Ol_Interaction_Draw, { createBox } from "ol/interaction/Draw";
@@ -14,8 +13,6 @@ import appConfig from "constants/appConfig";
 import MapUtil from "utils/MapUtil";
 
 import MapWrapperOpenlayersCore from "_core/utils/MapWrapperOpenlayers";
-import Tile from "ol/Tile";
-import XYZ from "ol/source/XYZ";
 
 export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
     ////////////////////// OVERRIDES //////////////////////
@@ -87,14 +84,6 @@ export default class MapWrapperOpenlayers extends MapWrapperOpenlayersCore {
         switch (layer.get("handleAs")) {
             case appStrings.LAYER_VECTOR_3D_TILES:
                 mapLayer = this.createWMTSLayer(layer, fromCache);
-
-                // TODO: I think I can remove these
-                mapLayer.setVisible = t => {
-                    mapLayer.isActive = true;
-                };
-                mapLayer.addEventListener = t => {
-                    return t;
-                };
 
                 this.setLayerRefInfo(layer, mapLayer);
                 break;

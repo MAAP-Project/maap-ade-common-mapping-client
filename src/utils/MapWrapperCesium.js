@@ -10,6 +10,14 @@ export default class MapWrapperCesium extends MapWrapperCesiumCore {
         window.CESIUM_BASE_URL = appConfig.CESIUM_BASE_URL;
     }
 
+    /**
+     * create a cesium layer corresponding to the
+     * given layer
+     *
+     * @param {ImmutableJS.Map} layer layer object from map state in redux
+     * @returns {object|boolean} cesium layer object or false if it fails
+     * @memberof MapWrapperCesium
+     */
     createLayer(layer) {
         switch (layer.get("handleAs")) {
             case appStrings.LAYER_VECTOR_3D_TILES:
