@@ -855,6 +855,52 @@
   width: 100px;
   padding: 6px 0;
   display: inline-block; }
+.LayerControlContainer__layerControl___S89br {
+  height: 38px;
+  padding-right: 4px; }
+  .LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR {
+    padding-right: 0px; }
+    .LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR .LayerControlContainer__layerControlIconRow___13Wcs {
+      display: inline-block; }
+    .LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR .LayerControlContainer__topContent___1nyRI {
+      padding-top: 0px; }
+
+.LayerControlContainer__popover___1eZB5 {
+  z-index: 1; }
+
+.LayerControlContainer__positionPopover___1XjVR {
+  transform: translate(-4px, 0px); }
+
+.LayerControlContainer__topContent___1nyRI {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding-top: 2px; }
+
+.LayerControlContainer__layerTitle___3lKIc {
+  padding: 0px;
+  flex: 1 1;
+  font-size: 13px; }
+
+.LayerControlContainer__layerControlIconRow___13Wcs {
+  padding: 5px 8px;
+  position: relative;
+  display: none;
+  vertical-align: top; }
+
+.LayerControlContainer__iconButtonSmall___3kdRN {
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 22px !important;
+  color: rgba(0, 0, 0, 0.54); }
+  .LayerControlContainer__iconButtonSmall___3kdRN span span {
+    left: -23px;
+    top: -11px;
+    font-size: 12px; }
+
+.LayerControlContainer__controlsMessage___fGIxY {
+  font-size: 12px;
+  padding: 0px 3px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -927,52 +973,6 @@ button.AppContainer__context-menu-item___1M1Z0 {
   height: 100%;
   overflow: hidden;
   white-space: nowrap; }
-.LayerControlContainer__layerControl___S89br {
-  height: 38px;
-  padding-right: 4px; }
-  .LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR {
-    padding-right: 0px; }
-    .LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR .LayerControlContainer__layerControlIconRow___13Wcs {
-      display: inline-block; }
-    .LayerControlContainer__layerControl___S89br.LayerControlContainer__layerControlActive___3aEjR .LayerControlContainer__topContent___1nyRI {
-      padding-top: 0px; }
-
-.LayerControlContainer__popover___1eZB5 {
-  z-index: 1; }
-
-.LayerControlContainer__positionPopover___1XjVR {
-  transform: translate(-4px, 0px); }
-
-.LayerControlContainer__topContent___1nyRI {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  padding-top: 2px; }
-
-.LayerControlContainer__layerTitle___3lKIc {
-  padding: 0px;
-  flex: 1 1;
-  font-size: 13px; }
-
-.LayerControlContainer__layerControlIconRow___13Wcs {
-  padding: 5px 8px;
-  position: relative;
-  display: none;
-  vertical-align: top; }
-
-.LayerControlContainer__iconButtonSmall___3kdRN {
-  width: 28px !important;
-  height: 28px !important;
-  font-size: 22px !important;
-  color: rgba(0, 0, 0, 0.54); }
-  .LayerControlContainer__iconButtonSmall___3kdRN span span {
-    left: -23px;
-    top: -11px;
-    font-size: 12px; }
-
-.LayerControlContainer__controlsMessage___fGIxY {
-  font-size: 12px;
-  padding: 0px 3px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *

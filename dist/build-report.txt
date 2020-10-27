@@ -1,8 +1,8 @@
 [34mGenerating minified bundle for production via Webpack. This will take a moment...[39m
-Webpack stats: Hash: ed521f3b998b95abf26e
+Webpack stats: Hash: 354ce559aed4ca9ad55b
 Version: webpack 4.28.3
-Time: 44384ms
-Built at: 10/22/2020 3:47:02 PM
+Time: 43077ms
+Built at: 10/27/2020 1:19:07 PM
                          Asset      Size  Chunks                    Chunk Names
                     bundle.css  40.5 KiB       0  [emitted]         bundle
                      bundle.js  4.62 MiB       0  [emitted]  [big]  bundle
@@ -17,7 +17,7 @@ Entrypoint inlineStyles = inlineStyles.js
       | ./src/_core/constants/appConfig.js 6.05 KiB [built]
  [10] ./node_modules/@babel/runtime/helpers/classCallCheck.js 196 bytes {0} [built]
  [12] ./node_modules/@babel/runtime/helpers/createClass.js 596 bytes {0} [built]
- [26] ./node_modules/immutable/dist/immutable.js 139 KiB {0} [built]
+ [25] ./node_modules/immutable/dist/immutable.js 139 KiB {0} [built]
  [36] ./node_modules/react-dom/index.js 1.33 KiB {0} [built]
 [122] (webpack)/buildin/global.js 472 bytes {0} [built]
 [493] ./node_modules/path-browserify/index.js 8.54 KiB {0} [built]
