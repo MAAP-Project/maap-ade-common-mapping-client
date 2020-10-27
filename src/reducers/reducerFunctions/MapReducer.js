@@ -197,17 +197,6 @@ export default class MapReducer extends MapReducerCore {
                 ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
                 currPartials.concat(newPartials)
             );
-            // } else if (action.options.type === appStrings.LAYER_VECTOR_3D_TILES){
-            //     let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
-            //     let newPartials = this.generatePartialsListFrom3DMetadata(
-            //         action.config,
-            //         action.options,
-            //         action.options.defaultOps
-            //     );
-            //     return state.setIn(
-            //         ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
-            //         currPartials.concat(newPartials)
-            //     );
         } else {
             console.warn("Error in MapReducer.ingestLayerConfig: Could not ingest layer config");
         }
