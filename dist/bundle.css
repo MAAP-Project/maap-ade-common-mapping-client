@@ -538,29 +538,6 @@
  */
 /* colors */
 /* neutrals */
-.LayerControlLabel__controlLabel___Je-Ud {
-  background: #e91e63;
-  padding: 5px;
-  font-size: 1.2rem;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px; }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
 .LayerPositionIcon__orderLabel___1hp-N {
   -webkit-font-smoothing: antialiased;
   position: relative;
@@ -582,6 +559,29 @@
 
 .LayerPositionIcon__primary___g2563 {
   color: #e91e63; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.LayerControlLabel__controlLabel___Je-Ud {
+  background: #e91e63;
+  padding: 5px;
+  font-size: 1.2rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
 /**
  * Copyright 2017 California Institute of Technology.
  *
@@ -1300,73 +1300,6 @@ button.AppContainer__context-menu-item___1M1Z0 {
  * This source code is licensed under the APACHE 2.0 license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-/* colors */
-/* neutrals */
-.LayerOpacityControl__opacityControl___3KDwo {
-  display: inline-block; }
-
-.LayerOpacityControl__opacityContent___1qVUV {
-  padding: 1.2rem 1.5rem;
-  width: 170px;
-  height: 40px; }
-
-.LayerOpacityControl__opacityLabel___2CyIV {
-  float: right;
-  margin-right: -5px; }
-
-.LayerOpacityControl__sliderRoot___26kKF {
-  width: 100px;
-  padding: 6px 0;
-  display: inline-block; }
-
-/* RC-SLIDER OVERRIDES */
-.rc-slider-step {
-  height: 2px; }
-
-.rc-slider-track {
-  height: 2px;
-  background-color: #e91e63; }
-
-.rc-slider-rail {
-  height: 2px; }
-
-.rc-slider-handle {
-  margin-top: -6px;
-  background-color: #e91e63;
-  border: none; }
-  .rc-slider-handle:after {
-    content: " ";
-    width: 14px;
-    height: 14px;
-    position: absolute;
-    border-radius: 50%;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 0.1s;
-    transition-property: transform;
-    background-color: #e91e63; }
-  .rc-slider-handle:hover, .rc-slider-handle:active {
-    background-color: #e91e63;
-    box-shadow: none; }
-  .rc-slider-handle:focus {
-    box-shadow: none; }
-    .rc-slider-handle:focus:after {
-      background-color: rgba(233, 30, 99, 0.3);
-      transform: scale(2); }
-  .rc-slider-handle:active:after {
-    background-color: #e91e63;
-    transform: scale(2); }
-/**
- * Copyright 2017 California Institute of Technology.
- *
- * This source code is licensed under the APACHE 2.0 license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
 .Colorbar__colorbar___FOiOP {
   width: 255px;
   line-height: 1.2rem;
@@ -1428,6 +1361,73 @@ button.AppContainer__context-menu-item___1M1Z0 {
 
 .Colorbar__hoverCross___3WQok:hover {
   cursor: crosshair; }
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/**
+ * Copyright 2017 California Institute of Technology.
+ *
+ * This source code is licensed under the APACHE 2.0 license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+/* colors */
+/* neutrals */
+.LayerOpacityControl__opacityControl___3KDwo {
+  display: inline-block; }
+
+.LayerOpacityControl__opacityContent___1qVUV {
+  padding: 1.2rem 1.5rem;
+  width: 170px;
+  height: 40px; }
+
+.LayerOpacityControl__opacityLabel___2CyIV {
+  float: right;
+  margin-right: -5px; }
+
+.LayerOpacityControl__sliderRoot___26kKF {
+  width: 100px;
+  padding: 6px 0;
+  display: inline-block; }
+
+/* RC-SLIDER OVERRIDES */
+.rc-slider-step {
+  height: 2px; }
+
+.rc-slider-track {
+  height: 2px;
+  background-color: #e91e63; }
+
+.rc-slider-rail {
+  height: 2px; }
+
+.rc-slider-handle {
+  margin-top: -6px;
+  background-color: #e91e63;
+  border: none; }
+  .rc-slider-handle:after {
+    content: " ";
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    border-radius: 50%;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.1s;
+    transition-property: transform;
+    background-color: #e91e63; }
+  .rc-slider-handle:hover, .rc-slider-handle:active {
+    background-color: #e91e63;
+    box-shadow: none; }
+  .rc-slider-handle:focus {
+    box-shadow: none; }
+    .rc-slider-handle:focus:after {
+      background-color: rgba(233, 30, 99, 0.3);
+      transform: scale(2); }
+  .rc-slider-handle:active:after {
+    background-color: #e91e63;
+    transform: scale(2); }
 /**
  * Copyright 2017 California Institute of Technology.
  *
