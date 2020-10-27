@@ -48,6 +48,9 @@ export function setMapProjection(projection) {
 
 export function loadLayerSource(options, defaultOps = {}) {
     // update default tile operationss
+    console.log("load layer source");
+    console.log("options are ", options);
+    console.log("default ops are", defaultOps);
     let defOps = DEFAULT_LAYER_OPS;
     if (options.type === appStringsCore.LAYER_CONFIG_WMTS_XML) {
         defOps = defOps.mergeDeep({
@@ -209,6 +212,8 @@ function loadSingleLayerSource(options, mergeOnLoad = false) {
             options: { credentials: "same-origin" }
         }).then(
             data => {
+                console.log("got request back");
+                console.log("data", data);
                 dispatch(ingestLayerConfig(data, options));
                 if (mergeOnLoad) {
                     dispatch(mergeLayers());

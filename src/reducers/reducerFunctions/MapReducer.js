@@ -150,6 +150,7 @@ export default class MapReducer extends MapReducerCore {
     }
 
     static ingestLayerConfig(state, action) {
+        console.log("in injest layer. type is ", action.options.type);
         if (action.options.type === appStringsCore.LAYER_CONFIG_JSON) {
             // 3D metadata is JSON but needs to be handled differently to accomadate MAAP metadata format
             console.log("in json");
