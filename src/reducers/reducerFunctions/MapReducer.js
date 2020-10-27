@@ -1,5 +1,6 @@
 import Immutable from "immutable";
 import * as appStringsCore from "_core/constants/appStrings";
+import * as appStrings from "constants/appStrings";
 import MapReducerCore from "_core/reducers/reducerFunctions/MapReducer";
 import { layerModel } from "reducers/models/map";
 import appConfig from "constants/appConfig";
@@ -150,16 +151,30 @@ export default class MapReducer extends MapReducerCore {
 
     static ingestLayerConfig(state, action) {
         if (action.options.type === appStringsCore.LAYER_CONFIG_JSON) {
-            let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
-            let newPartials = this.generatePartialsListFromJson(
-                action.config,
-                action.options,
-                action.options.defaultOps
-            );
-            return state.setIn(
-                ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
-                currPartials.concat(newPartials)
-            );
+            // 3D metadata is JSON but needs to be handled differently to accomadate MAAP metadata format
+            if (action.options.handleAs === appStrings.LAYER_VECTOR_3D_TILES) {
+                let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
+                let newPartials = this.generatePartialsListFrom3DMetadata(
+                    action.config,
+                    action.options
+                    // action.options.defaultOps
+                );
+                return state.setIn(
+                    ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
+                    currPartials.concat(newPartials)
+                );
+            } else {
+                let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
+                let newPartials = this.generatePartialsListFromJson(
+                    action.config,
+                    action.options,
+                    action.options.defaultOps
+                );
+                return state.setIn(
+                    ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
+                    currPartials.concat(newPartials)
+                );
+            }
         } else if (action.options.type === appStringsCore.LAYER_CONFIG_WMTS_XML) {
             let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
             let newPartials = this.generatePartialsListFromWmtsXml(
@@ -182,10 +197,58 @@ export default class MapReducer extends MapReducerCore {
                 ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
                 currPartials.concat(newPartials)
             );
+            // } else if (action.options.type === appStrings.LAYER_VECTOR_3D_TILES){
+            //     let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
+            //     let newPartials = this.generatePartialsListFrom3DMetadata(
+            //         action.config,
+            //         action.options,
+            //         action.options.defaultOps
+            //     );
+            //     return state.setIn(
+            //         ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
+            //         currPartials.concat(newPartials)
+            //     );
         } else {
             console.warn("Error in MapReducer.ingestLayerConfig: Could not ingest layer config");
         }
         return state;
+    }
+
+    static generatePartialsListFrom3DMetadata(config, options, layerOptions = {}) {
+        const relevant_link = config.links.find(link => link.title === "(GET 3DTILES)");
+        const url = relevant_link.href;
+        const extents_string = config.boxes[0];
+        let new_extents = [-180, -90, 180, 90];
+        if (extents_string) {
+            const extents = extents_string.split(" ").map(Number);
+
+            // must reorder lat/lon!
+            // original: min lat, min lon, max lat, max lon
+            // new: min lon, min lat, max lon, max lat
+            new_extents = [extents[1], extents[0], extents[3], extents[2]];
+        }
+
+        const mappingOptions = {
+            url: url,
+            urlFunctions: {},
+            tileFunctions: {},
+            projection: "EPSG:4326",
+            extents: new_extents
+        };
+
+        return [
+            Immutable.fromJS({
+                id: config.id,
+                title: config.title,
+                // fromJson: true,
+                mappingOptions: mappingOptions,
+                type: "data",
+                handleAs: appStrings.LAYER_VECTOR_3D_TILES,
+                updateParameters: {
+                    time: false
+                }
+            }).mergeDeep(layerOptions)
+        ];
     }
 
     static generatePartialsListFromJson(config, options, layerOptions = {}) {
