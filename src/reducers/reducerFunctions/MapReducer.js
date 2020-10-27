@@ -152,12 +152,15 @@ export default class MapReducer extends MapReducerCore {
     static ingestLayerConfig(state, action) {
         if (action.options.type === appStringsCore.LAYER_CONFIG_JSON) {
             // 3D metadata is JSON but needs to be handled differently to accomadate MAAP metadata format
-            if (action.options.handleAs === appStrings.LAYER_VECTOR_3D_TILES) {
+            if (
+                action.options.defaultOps &&
+                action.options.defaultOps.handleAs === appStrings.LAYER_VECTOR_3D_TILES
+            ) {
                 let currPartials = state.getIn(["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL]);
                 let newPartials = this.generatePartialsListFrom3DMetadata(
                     action.config,
-                    action.options
-                    // action.options.defaultOps
+                    action.options,
+                    action.options.defaultOps
                 );
                 return state.setIn(
                     ["layers", appStringsCore.LAYER_GROUP_TYPE_PARTIAL],
