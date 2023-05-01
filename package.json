@@ -89,7 +89,7 @@
     "karma-requirejs": "1.1.0",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "3.0.5",
-    "lint-staged": "8.1.0",
+    "lint-staged": "13.2.2",
     "mdi-material-ui": "5.8.0",
     "mocha": "5.2.0",
     "modernizr": "3.7.1",
